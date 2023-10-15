@@ -56,7 +56,7 @@ class LoginControllerImp extends LoginController {
             FirebaseMessaging.instance.subscribeToTopic('branches');
             FirebaseMessaging.instance.subscribeToTopic(
                 "branch${response['data']['cash_branch_id']}");
-            Get.offAllNamed(AppRoutes.orders);
+            Get.offAllNamed(AppRoutes.home);
           } else {
             Get.defaultDialog(
                 title: 'attention'.tr,

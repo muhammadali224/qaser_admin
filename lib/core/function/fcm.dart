@@ -3,8 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_ringtone_player/flutter_ringtone_player.dart';
 import 'package:get/get.dart';
 
-import '../../controller/orders/orders_controller.dart';
-
 fcmConfig() {
   FirebaseMessaging.onMessage.listen((message) {
     FlutterRingtonePlayer.playNotification();
@@ -19,9 +17,9 @@ fcmConfig() {
 
 refreshPageNotification(data) {
   if (data['pagename'] == 'orders' && Get.currentRoute == '/orders') {
-    OrdersController controller = Get.find();
-
-    controller.getOrders();
+    // OrdersController controller = Get.find();
+    //
+    // controller.getOrders();
   }
 }
 

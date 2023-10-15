@@ -4,9 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:icon_broken/icon_broken.dart';
 
-import '../../../core/constant/api_link.dart';
 import '../../../core/constant/color.dart';
-import '../../../data/shared/user_details.dart';
 
 class HeaderHelloText extends StatelessWidget {
   final String name;
@@ -75,7 +73,8 @@ class HeaderHelloText extends StatelessWidget {
                     backgroundImage: imageProvider,
                     radius: 35,
                   ),
-                  imageUrl: "${AppLink.imageUserProfile}${userData.usersImage}",
+                  // imageUrl: "${AppLink.imageUserProfile}${userData.usersImage}",
+                  imageUrl: "",
                   placeholder: (context, url) =>
                       const Center(child: CircularProgressIndicator()),
                   errorWidget: (context, url, error) => const Icon(
