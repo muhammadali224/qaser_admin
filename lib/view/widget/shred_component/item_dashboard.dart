@@ -27,7 +27,7 @@ class ItemDashBoard extends StatelessWidget {
               offset: const Offset(0, 5),
               // color: Theme.of(context).primaryColor.withOpacity(0.2),
               color: background.withOpacity(0.2),
-              spreadRadius: 2,
+              spreadRadius: 3,
               blurRadius: 5,
             ),
           ],

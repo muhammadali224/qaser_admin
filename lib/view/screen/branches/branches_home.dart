@@ -20,17 +20,15 @@ class BranchesHome extends StatelessWidget {
             shrinkWrap: true,
             mainAxisSpacing: 30,
             crossAxisSpacing: 40,
-            children: [
+            children: const [
               ItemDashBoard(
-                  title: 'add', icon: Icons.add, background: AppColor.red),
+                  title: 'add', icon: Icons.add, background: Colors.red),
               ItemDashBoard(
-                  title: 'add', icon: Icons.add, background: AppColor.red),
+                  title: 'edit', icon: Icons.edit, background: Colors.purple),
               ItemDashBoard(
-                  title: 'add', icon: Icons.add, background: AppColor.red),
-              ItemDashBoard(
-                  title: 'add', icon: Icons.add, background: AppColor.red),
-              ItemDashBoard(
-                  title: 'add', icon: Icons.add, background: AppColor.red),
+                  title: 'delete',
+                  icon: Icons.delete_forever,
+                  background: Colors.blue),
             ],
           ),
         )
