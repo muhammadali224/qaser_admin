@@ -44,18 +44,8 @@ class LoginControllerImp extends LoginController {
 
         if (StatusRequest.success == statusRequest) {
           if (response['status'] == 'success') {
-            await saveDataToShared(
-              userId: response['data']['cash_system_id'],
-              userName: response['data']['cash_user_name'],
-              userEmail: response['data']['cash_user_email'],
-              userBranch: response['data']['cash_branch_id'],
-            );
-
             myServices.sharedPref.setString('step', "2");
 
-            FirebaseMessaging.instance.subscribeToTopic('branches');
-            FirebaseMessaging.instance.subscribeToTopic(
-                "branch${response['data']['cash_branch_id']}");
             Get.offAllNamed(AppRoutes.home);
           } else {
             Get.defaultDialog(
@@ -77,18 +67,6 @@ class LoginControllerImp extends LoginController {
       SmartDialog.showToast(e.toString());
       print(e.toString());
     }
-  }
-
-  saveDataToShared({
-    required int userId,
-    required String userName,
-    required String userEmail,
-    required int userBranch,
-  }) {
-    myServices.sharedPref.setInt('userId', userId);
-    myServices.sharedPref.setString('userName', userName);
-    myServices.sharedPref.setString('userEmail', userEmail);
-    myServices.sharedPref.setInt('branchId', userBranch);
   }
 
   @override

@@ -4,6 +4,7 @@ import 'binding/initial_binding.dart';
 import 'core/constant/routes.dart';
 import 'core/middleware/middleware.dart';
 import 'view/screen/auth/login.dart';
+import 'view/screen/home/home.dart';
 
 List<GetPage<dynamic>>? routes = [
   GetPage(name: '/', page: () => const Login(), middlewares: [
@@ -14,6 +15,10 @@ List<GetPage<dynamic>>? routes = [
     name: AppRoutes.login,
     page: () => const Login(),
     binding: InitBindings(),
+  ),
+  GetPage(
+    name: AppRoutes.home,
+    page: () => const HomePage(),
   ),
 
   // GetPage(name: AppRoutes.checkout, page: () => const Checkout()),

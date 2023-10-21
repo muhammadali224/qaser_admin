@@ -10,8 +10,7 @@ class AppLink {
   static const String imagesItems = "$images/items/";
 
 //=============================== Auth ===============================//
-  static const String login = "$server/auth/cash_login.php";
-  static const String getUserDetails = "$server/auth/get_user_details.php";
+  static const String login = "$server/auth/admin_login.php";
 
 //============================== Home  ==============================//
   static const String homePage = '$server/home.php';
