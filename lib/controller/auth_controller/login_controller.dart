@@ -9,7 +9,7 @@ import '../../core/function/handling_data_controller.dart';
 import '../../core/services/services.dart';
 import '../../core/services/user_preference.dart';
 import '../../data/model/admin_model/admin_model.dart';
-import '../../data/source/remote/auth/login_data.dart';
+import '../../data/source/remote/auth_data/login_data.dart';
 
 abstract class LoginController extends GetxController {
   login();

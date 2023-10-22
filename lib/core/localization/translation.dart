@@ -239,6 +239,8 @@ class MyTranslation extends Translations {
           "branchIsClose": "الفرع مغلق",
           "qrCodeScan": "مسح رمز QR",
           "branches": "الفروع",
+          "viewBranch": "عرض الفروع",
+          "addBranch": "إضافة فرع",
         },
         'en': {
           'chooseLang': 'Choose Language',
@@ -477,6 +479,8 @@ class MyTranslation extends Translations {
           "branchIsClose": "Branch Close",
           "qrCodeScan": "Scan QR Code",
           "branches": "Branches",
+          "viewBranch": "View Branches",
+          "addBranch": "Add Branch",
         },
       };
 }

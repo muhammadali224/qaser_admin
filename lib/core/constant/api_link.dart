@@ -12,8 +12,11 @@ class AppLink {
 //=============================== Auth ===============================//
   static const String login = "$server/auth/admin_login.php";
 
-//============================== Home  ==============================//
-  static const String homePage = '$server/home.php';
+//============================== Branches  ==============================//
+  static const String getBranch = "$server/branches/view.php";
+  static const String editBranch = "$server/branches/edit.php";
+  static const String deleteBranch = "$server/branches/delete.php";
+  static const String addBranch = "$server/branches/add.php";
 
 //============================== Items ==============================//
 

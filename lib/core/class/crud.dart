@@ -26,7 +26,7 @@ class CRUD {
         if (response.statusCode == 200 || response.statusCode == 201) {
           var responseBody = jsonDecode(response.body);
           // ignore: avoid_print
-          print(responseBody);
+          // print(responseBody);
           return right(responseBody);
         } else {
           return left(StatusRequest.serverFail);

@@ -21,17 +21,6 @@ class UserPreferences extends GetxService {
     await _saveUser(userVal);
   }
 
-  Future<void> clearUser() async {
-    _user = null;
-    final prefs = await SharedPreferences.getInstance();
-    await prefs.clear();
-  }
-
-  // Future<void> changeUser(UserModel user) async {
-  //   final prefs = await SharedPreferences.getInstance();
-  //   await prefs.setString(_userKey, json.encode(user.toJson()));
-  // }
-
   Future<void> _saveUser(AdminModel userVal) async {
     final prefs = await SharedPreferences.getInstance();
     final userJson = userVal.toJson();
@@ -48,13 +37,9 @@ class UserPreferences extends GetxService {
     }
   }
 
-  Future<void> initUser() async {
-    await getUser();
-  }
-
   @override
   void onInit() async {
-    await initUser();
+    await getUser();
     super.onInit();
   }
 }
