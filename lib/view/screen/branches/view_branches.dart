@@ -21,7 +21,7 @@ class ViewBranches extends StatelessWidget {
               itemCount: controller.branchList.length,
               itemBuilder: (context, index) => Text(
                     controller.branchList[index].branchNameAr!,
-                    style: TextStyle(color: Colors.black),
+                    style: const TextStyle(color: Colors.black),
                   )),
         ),
       ),

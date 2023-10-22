@@ -9,7 +9,7 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    HomeController controller = Get.put(HomeController());
+    Get.put(HomeController());
     return Scaffold(
       drawer: const AppDrawer(),
       appBar: AppBar(

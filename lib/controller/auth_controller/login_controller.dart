@@ -51,7 +51,6 @@ class LoginControllerImp extends LoginController {
             final loginUser = AdminModel.fromJson(response['data']);
             userManagement.setUser(loginUser);
 
-            final user = userManagement.user;
             myServices.sharedPref.setString('step', "2");
 
             Get.offAllNamed(AppRoutes.home);

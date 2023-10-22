@@ -15,7 +15,7 @@ class AddBranchesController extends GetxController {
     try {
       statusRequest = StatusRequest.loading;
       update();
-      var branchModel = BranchModel();
+      var branchModel = const BranchModel();
       var response = await _branchesData.addBranches(branchModel);
       statusRequest = handlingData(response);
       if (statusRequest == StatusRequest.success) {
