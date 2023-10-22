@@ -7,6 +7,8 @@ import '../../core/class/status_request.dart';
 import '../../core/constant/routes.dart';
 import '../../core/function/handling_data_controller.dart';
 import '../../core/services/services.dart';
+import '../../core/services/user_preference.dart';
+import '../../data/model/admin_model/admin_model.dart';
 import '../../data/source/remote/auth/login_data.dart';
 
 abstract class LoginController extends GetxController {
@@ -17,6 +19,8 @@ class LoginControllerImp extends LoginController {
   late TextEditingController email;
   late TextEditingController password;
   GlobalKey<FormState> formState = GlobalKey<FormState>();
+  final UserPreferences userManagement = Get.find<UserPreferences>();
+
   bool isVisiblePassword = true;
 
   LoginData loginData = LoginData(Get.find());
@@ -44,6 +48,10 @@ class LoginControllerImp extends LoginController {
 
         if (StatusRequest.success == statusRequest) {
           if (response['status'] == 'success') {
+            final loginUser = AdminModel.fromJson(response['data']);
+            userManagement.setUser(loginUser);
+
+            final user = userManagement.user;
             myServices.sharedPref.setString('step', "2");
 
             Get.offAllNamed(AppRoutes.home);

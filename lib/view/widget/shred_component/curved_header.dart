@@ -35,6 +35,12 @@ class CurvedHeader extends StatelessWidget {
                         .displayLarge!
                         .copyWith(color: Colors.white),
                   ),
+                  leading: const DrawerButton(
+                    style: ButtonStyle(
+                        iconColor:
+                            MaterialStatePropertyAll<Color>(Colors.white),
+                        iconSize: MaterialStatePropertyAll<double>(35)),
+                  ),
                 ),
                 const SizedBox(height: 20),
               ],
