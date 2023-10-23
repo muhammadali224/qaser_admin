@@ -34,9 +34,9 @@ class BranchesData {
     return response.fold((l) => l, (r) => r);
   }
 
-  editBranches(BranchModel branchModel) async {
+  editBranches(BranchModel branchModel, String id) async {
     var response = await crud.postData(AppLink.editBranch, {
-      "branchId": branchModel.toString(),
+      "branchId": id,
       "branchNameAr": branchModel.branchNameAr,
       "branchNameEn": branchModel.branchNameEn,
       "branchIsOpen": branchModel.branchIsOpen.toString(),
