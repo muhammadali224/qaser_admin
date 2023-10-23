@@ -1,6 +1,8 @@
+import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:get/get.dart';
 
 import '../../core/class/status_request.dart';
+import '../../core/constant/routes.dart';
 import '../../core/function/handling_data_controller.dart';
 import '../../core/services/user_preference.dart';
 import '../../data/model/admin_model/admin_model.dart';
@@ -27,14 +29,8 @@ class BranchViewController extends GetxController {
       statusRequest = handlingData(response);
       if (statusRequest == StatusRequest.success) {
         if (response["status"] == "success") {
-          if (adminData.adminSuperAdmin == 1) {
-            List responseList = response['data'];
-            branchList.addAll(responseList.map((e) => BranchModel.fromJson(e)));
-          } else if (adminData.adminSuperAdmin == 0) {
-            var responseList = response['data'];
-            final branchModel = BranchModel.fromJson(responseList);
-            branchList.add(branchModel);
-          }
+          List responseList = response['data'];
+          branchList.addAll(responseList.map((e) => BranchModel.fromJson(e)));
         }
       } else {
         statusRequest = StatusRequest.failed;
@@ -43,6 +39,32 @@ class BranchViewController extends GetxController {
       // SmartDialog.showToast(e.toString());
     }
     update();
+  }
+
+  deleteBranch(int id) async {
+    statusRequest = StatusRequest.loading;
+    update();
+    var response = await _branchesData.deleteBranches(id.toString());
+    statusRequest = handlingData(response);
+    if (statusRequest == StatusRequest.success) {
+      if (response['status'] == 'success') {
+        SmartDialog.showToast("تم الحذف بنجاح");
+        getBranches();
+      }
+    } else {
+      statusRequest = StatusRequest.failed;
+    }
+    update();
+  }
+
+  goToAddBranch() {
+    Get.toNamed(AppRoutes.addBranch);
+  }
+
+  goToEditBranch(BranchModel branchModel) {
+    Get.toNamed(AppRoutes.editBranch, arguments: {
+      "branchModel": branchModel,
+    });
   }
 
   @override

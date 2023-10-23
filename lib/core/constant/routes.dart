@@ -3,6 +3,7 @@ class AppRoutes {
   static const String home = "/home";
   static const String branches = "/branches";
   static const String adminUser = "/adminUser";
-  static const String viewBranches = "/viewBranches";
   static const String addBranch = "/addBranch";
+  static const String addAddress = "/addAddress";
+  static const String editBranch = "/editBranch";
 }
