@@ -11,6 +11,7 @@ import 'view/screen/branches/add_branch.dart';
 import 'view/screen/branches/branches_home.dart';
 import 'view/screen/cash_user/add_edit_cash_user.dart';
 import 'view/screen/cash_user/view_cash_user.dart';
+import 'view/screen/categories/view_categories.dart';
 import 'view/screen/home/home.dart';
 
 List<GetPage<dynamic>>? routes = [
@@ -33,4 +34,5 @@ List<GetPage<dynamic>>? routes = [
   GetPage(name: AppRoutes.cashUser, page: () => const ViewCashUser()),
   GetPage(name: AppRoutes.addCashUser, page: () => const AddEditCashUser()),
   GetPage(name: AppRoutes.editCashUser, page: () => const AddEditCashUser()),
+  GetPage(name: AppRoutes.viewCategories, page: () => const ViewCategories()),
 ];

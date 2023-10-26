@@ -4,18 +4,22 @@ import '../../core/constant/routes.dart';
 
 class AppDrawerController extends GetxController {
   goToHome() {
-    Get.toNamed(AppRoutes.home);
+    Get.offNamed(AppRoutes.home);
   }
 
   goToBranches() {
-    Get.toNamed(AppRoutes.branches);
+    Get.offNamed(AppRoutes.branches);
   }
 
   goToAdminUser() {
-    Get.toNamed(AppRoutes.adminUser);
+    Get.offNamed(AppRoutes.adminUser);
   }
 
   goToCashUser() {
-    Get.toNamed(AppRoutes.cashUser);
+    Get.offNamed(AppRoutes.cashUser);
+  }
+
+  goToCategories() {
+    Get.offNamed(AppRoutes.viewCategories);
   }
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:icon_broken/icon_broken.dart';
 
 import '../../../controller/app_drawer_controller/app_drawer_controller.dart';
 import '../app_drawer/drawer_item.dart';
@@ -32,6 +33,11 @@ class AppDrawer extends StatelessWidget {
             title: 'cashUser',
             icon: Icons.monetization_on,
             onTap: controller.goToCashUser,
+          ),
+          DrawerItem(
+            title: 'categories',
+            icon: IconBroken.Category,
+            onTap: controller.goToCategories,
           ),
           DrawerItem(
             title: 'branches',

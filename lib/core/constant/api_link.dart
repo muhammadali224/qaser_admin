@@ -3,7 +3,7 @@ class AppLink {
   static const String test = "$server/test.php";
 
 //============================== Images ==============================//
-  static const String images = "$server/upload";
+  static const String images = "https://qaser.mhjcode.com/upload";
   static const String imagesCategories = "$images/categories/";
   static const String imageUserProfile = "$images/user_profile/";
   static const String imageOffer = "$images/offers/";
@@ -28,7 +28,11 @@ class AppLink {
   static const String viewCashUser = "$server/cash_system/auth/view.php";
   static const String deleteCashUser = "$server/cash_system/auth/delete.php";
 
-//============================ Address ==============================//
+//============================ categories ==============================//
+  static const String addCategories = "$server/categories/add.php";
+  static const String editCategories = "$server/categories/edit.php";
+  static const String viewCategories = "$server/categories/view.php";
+  static const String deleteCategories = "$server/categories/delete.php";
 
 //============================ Orders ==============================//
 

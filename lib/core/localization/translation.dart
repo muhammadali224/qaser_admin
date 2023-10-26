@@ -244,6 +244,7 @@ class MyTranslation extends Translations {
           "addAdmin": "إضافة ادمن",
           "addCashUser": "إضافة مستخدم كاش",
           "cashUser": "مستخدم كاش",
+          "addCategories": "إضافة تصنيفات",
         },
         'en': {
           'chooseLang': 'Choose Language',
@@ -487,6 +488,7 @@ class MyTranslation extends Translations {
           "addAdmin": "Add Admins",
           "addCashUser": "Add Cash User",
           "cashUser": "Cash User",
+          "addCategories": "Add Categories",
         },
       };
 }

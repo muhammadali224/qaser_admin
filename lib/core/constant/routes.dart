@@ -14,4 +14,6 @@ class AppRoutes {
   static const String cashUser = "/cashUser";
   static const String addCashUser = "/addCashUser";
   static const String editCashUser = "/editCashUser";
+
+  static const String viewCategories = "/viewCategories";
 }

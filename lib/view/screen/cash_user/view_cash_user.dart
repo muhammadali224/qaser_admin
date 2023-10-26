@@ -26,7 +26,7 @@ class ViewCashUser extends StatelessWidget {
       body: Column(
         children: [
           CurvedHeader(
-            title: 'Admins',
+            title: 'cashUser',
             background: Colors.deepPurple,
             widget: GetBuilder<CashUserViewController>(builder: (controller) {
               return HandlingDataView(
