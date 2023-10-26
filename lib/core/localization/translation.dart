@@ -241,6 +241,7 @@ class MyTranslation extends Translations {
           "branches": "الفروع",
           "viewBranch": "عرض الفروع",
           "addBranch": "إضافة فرع",
+          "addAdmin": "إضافة ادمن",
         },
         'en': {
           'chooseLang': 'Choose Language',
@@ -481,6 +482,7 @@ class MyTranslation extends Translations {
           "branches": "Branches",
           "viewBranch": "View Branches",
           "addBranch": "Add Branch",
+          "addAdmin": "Add Admins",
         },
       };
 }

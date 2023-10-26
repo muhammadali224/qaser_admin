@@ -6,4 +6,6 @@ class AppRoutes {
   static const String addBranch = "/addBranch";
   static const String addAddress = "/addAddress";
   static const String editBranch = "/editBranch";
+  static const String addAdminUser = "/addAdminUser";
+  static const String editAdminUser = "/editAdminUser";
 }

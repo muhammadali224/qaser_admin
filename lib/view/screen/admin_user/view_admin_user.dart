@@ -2,24 +2,22 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:icons_plus/icons_plus.dart';
 
-import '../../../controller/branches_controller/branch_view_controller.dart';
+import '../../../controller/admin_user_controller/view_admin_user_controller.dart';
 import '../../../core/class/handling_data_view.dart';
-import '../../../core/constant/color.dart';
-import '../../../data/source/shared/branch_list.dart';
 import '../../widget/shred_component/app_drawer.dart';
 import '../../widget/shred_component/curved_header.dart';
 import '../../widget/shred_component/item_list_tile.dart';
 
-class BranchesHome extends StatelessWidget {
-  const BranchesHome({super.key});
+class ViewAdminUser extends StatelessWidget {
+  const ViewAdminUser({super.key});
 
   @override
   Widget build(BuildContext context) {
-    BranchViewController controller = Get.put(BranchViewController());
+    AdminUserViewController controller = Get.put(AdminUserViewController());
     return Scaffold(
       floatingActionButton: FloatingActionButton.extended(
-        onPressed: controller.goToAddBranch,
-        label: Text("addBranch".tr),
+        onPressed: controller.goToAddAdminUser,
+        label: Text("addAdmin".tr),
         icon: const Icon(FontAwesome.plus),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.startFloat,
@@ -27,14 +25,14 @@ class BranchesHome extends StatelessWidget {
       body: Column(
         children: [
           CurvedHeader(
-            title: 'branches',
-            background: AppColor.red,
-            widget: GetBuilder<BranchViewController>(builder: (controller) {
+            title: 'Admins',
+            background: Colors.teal,
+            widget: GetBuilder<AdminUserViewController>(builder: (controller) {
               return HandlingDataView(
                 statusRequest: controller.statusRequest,
                 widget: ListView.builder(
                   shrinkWrap: true,
-                  itemCount: branchList.length,
+                  itemCount: controller.adminUserList.length,
                   itemBuilder: (context, index) => Padding(
                     padding: const EdgeInsets.all(5.0),
                     child: Material(
@@ -45,12 +43,13 @@ class BranchesHome extends StatelessWidget {
                           : null,
                       elevation: 15,
                       child: ItemListTile(
-                        title: branchList[index].branchNameAr!,
-                        subtitle: branchList[index].branchPhone1!,
-                        onEditTap: () =>
-                            controller.goToEditBranch(branchList[index]),
-                        onDeleteTap: () => controller
-                            .deleteBranch(branchList[index].branchId!),
+                        subtitle: controller.adminUserList[index].adminEmail!,
+                        title:
+                            "${controller.adminUserList[index].adminName!}, ${controller.getBranchName(controller.adminUserList[index].adminBranchId!)} ",
+                        onEditTap: () => controller
+                            .goToEditAdminUser(controller.adminUserList[index]),
+                        onDeleteTap: () => controller.deleteAdminUser(
+                            controller.adminUserList[index].adminId!),
                       ),
                     ),
                   ),
@@ -63,24 +62,3 @@ class BranchesHome extends StatelessWidget {
     );
   }
 }
-
-//
-// GridView.count(
-// crossAxisCount: 2,
-// shrinkWrap: true,
-// mainAxisSpacing: 30,
-// crossAxisSpacing: 40,
-// children: [
-// ItemDashBoard(
-// onTap: controller.goToView,
-// title: 'viewBranch',
-// icon: Icons.view_list_outlined,
-// background: Colors.amber),
-// ItemDashBoard(
-// onTap: controller.goToAddBranch,
-// title: 'add',
-// icon: Icons.add,
-// background: Colors.red,
-// ),
-// ],
-// )

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../controller/home_controller/home_controller.dart';
+import '../../../core/class/handling_data_view.dart';
 import '../../widget/shred_component/app_drawer.dart';
 
 class HomePage extends StatelessWidget {
@@ -15,11 +16,16 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(
         title: Text("home".tr),
       ),
-      body: const Row(
-        mainAxisAlignment: MainAxisAlignment.start,
-        mainAxisSize: MainAxisSize.min,
-        children: [],
-      ),
+      body: GetBuilder<HomeController>(builder: (controller) {
+        return HandlingDataRequest(
+          statusRequest: controller.statusRequest,
+          widget: Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            mainAxisSize: MainAxisSize.min,
+            children: [],
+          ),
+        );
+      }),
     );
   }
 }

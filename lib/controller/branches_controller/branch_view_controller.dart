@@ -7,49 +7,24 @@ import '../../core/function/handling_data_controller.dart';
 import '../../core/services/user_preference.dart';
 import '../../data/model/admin_model/admin_model.dart';
 import '../../data/model/branch_model/branch_model.dart';
-import '../../data/source/remote/branches_data/branches_data.dart';
+import '../home_controller/home_controller.dart';
 
 class BranchViewController extends GetxController {
   StatusRequest statusRequest = StatusRequest.none;
   final UserPreferences userManagement = Get.find<UserPreferences>();
   late AdminModel adminData;
-  final BranchesData _branchesData = BranchesData(Get.find());
-  List<BranchModel> branchList = [];
-
-  getBranches() async {
-    try {
-      branchList.clear();
-      statusRequest = StatusRequest.loading;
-      update();
-
-      var response = await _branchesData.getBranches(
-        adminData.adminSuperAdmin.toString(),
-        adminData.adminBranchId.toString(),
-      );
-      statusRequest = handlingData(response);
-      if (statusRequest == StatusRequest.success) {
-        if (response["status"] == "success") {
-          List responseList = response['data'];
-          branchList.addAll(responseList.map((e) => BranchModel.fromJson(e)));
-        }
-      } else {
-        statusRequest = StatusRequest.failed;
-      }
-    } catch (e) {
-      // SmartDialog.showToast(e.toString());
-    }
-    update();
-  }
+  HomeController homeController = Get.put(HomeController());
 
   deleteBranch(int id) async {
     statusRequest = StatusRequest.loading;
     update();
-    var response = await _branchesData.deleteBranches(id.toString());
+    var response =
+        await homeController.branchesData.deleteBranches(id.toString());
     statusRequest = handlingData(response);
     if (statusRequest == StatusRequest.success) {
       if (response['status'] == 'success') {
         SmartDialog.showToast("تم الحذف بنجاح");
-        getBranches();
+        homeController.getBranches();
       }
     } else {
       statusRequest = StatusRequest.failed;
@@ -72,7 +47,7 @@ class BranchViewController extends GetxController {
     await userManagement.getUser();
     adminData = userManagement.user;
 
-    await getBranches();
+    await homeController.getBranches();
     super.onInit();
   }
 }

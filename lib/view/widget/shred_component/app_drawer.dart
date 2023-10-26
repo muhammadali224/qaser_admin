@@ -26,7 +26,7 @@ class AppDrawer extends StatelessWidget {
           DrawerItem(
             title: 'Admins',
             icon: Icons.admin_panel_settings_rounded,
-            onTap: controller.goToAdminUser,
+            onTap: () => controller.goToAdminUser(),
           ),
           DrawerItem(
             title: 'branches',

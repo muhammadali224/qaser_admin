@@ -6,15 +6,13 @@ import '../../core/class/status_request.dart';
 import '../../core/constant/routes.dart';
 import '../../core/function/handling_data_controller.dart';
 import '../../data/model/branch_model/branch_model.dart';
-import '../../data/source/remote/branches_data/branches_data.dart';
-import 'branch_view_controller.dart';
+import '../home_controller/home_controller.dart';
 
 class AddBranchesController extends GetxController {
   bool isEdit = false;
   BranchModel? branchModel;
   StatusRequest statusRequest = StatusRequest.none;
-  BranchViewController branchViewController = Get.find();
-  final BranchesData _branchesData = BranchesData(Get.find());
+  HomeController homeController = Get.put(HomeController());
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
   late TextEditingController nameAr;
   late TextEditingController nameEn;
@@ -57,14 +55,15 @@ class AddBranchesController extends GetxController {
             branchPhone2: phone2.text,
             branchDeliveryFixCharge: num.parse(deliverFixCharge.text),
             branchZone: num.parse(deliveryFixZone.text));
-        var response = await _branchesData.addBranches(branchModel);
+        var response =
+            await homeController.branchesData.addBranches(branchModel);
         statusRequest = handlingData(response);
         if (statusRequest == StatusRequest.success) {
           if (response["status"] == "success") {
             SmartDialog.showNotify(
                 msg: "تم الاضافة بنجاح", notifyType: NotifyType.success);
             Get.offAndToNamed(AppRoutes.branches);
-            branchViewController.getBranches();
+            homeController.getBranches();
           }
         } else {
           statusRequest = StatusRequest.failed;
@@ -100,15 +99,15 @@ class AddBranchesController extends GetxController {
             branchPhone2: phone2.text,
             branchDeliveryFixCharge: num.parse(deliverFixCharge.text),
             branchZone: num.parse(deliveryFixZone.text));
-        var response = await _branchesData.editBranches(
-            branchEditModel, branchModel!.branchId.toString());
+        var response = await homeController.branchesData
+            .editBranches(branchEditModel, branchModel!.branchId.toString());
         statusRequest = handlingData(response);
         if (statusRequest == StatusRequest.success) {
           if (response["status"] == "success") {
             SmartDialog.showNotify(
                 msg: "تم التعديل بنجاح", notifyType: NotifyType.success);
             Get.offAndToNamed(AppRoutes.branches);
-            branchViewController.getBranches();
+            homeController.getBranches();
           }
         } else {
           statusRequest = StatusRequest.failed;
