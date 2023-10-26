@@ -9,6 +9,7 @@ class InputFormField extends StatelessWidget {
   final String? Function(String?)? validate;
   final TextInputType? keyboardType;
   final Color? iconColor;
+  final bool? isPassword;
 
   const InputFormField({
     super.key,
@@ -19,6 +20,7 @@ class InputFormField extends StatelessWidget {
     this.validate,
     this.icon,
     this.iconColor,
+    this.isPassword,
   });
 
   @override
@@ -31,6 +33,7 @@ class InputFormField extends StatelessWidget {
         style: const TextStyle(color: Colors.black),
         keyboardType: keyboardType,
         controller: controller,
+        obscureText: isPassword ?? false,
         decoration: InputDecoration(
           hintText: hintTitle.tr,
           contentPadding:

@@ -2,23 +2,23 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:icons_plus/icons_plus.dart';
 
-import '../../../controller/admin_user_controller/view_admin_user_controller.dart';
+import '../../../controller/cash_user_controller/view_cash_user_controller.dart';
 import '../../../core/class/handling_data_view.dart';
 import '../../../core/function/get_branch_name.dart';
 import '../../widget/shred_component/app_drawer.dart';
 import '../../widget/shred_component/curved_header.dart';
 import '../../widget/shred_component/item_list_tile.dart';
 
-class ViewAdminUser extends StatelessWidget {
-  const ViewAdminUser({super.key});
+class ViewCashUser extends StatelessWidget {
+  const ViewCashUser({super.key});
 
   @override
   Widget build(BuildContext context) {
-    AdminUserViewController controller = Get.put(AdminUserViewController());
+    CashUserViewController controller = Get.put(CashUserViewController());
     return Scaffold(
       floatingActionButton: FloatingActionButton.extended(
-        onPressed: controller.goToAddAdminUser,
-        label: Text("addAdmin".tr),
+        onPressed: controller.goToAddCashUser,
+        label: Text("addCashUser".tr),
         icon: const Icon(FontAwesome.plus),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.startFloat,
@@ -27,13 +27,13 @@ class ViewAdminUser extends StatelessWidget {
         children: [
           CurvedHeader(
             title: 'Admins',
-            background: Colors.teal,
-            widget: GetBuilder<AdminUserViewController>(builder: (controller) {
+            background: Colors.deepPurple,
+            widget: GetBuilder<CashUserViewController>(builder: (controller) {
               return HandlingDataView(
                 statusRequest: controller.statusRequest,
                 widget: ListView.builder(
                   shrinkWrap: true,
-                  itemCount: controller.adminUserList.length,
+                  itemCount: controller.cashUserList.length,
                   itemBuilder: (context, index) => Padding(
                     padding: const EdgeInsets.all(5.0),
                     child: Material(
@@ -44,13 +44,13 @@ class ViewAdminUser extends StatelessWidget {
                           : null,
                       elevation: 15,
                       child: ItemListTile(
-                        subtitle: controller.adminUserList[index].adminEmail!,
+                        subtitle: controller.cashUserList[index].cashUserEmail!,
                         title:
-                            "${controller.adminUserList[index].adminName!}, ${getBranchName(controller.adminUserList[index].adminBranchId!)} ",
+                            "${controller.cashUserList[index].cashUserName!}, ${getBranchName(controller.cashUserList[index].cashBranchId!)} ",
                         onEditTap: () => controller
-                            .goToEditAdminUser(controller.adminUserList[index]),
-                        onDeleteTap: () => controller.deleteAdminUser(
-                            controller.adminUserList[index].adminId!),
+                            .goToEditCashUser(controller.cashUserList[index]),
+                        onDeleteTap: () => controller.deleteCashUser(
+                            controller.cashUserList[index].cashSystemId!),
                       ),
                     ),
                   ),

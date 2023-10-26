@@ -22,7 +22,11 @@ class AppLink {
   static const String deleteBranch = "$server/branches/delete.php";
   static const String addBranch = "$server/branches/add.php";
 
-//============================== Items ==============================//
+//============================== Cash Auth ==============================//
+  static const String addCashUser = "$server/cash_system/auth/add.php";
+  static const String editCashUser = "$server/cash_system/auth/edit.php";
+  static const String viewCashUser = "$server/cash_system/auth/view.php";
+  static const String deleteCashUser = "$server/cash_system/auth/delete.php";
 
 //============================ Address ==============================//
 

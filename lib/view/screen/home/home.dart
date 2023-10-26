@@ -19,7 +19,7 @@ class HomePage extends StatelessWidget {
       body: GetBuilder<HomeController>(builder: (controller) {
         return HandlingDataRequest(
           statusRequest: controller.statusRequest,
-          widget: Row(
+          widget: const Row(
             mainAxisAlignment: MainAxisAlignment.start,
             mainAxisSize: MainAxisSize.min,
             children: [],

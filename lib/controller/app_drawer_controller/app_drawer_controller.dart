@@ -14,4 +14,8 @@ class AppDrawerController extends GetxController {
   goToAdminUser() {
     Get.toNamed(AppRoutes.adminUser);
   }
+
+  goToCashUser() {
+    Get.toNamed(AppRoutes.cashUser);
+  }
 }

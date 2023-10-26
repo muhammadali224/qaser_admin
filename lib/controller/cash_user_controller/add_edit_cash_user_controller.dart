@@ -6,22 +6,22 @@ import '../../core/class/status_request.dart';
 import '../../core/constant/routes.dart';
 import '../../core/function/get_branch_name.dart';
 import '../../core/function/handling_data_controller.dart';
-import '../../data/model/admin_model/admin_model.dart';
-import 'view_admin_user_controller.dart';
+import '../../data/model/cash_user_model/cash_user_model.dart';
+import 'view_cash_user_controller.dart';
 
-class AddEditAdminUserController extends GetxController {
+class AddEditCashUserController extends GetxController {
   bool isEdit = false;
   bool isVisiblePassword = true;
-  AdminModel? adminModel;
+  CashUserModel? cashModel;
   StatusRequest statusRequest = StatusRequest.none;
-  AdminUserViewController adminUserViewController =
-      Get.put(AdminUserViewController());
+  CashUserViewController cashViewController = Get.put(CashUserViewController());
+
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
   late TextEditingController nameAr;
   late TextEditingController email;
   late TextEditingController password;
   int selectedBranch = 1;
-  int isSuperAdmin = 0;
+
   late String dropDownValue;
 
   void setIsEdit(bool value) {
@@ -37,22 +37,20 @@ class AddEditAdminUserController extends GetxController {
     selectedBranch = int.parse(val!);
     dropDownValue = getBranchName(selectedBranch)!;
     update();
-    print(val);
   }
 
-  addAdminUser() async {
+  addCashUser() async {
     if (formKey.currentState!.validate()) {
       try {
         SmartDialog.showLoading(msg: 'loading'.tr);
-        var adminModels = AdminModel(
-          adminName: nameAr.text,
-          adminEmail: email.text,
-          adminBranchId: selectedBranch,
-          adminPassword: password.text,
-          adminSuperAdmin: isSuperAdmin,
+        var adminModels = CashUserModel(
+          cashUserName: nameAr.text,
+          cashUserEmail: email.text,
+          cashBranchId: selectedBranch,
+          cashUserPassword: password.text,
         );
         var response =
-            await adminUserViewController.adminUsersData.addAdmins(adminModels);
+            await cashViewController.cashUsersData.addCashUser(adminModels);
         statusRequest = handlingData(response);
         if (statusRequest == StatusRequest.success) {
           if (response["status"] == "success") {
@@ -60,7 +58,7 @@ class AddEditAdminUserController extends GetxController {
             SmartDialog.showNotify(
                 msg: "تم الاضافة بنجاح", notifyType: NotifyType.success);
             Get.offAndToNamed(AppRoutes.adminUser);
-            adminUserViewController.getAdminUsers();
+            cashViewController.getCashUsers();
           } else if (response["status"] == "failed" &&
               response["message"] == "Email is Exists") {
             SmartDialog.dismiss();
@@ -80,27 +78,26 @@ class AddEditAdminUserController extends GetxController {
     update();
   }
 
-  editAdminsUser() async {
+  editCashUser() async {
     if (formKey.currentState!.validate()) {
       try {
         SmartDialog.showLoading(msg: 'loading'.tr);
-        var adminEditModel = AdminModel(
-            adminName: nameAr.text,
-            adminEmail: email.text,
-            adminBranchId: selectedBranch,
-            adminPassword: password.text,
-            adminSuperAdmin: isSuperAdmin);
+        var cashEditModel = CashUserModel(
+            cashUserName: nameAr.text,
+            cashUserEmail: email.text,
+            cashBranchId: selectedBranch,
+            cashUserPassword: password.text);
 
-        var response = await adminUserViewController.adminUsersData
-            .editAdmins(adminEditModel, adminModel!.adminId.toString());
+        var response = await cashViewController.cashUsersData
+            .editCashUser(cashEditModel, cashModel!.cashSystemId.toString());
         statusRequest = handlingData(response);
         if (statusRequest == StatusRequest.success) {
           if (response["status"] == "success") {
             SmartDialog.dismiss();
             SmartDialog.showNotify(
                 msg: "تم التعديل بنجاح", notifyType: NotifyType.success);
-            Get.offAndToNamed(AppRoutes.adminUser);
-            adminUserViewController.getAdminUsers();
+            Get.offAndToNamed(AppRoutes.cashUser);
+            cashViewController.getCashUsers();
           } else if (response["status"] == "failed" &&
               response["message"] == "Email is Exists") {
             SmartDialog.dismiss();
@@ -117,12 +114,6 @@ class AddEditAdminUserController extends GetxController {
         SmartDialog.showToast(e.toString());
       }
     }
-    update();
-  }
-
-  void onChanged(int? val) {
-    isSuperAdmin = val!;
-
     update();
   }
 
@@ -134,22 +125,21 @@ class AddEditAdminUserController extends GetxController {
     dropDownValue = getBranchName(1)!;
   }
 
-  initEditData(AdminModel adminModels) {
-    nameAr = TextEditingController(text: adminModels.adminName);
-    email = TextEditingController(text: adminModels.adminEmail);
+  initEditData(CashUserModel cashModels) {
+    nameAr = TextEditingController(text: cashModels.cashUserName);
+    email = TextEditingController(text: cashModels.cashUserEmail);
     password = TextEditingController();
-    selectedBranch = adminModels.adminBranchId!;
-    isSuperAdmin = adminModels.adminSuperAdmin!;
+    selectedBranch = cashModels.cashBranchId!;
     dropDownValue = getBranchName(selectedBranch)!;
   }
 
   @override
   void onInit() {
-    if (Get.currentRoute == "/editAdminUser") {
-      adminModel = Get.arguments['adminModel'];
+    if (Get.currentRoute == "/editCashUser") {
+      cashModel = Get.arguments['cashModel'];
       setIsEdit(true);
-      initEditData(adminModel!);
-    } else if (Get.currentRoute == "/addAdminUser") {
+      initEditData(cashModel!);
+    } else if (Get.currentRoute == "/addCashUser") {
       initData();
     }
     super.onInit();

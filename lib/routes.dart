@@ -9,13 +9,14 @@ import 'view/screen/admin_user/view_admin_user.dart';
 import 'view/screen/auth/login.dart';
 import 'view/screen/branches/add_branch.dart';
 import 'view/screen/branches/branches_home.dart';
+import 'view/screen/cash_user/add_edit_cash_user.dart';
+import 'view/screen/cash_user/view_cash_user.dart';
 import 'view/screen/home/home.dart';
 
 List<GetPage<dynamic>>? routes = [
   GetPage(name: '/', page: () => const Login(), middlewares: [
     MyMiddleWare(),
   ]),
-
   GetPage(
     name: AppRoutes.login,
     page: () => const Login(),
@@ -29,6 +30,7 @@ List<GetPage<dynamic>>? routes = [
   GetPage(name: AppRoutes.adminUser, page: () => const ViewAdminUser()),
   GetPage(name: AppRoutes.addAdminUser, page: () => const AddEditAdminUser()),
   GetPage(name: AppRoutes.editAdminUser, page: () => const AddEditAdminUser()),
-
-  // GetPage(name: AppRoutes.checkout, page: () => const Checkout()),
+  GetPage(name: AppRoutes.cashUser, page: () => const ViewCashUser()),
+  GetPage(name: AppRoutes.addCashUser, page: () => const AddEditCashUser()),
+  GetPage(name: AppRoutes.editCashUser, page: () => const AddEditCashUser()),
 ];

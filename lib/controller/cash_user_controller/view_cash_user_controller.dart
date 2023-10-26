@@ -6,26 +6,28 @@ import '../../core/constant/routes.dart';
 import '../../core/function/handling_data_controller.dart';
 import '../../core/services/user_preference.dart';
 import '../../data/model/admin_model/admin_model.dart';
-import '../../data/source/remote/admin_users_data/admins_user_data.dart';
+import '../../data/model/cash_user_model/cash_user_model.dart';
+import '../../data/source/remote/cash_user_data/cash_user_data.dart';
 
-class AdminUserViewController extends GetxController {
+class CashUserViewController extends GetxController {
   StatusRequest statusRequest = StatusRequest.none;
   final UserPreferences userManagement = Get.find<UserPreferences>();
   late AdminModel adminData;
-  List<AdminModel> adminUserList = [];
-  final AdminUserData adminUsersData = AdminUserData(Get.find());
+  List<CashUserModel> cashUserList = [];
+  final CashUserData cashUsersData = CashUserData(Get.find());
 
-  getAdminUsers() async {
+  getCashUsers() async {
     try {
-      adminUserList.clear();
+      cashUserList.clear();
       statusRequest = StatusRequest.loading;
       update();
-      var response = await adminUsersData.getAdmin();
+      var response = await cashUsersData.getCashUsers();
       statusRequest = handlingData(response);
       if (statusRequest == StatusRequest.success) {
         if (response["status"] == "success") {
           List responseList = response['data'];
-          adminUserList.addAll(responseList.map((e) => AdminModel.fromJson(e)));
+          cashUserList
+              .addAll(responseList.map((e) => CashUserModel.fromJson(e)));
         }
       } else {
         statusRequest = StatusRequest.failed;
@@ -36,15 +38,15 @@ class AdminUserViewController extends GetxController {
     update();
   }
 
-  deleteAdminUser(int id) async {
+  deleteCashUser(int id) async {
     statusRequest = StatusRequest.loading;
     update();
-    var response = await adminUsersData.deleteAdmins(id.toString());
+    var response = await cashUsersData.deleteCashUser(id.toString());
     statusRequest = handlingData(response);
     if (statusRequest == StatusRequest.success) {
       if (response['status'] == 'success') {
         SmartDialog.showToast("تم الحذف بنجاح");
-        getAdminUsers();
+        getCashUsers();
       }
     } else {
       statusRequest = StatusRequest.failed;
@@ -52,13 +54,13 @@ class AdminUserViewController extends GetxController {
     update();
   }
 
-  goToAddAdminUser() {
-    Get.toNamed(AppRoutes.addAdminUser);
+  goToAddCashUser() {
+    Get.toNamed(AppRoutes.addCashUser);
   }
 
-  goToEditAdminUser(AdminModel adminModel) {
-    Get.toNamed(AppRoutes.editAdminUser, arguments: {
-      "adminModel": adminModel,
+  goToEditCashUser(CashUserModel cashModel) {
+    Get.toNamed(AppRoutes.editCashUser, arguments: {
+      "cashModel": cashModel,
     });
   }
 
@@ -66,7 +68,7 @@ class AdminUserViewController extends GetxController {
   void onInit() async {
     await userManagement.getUser();
     adminData = userManagement.user;
-    await getAdminUsers();
+    await getCashUsers();
     super.onInit();
   }
 }

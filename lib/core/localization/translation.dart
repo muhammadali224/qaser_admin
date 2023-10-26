@@ -242,6 +242,8 @@ class MyTranslation extends Translations {
           "viewBranch": "عرض الفروع",
           "addBranch": "إضافة فرع",
           "addAdmin": "إضافة ادمن",
+          "addCashUser": "إضافة مستخدم كاش",
+          "cashUser": "مستخدم كاش",
         },
         'en': {
           'chooseLang': 'Choose Language',
@@ -483,6 +485,8 @@ class MyTranslation extends Translations {
           "viewBranch": "View Branches",
           "addBranch": "Add Branch",
           "addAdmin": "Add Admins",
+          "addCashUser": "Add Cash User",
+          "cashUser": "Cash User",
         },
       };
 }
