@@ -13,6 +13,8 @@ import 'view/screen/cash_user/add_edit_cash_user.dart';
 import 'view/screen/cash_user/view_cash_user.dart';
 import 'view/screen/categories/view_categories.dart';
 import 'view/screen/home/home.dart';
+import 'view/screen/weight_size_sub_items/add_edit_weight_size.dart';
+import 'view/screen/weight_size_sub_items/view_weight_size.dart';
 
 List<GetPage<dynamic>>? routes = [
   GetPage(name: '/', page: () => const Login(), middlewares: [
@@ -34,5 +36,9 @@ List<GetPage<dynamic>>? routes = [
   GetPage(name: AppRoutes.cashUser, page: () => const ViewCashUser()),
   GetPage(name: AppRoutes.addCashUser, page: () => const AddEditCashUser()),
   GetPage(name: AppRoutes.editCashUser, page: () => const AddEditCashUser()),
+  GetPage(name: AppRoutes.weightSize, page: () => const ViewWeightSize()),
+  GetPage(name: AppRoutes.addWeightSize, page: () => const AddEditWeightSize()),
+  GetPage(
+      name: AppRoutes.editWeightSize, page: () => const AddEditWeightSize()),
   GetPage(name: AppRoutes.viewCategories, page: () => const ViewCategories()),
 ];

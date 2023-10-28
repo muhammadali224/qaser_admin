@@ -4,59 +4,40 @@ import 'package:get/get.dart';
 class CurvedHeader extends StatelessWidget {
   final String title;
   final Color background;
-  final Widget widget;
 
-  const CurvedHeader(
-      {super.key,
-      required this.title,
-      required this.background,
-      required this.widget});
+  const CurvedHeader({
+    super.key,
+    required this.title,
+    required this.background,
+  });
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: SizedBox(
-        width: double.infinity,
+        // width: double.infinity,
         child: Column(
-          // shrinkWrap: true,
           children: [
             Container(
+              padding: const EdgeInsets.only(bottom: 20),
               decoration: BoxDecoration(
                 color: background,
                 borderRadius:
                     const BorderRadius.only(bottomLeft: Radius.circular(50)),
               ),
-              child: Column(
-                children: [
-                  ListTile(
-                    title: Text(
-                      title.tr,
-                      style: Theme.of(context)
-                          .textTheme
-                          .displayLarge!
-                          .copyWith(color: Colors.white),
-                    ),
-                    leading: const DrawerButton(
-                      style: ButtonStyle(
-                          iconColor:
-                              MaterialStatePropertyAll<Color>(Colors.white),
-                          iconSize: MaterialStatePropertyAll<double>(35)),
-                    ),
-                  ),
-                  const SizedBox(height: 20),
-                ],
-              ),
-            ),
-            Container(
-              color: background,
-              child: Container(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 30, vertical: 20),
-                decoration: const BoxDecoration(
-                    color: Colors.white,
-                    borderRadius:
-                        BorderRadius.only(topRight: Radius.circular(100))),
-                child: widget,
+              child: ListTile(
+                title: Text(
+                  title.tr,
+                  style: Theme.of(context)
+                      .textTheme
+                      .displayLarge!
+                      .copyWith(color: Colors.white),
+                ),
+                leading: const DrawerButton(
+                  style: ButtonStyle(
+                      iconColor: MaterialStatePropertyAll<Color>(Colors.white),
+                      iconSize: MaterialStatePropertyAll<double>(35)),
+                ),
               ),
             ),
           ],

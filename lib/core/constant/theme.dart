@@ -4,7 +4,7 @@ import 'color.dart';
 
 ThemeData themeEnglish = ThemeData(
     floatingActionButtonTheme: FloatingActionButtonThemeData(
-      backgroundColor: AppColor.fifthColor,
+      backgroundColor: AppColor.red,
     ),
     appBarTheme: const AppBarTheme(
       centerTitle: true,
@@ -45,7 +45,7 @@ ThemeData themeEnglish = ThemeData(
     ));
 ThemeData themeArabic = ThemeData(
     floatingActionButtonTheme: FloatingActionButtonThemeData(
-      backgroundColor: AppColor.fifthColor,
+      backgroundColor: AppColor.red,
     ),
     appBarTheme: const AppBarTheme(
       centerTitle: true,

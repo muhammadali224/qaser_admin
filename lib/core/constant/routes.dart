@@ -15,5 +15,11 @@ class AppRoutes {
   static const String addCashUser = "/addCashUser";
   static const String editCashUser = "/editCashUser";
 
+  static const String weightSize = "/weightSize";
+  static const String addWeightSize = "/addWeightSize";
+  static const String editWeightSize = "/editWeightSize";
+
   static const String viewCategories = "/viewCategories";
+
+  static const String viewItems = "/viewItems";
 }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:icon_broken/icon_broken.dart';
+import 'package:icons_plus/icons_plus.dart';
 
 import '../../../controller/app_drawer_controller/app_drawer_controller.dart';
 import '../app_drawer/drawer_item.dart';
@@ -15,7 +16,7 @@ class AppDrawer extends StatelessWidget {
       shadowColor: Colors.red,
       surfaceTintColor: Colors.transparent,
       backgroundColor: Colors.white,
-      width: Get.width / 2,
+      width: Get.width / 1.5,
       elevation: 10,
       child: ListView(
         children: [
@@ -38,6 +39,11 @@ class AppDrawer extends StatelessWidget {
             title: 'categories',
             icon: IconBroken.Category,
             onTap: controller.goToCategories,
+          ),
+          DrawerItem(
+            title: 'weightSize',
+            icon: FontAwesome.weight_scale,
+            onTap: controller.goToWeightSize,
           ),
           DrawerItem(
             title: 'branches',

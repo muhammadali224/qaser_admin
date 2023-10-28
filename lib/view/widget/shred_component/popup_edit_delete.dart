@@ -1,12 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../../data/model/pop_menu_model/pop_menu_model.dart';
+
 class PopMenuEditDelete extends StatelessWidget {
   final void Function() onEditTap;
   final void Function() onDeleteTap;
+  final List<PopMenuModel>? popModels;
 
   const PopMenuEditDelete(
-      {super.key, required this.onEditTap, required this.onDeleteTap});
+      {super.key,
+      required this.onEditTap,
+      required this.onDeleteTap,
+      this.popModels});
 
   @override
   Widget build(BuildContext context) {
@@ -24,6 +30,14 @@ class PopMenuEditDelete extends StatelessWidget {
             value: 'delete',
             child: Text("delete".tr),
           ),
+          if (popModels != null && popModels!.isNotEmpty)
+            ...List.generate(
+              popModels!.length,
+              (index) => PopupMenuItem(
+                value: popModels![index].value,
+                child: Text(popModels![index].name.tr),
+              ),
+            )
         ];
       },
       onSelected: (value) {

@@ -8,34 +8,42 @@ class ItemListTile extends StatelessWidget {
   final void Function() onEditTap;
   final void Function() onDeleteTap;
 
-  const ItemListTile(
-      {super.key,
-      required this.title,
-      required this.subtitle,
-      required this.onEditTap,
-      required this.onDeleteTap});
+  const ItemListTile({
+    super.key,
+    required this.title,
+    required this.subtitle,
+    required this.onEditTap,
+    required this.onDeleteTap,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return ListTile(
-      contentPadding: const EdgeInsets.symmetric(horizontal: 30),
-      title: Container(
-        margin: const EdgeInsets.all(10),
-        child: Text(
-          title,
-          style: Theme.of(context).textTheme.titleLarge,
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 8),
+      child: Material(
+        color: Colors.white,
+        elevation: 15,
+        child: ListTile(
+          contentPadding: const EdgeInsets.symmetric(horizontal: 30),
+          title: Container(
+            margin: const EdgeInsets.all(10),
+            child: Text(
+              title,
+              style: Theme.of(context).textTheme.titleLarge,
+            ),
+          ),
+          subtitle: Container(
+            margin: const EdgeInsets.all(10),
+            child: Text(
+              subtitle,
+              style: Theme.of(context).textTheme.titleMedium,
+            ),
+          ),
+          trailing: PopMenuEditDelete(
+            onEditTap: onEditTap,
+            onDeleteTap: onDeleteTap,
+          ),
         ),
-      ),
-      subtitle: Container(
-        margin: const EdgeInsets.all(10),
-        child: Text(
-          subtitle,
-          style: Theme.of(context).textTheme.titleMedium,
-        ),
-      ),
-      trailing: PopMenuEditDelete(
-        onEditTap: onEditTap,
-        onDeleteTap: onDeleteTap,
       ),
     );
   }

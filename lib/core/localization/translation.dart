@@ -245,6 +245,8 @@ class MyTranslation extends Translations {
           "addCashUser": "إضافة مستخدم كاش",
           "cashUser": "مستخدم كاش",
           "addCategories": "إضافة تصنيفات",
+          "addWeightSize": "إضافة وزن او حجم",
+          "weightSize": "الاوزان والاحجام",
         },
         'en': {
           'chooseLang': 'Choose Language',
@@ -489,6 +491,8 @@ class MyTranslation extends Translations {
           "addCashUser": "Add Cash User",
           "cashUser": "Cash User",
           "addCategories": "Add Categories",
+          "addWeightSize": "Add Weight Or Size",
+          "weightSize": "Weights And Sizes",
         },
       };
 }

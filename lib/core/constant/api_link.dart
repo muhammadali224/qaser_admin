@@ -34,7 +34,11 @@ class AppLink {
   static const String viewCategories = "$server/categories/view.php";
   static const String deleteCategories = "$server/categories/delete.php";
 
-//============================ Orders ==============================//
+//============================ Weight And Size ==============================//
+  static const String addWeightSize = "$server/weight_size/add.php";
+  static const String editWeightSize = "$server/weight_size/edit.php";
+  static const String viewWeightSize = "$server/weight_size/view.php";
+  static const String deleteWeightSize = "$server/weight_size/delete.php";
 
 //============================ branch Setting ==============================//
 }

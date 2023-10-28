@@ -57,7 +57,7 @@ class AddEditCashUserController extends GetxController {
             SmartDialog.dismiss();
             SmartDialog.showNotify(
                 msg: "تم الاضافة بنجاح", notifyType: NotifyType.success);
-            Get.offAndToNamed(AppRoutes.adminUser);
+            Get.offAndToNamed(AppRoutes.cashUser);
             cashViewController.getCashUsers();
           } else if (response["status"] == "failed" &&
               response["message"] == "Email is Exists") {

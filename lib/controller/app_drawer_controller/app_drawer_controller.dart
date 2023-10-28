@@ -22,4 +22,8 @@ class AppDrawerController extends GetxController {
   goToCategories() {
     Get.offNamed(AppRoutes.viewCategories);
   }
+
+  goToWeightSize() {
+    Get.offNamed(AppRoutes.weightSize);
+  }
 }
