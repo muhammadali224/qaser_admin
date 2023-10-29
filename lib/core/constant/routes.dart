@@ -20,6 +20,8 @@ class AppRoutes {
   static const String editWeightSize = "/editWeightSize";
 
   static const String viewCategories = "/viewCategories";
+  static const String addCategory = "/addCategory";
+  static const String editCategory = "/editCategory";
 
   static const String viewItems = "/viewItems";
 }

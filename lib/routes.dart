@@ -11,6 +11,7 @@ import 'view/screen/branches/add_branch.dart';
 import 'view/screen/branches/branches_home.dart';
 import 'view/screen/cash_user/add_edit_cash_user.dart';
 import 'view/screen/cash_user/view_cash_user.dart';
+import 'view/screen/categories/add_edit_categories.dart';
 import 'view/screen/categories/view_categories.dart';
 import 'view/screen/home/home.dart';
 import 'view/screen/weight_size_sub_items/add_edit_weight_size.dart';
@@ -41,4 +42,6 @@ List<GetPage<dynamic>>? routes = [
   GetPage(
       name: AppRoutes.editWeightSize, page: () => const AddEditWeightSize()),
   GetPage(name: AppRoutes.viewCategories, page: () => const ViewCategories()),
+  GetPage(name: AppRoutes.addCategory, page: () => const AddEditCategories()),
+  GetPage(name: AppRoutes.editCategory, page: () => const AddEditCategories()),
 ];

@@ -1,5 +1,8 @@
+import 'dart:io';
+
 import '../../../../core/class/crud.dart';
 import '../../../../core/constant/api_link.dart';
+import '../../../model/categories_model/categories_model.dart';
 
 class CategoriesData {
   CRUD crud;
@@ -14,49 +17,53 @@ class CategoriesData {
     return response.fold((l) => l, (r) => r);
   }
 
-  // addCategories(CategoriesModel categoriesModel) async {
-//   var response = await crud.postData(AppLink.addCategories, {
-//     "catNameEn": branchModel.branchNameAr,
-//     "catNameAr": branchModel.branchNameEn,
-//     "branchIsOpen": branchModel.branchIsOpen.toString(),
-//     "branchLang": branchModel.branchLang.toString(),
-//     "branchLat": branchModel.branchLat.toString(),
-//     "branchPhone1": branchModel.branchPhone1,
-//     "branchPhone2": branchModel.branchPhone2,
-//     "branchFacebookUrl": branchModel.branchFacebookUrl,
-//     "branchDeliveryCharge": branchModel.branchDeliveryCharge.toString(),
-//     "branchIsFixed": branchModel.branchIsFixed.toString(),
-//     "branchZone": branchModel.branchZone.toString(),
-//     "branchDeliveryFixCharge": branchModel.branchDeliveryFixCharge.toString(),
-//     "branchMaxZone": branchModel.branchMaxZone.toString(),
-//   });
-//   return response.fold((l) => l, (r) => r);
-// }
-//
-// editBranches(BranchModel branchModel, String id) async {
-//   var response = await crud.postData(AppLink.editBranch, {
-//     "branchId": id,
-//     "branchNameAr": branchModel.branchNameAr,
-//     "branchNameEn": branchModel.branchNameEn,
-//     "branchIsOpen": branchModel.branchIsOpen.toString(),
-//     "branchLang": branchModel.branchLang.toString(),
-//     "branchLat": branchModel.branchLat.toString(),
-//     "branchPhone1": branchModel.branchPhone1,
-//     "branchPhone2": branchModel.branchPhone2,
-//     "branchFacebookUrl": branchModel.branchFacebookUrl,
-//     "branchDeliveryCharge": branchModel.branchDeliveryCharge.toString(),
-//     "branchIsFixed": branchModel.branchIsFixed.toString(),
-//     "branchZone": branchModel.branchZone.toString(),
-//     "branchDeliveryFixCharge": branchModel.branchDeliveryFixCharge.toString(),
-//     "branchMaxZone": branchModel.branchMaxZone.toString(),
-//   });
-//   return response.fold((l) => l, (r) => r);
-// }
-//
-// deleteBranches(String branchId) async {
-//   var response = await crud.postData(AppLink.deleteBranch, {
-//     'branchId': branchId,
-//   });
-//   return response.fold((l) => l, (r) => r);
-// }
+  editCategoryWithImage(
+      {required CategoriesModel categoryModel,
+      required String id,
+      required File file,
+      required String oldFile}) async {
+    var response = await crud.addRequestWithImage(
+      AppLink.editWithImageCategories,
+      {
+        "catId": id,
+        "catNameEn": categoryModel.categoriesName,
+        "catNameAr": categoryModel.categoriesNameAr,
+        "oldFile": oldFile,
+      },
+      file,
+    );
+    return response.fold((l) => l, (r) => r);
+  }
+
+  editCategory(
+      {required CategoriesModel categoryModel, required String id}) async {
+    var response = await crud.postData(
+      AppLink.editCategories,
+      {
+        "catId": id,
+        "catNameEn": categoryModel.categoriesName,
+        "catNameAr": categoryModel.categoriesNameAr,
+      },
+    );
+    return response.fold((l) => l, (r) => r);
+  }
+
+  deleteCategory(String categoryId) async {
+    var response = await crud.postData(AppLink.deleteCategories, {
+      'categoryId': categoryId,
+    });
+    return response.fold((l) => l, (r) => r);
+  }
+
+  addImage(CategoriesModel categoryModel, File file) async {
+    var response = await crud.addRequestWithImage(
+      AppLink.addCategories,
+      {
+        "catNameEn": categoryModel.categoriesName,
+        "catNameAr": categoryModel.categoriesNameAr,
+      },
+      file,
+    );
+    return response.fold((l) => l, (r) => r);
+  }
 }

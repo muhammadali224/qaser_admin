@@ -24,9 +24,8 @@ class CategoriesModel with _$CategoriesModel {
     @JsonKey(name: "categories_name") String? categoriesName,
     @JsonKey(name: "categories_name_ar") String? categoriesNameAr,
     @JsonKey(name: "categories_image") String? categoriesImage,
-    @JsonKey(name: "categories_isActive") int? categoriesIsActive,
     @JsonKey(name: "categories_datetime") DateTime? categoriesDatetime,
-    @JsonKey(name: "branch_id") int? branchId,
+    @JsonKey(name: "branch_ids") List<String>? branchIds,
   }) = _CategoriesModel;
 
   factory CategoriesModel.fromJson(Map<String, dynamic> json) =>

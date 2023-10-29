@@ -28,12 +28,10 @@ mixin _$CategoriesModel {
   String? get categoriesNameAr => throw _privateConstructorUsedError;
   @JsonKey(name: "categories_image")
   String? get categoriesImage => throw _privateConstructorUsedError;
-  @JsonKey(name: "categories_isActive")
-  int? get categoriesIsActive => throw _privateConstructorUsedError;
   @JsonKey(name: "categories_datetime")
   DateTime? get categoriesDatetime => throw _privateConstructorUsedError;
-  @JsonKey(name: "branch_id")
-  int? get branchId => throw _privateConstructorUsedError;
+  @JsonKey(name: "branch_ids")
+  List<String>? get branchIds => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -52,9 +50,8 @@ abstract class $CategoriesModelCopyWith<$Res> {
       @JsonKey(name: "categories_name") String? categoriesName,
       @JsonKey(name: "categories_name_ar") String? categoriesNameAr,
       @JsonKey(name: "categories_image") String? categoriesImage,
-      @JsonKey(name: "categories_isActive") int? categoriesIsActive,
       @JsonKey(name: "categories_datetime") DateTime? categoriesDatetime,
-      @JsonKey(name: "branch_id") int? branchId});
+      @JsonKey(name: "branch_ids") List<String>? branchIds});
 }
 
 /// @nodoc
@@ -74,9 +71,8 @@ class _$CategoriesModelCopyWithImpl<$Res, $Val extends CategoriesModel>
     Object? categoriesName = freezed,
     Object? categoriesNameAr = freezed,
     Object? categoriesImage = freezed,
-    Object? categoriesIsActive = freezed,
     Object? categoriesDatetime = freezed,
-    Object? branchId = freezed,
+    Object? branchIds = freezed,
   }) {
     return _then(_value.copyWith(
       categoriesId: freezed == categoriesId
@@ -95,18 +91,14 @@ class _$CategoriesModelCopyWithImpl<$Res, $Val extends CategoriesModel>
           ? _value.categoriesImage
           : categoriesImage // ignore: cast_nullable_to_non_nullable
               as String?,
-      categoriesIsActive: freezed == categoriesIsActive
-          ? _value.categoriesIsActive
-          : categoriesIsActive // ignore: cast_nullable_to_non_nullable
-              as int?,
       categoriesDatetime: freezed == categoriesDatetime
           ? _value.categoriesDatetime
           : categoriesDatetime // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-      branchId: freezed == branchId
-          ? _value.branchId
-          : branchId // ignore: cast_nullable_to_non_nullable
-              as int?,
+      branchIds: freezed == branchIds
+          ? _value.branchIds
+          : branchIds // ignore: cast_nullable_to_non_nullable
+              as List<String>?,
     ) as $Val);
   }
 }
@@ -124,9 +116,8 @@ abstract class _$$CategoriesModelImplCopyWith<$Res>
       @JsonKey(name: "categories_name") String? categoriesName,
       @JsonKey(name: "categories_name_ar") String? categoriesNameAr,
       @JsonKey(name: "categories_image") String? categoriesImage,
-      @JsonKey(name: "categories_isActive") int? categoriesIsActive,
       @JsonKey(name: "categories_datetime") DateTime? categoriesDatetime,
-      @JsonKey(name: "branch_id") int? branchId});
+      @JsonKey(name: "branch_ids") List<String>? branchIds});
 }
 
 /// @nodoc
@@ -144,9 +135,8 @@ class __$$CategoriesModelImplCopyWithImpl<$Res>
     Object? categoriesName = freezed,
     Object? categoriesNameAr = freezed,
     Object? categoriesImage = freezed,
-    Object? categoriesIsActive = freezed,
     Object? categoriesDatetime = freezed,
-    Object? branchId = freezed,
+    Object? branchIds = freezed,
   }) {
     return _then(_$CategoriesModelImpl(
       categoriesId: freezed == categoriesId
@@ -165,18 +155,14 @@ class __$$CategoriesModelImplCopyWithImpl<$Res>
           ? _value.categoriesImage
           : categoriesImage // ignore: cast_nullable_to_non_nullable
               as String?,
-      categoriesIsActive: freezed == categoriesIsActive
-          ? _value.categoriesIsActive
-          : categoriesIsActive // ignore: cast_nullable_to_non_nullable
-              as int?,
       categoriesDatetime: freezed == categoriesDatetime
           ? _value.categoriesDatetime
           : categoriesDatetime // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-      branchId: freezed == branchId
-          ? _value.branchId
-          : branchId // ignore: cast_nullable_to_non_nullable
-              as int?,
+      branchIds: freezed == branchIds
+          ? _value._branchIds
+          : branchIds // ignore: cast_nullable_to_non_nullable
+              as List<String>?,
     ));
   }
 }
@@ -189,9 +175,9 @@ class _$CategoriesModelImpl implements _CategoriesModel {
       @JsonKey(name: "categories_name") this.categoriesName,
       @JsonKey(name: "categories_name_ar") this.categoriesNameAr,
       @JsonKey(name: "categories_image") this.categoriesImage,
-      @JsonKey(name: "categories_isActive") this.categoriesIsActive,
       @JsonKey(name: "categories_datetime") this.categoriesDatetime,
-      @JsonKey(name: "branch_id") this.branchId});
+      @JsonKey(name: "branch_ids") final List<String>? branchIds})
+      : _branchIds = branchIds;
 
   factory _$CategoriesModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$CategoriesModelImplFromJson(json);
@@ -209,18 +195,22 @@ class _$CategoriesModelImpl implements _CategoriesModel {
   @JsonKey(name: "categories_image")
   final String? categoriesImage;
   @override
-  @JsonKey(name: "categories_isActive")
-  final int? categoriesIsActive;
-  @override
   @JsonKey(name: "categories_datetime")
   final DateTime? categoriesDatetime;
+  final List<String>? _branchIds;
   @override
-  @JsonKey(name: "branch_id")
-  final int? branchId;
+  @JsonKey(name: "branch_ids")
+  List<String>? get branchIds {
+    final value = _branchIds;
+    if (value == null) return null;
+    if (_branchIds is EqualUnmodifiableListView) return _branchIds;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
 
   @override
   String toString() {
-    return 'CategoriesModel(categoriesId: $categoriesId, categoriesName: $categoriesName, categoriesNameAr: $categoriesNameAr, categoriesImage: $categoriesImage, categoriesIsActive: $categoriesIsActive, categoriesDatetime: $categoriesDatetime, branchId: $branchId)';
+    return 'CategoriesModel(categoriesId: $categoriesId, categoriesName: $categoriesName, categoriesNameAr: $categoriesNameAr, categoriesImage: $categoriesImage, categoriesDatetime: $categoriesDatetime, branchIds: $branchIds)';
   }
 
   @override
@@ -236,12 +226,10 @@ class _$CategoriesModelImpl implements _CategoriesModel {
                 other.categoriesNameAr == categoriesNameAr) &&
             (identical(other.categoriesImage, categoriesImage) ||
                 other.categoriesImage == categoriesImage) &&
-            (identical(other.categoriesIsActive, categoriesIsActive) ||
-                other.categoriesIsActive == categoriesIsActive) &&
             (identical(other.categoriesDatetime, categoriesDatetime) ||
                 other.categoriesDatetime == categoriesDatetime) &&
-            (identical(other.branchId, branchId) ||
-                other.branchId == branchId));
+            const DeepCollectionEquality()
+                .equals(other._branchIds, _branchIds));
   }
 
   @JsonKey(ignore: true)
@@ -252,9 +240,8 @@ class _$CategoriesModelImpl implements _CategoriesModel {
       categoriesName,
       categoriesNameAr,
       categoriesImage,
-      categoriesIsActive,
       categoriesDatetime,
-      branchId);
+      const DeepCollectionEquality().hash(_branchIds));
 
   @JsonKey(ignore: true)
   @override
@@ -277,9 +264,9 @@ abstract class _CategoriesModel implements CategoriesModel {
       @JsonKey(name: "categories_name") final String? categoriesName,
       @JsonKey(name: "categories_name_ar") final String? categoriesNameAr,
       @JsonKey(name: "categories_image") final String? categoriesImage,
-      @JsonKey(name: "categories_isActive") final int? categoriesIsActive,
       @JsonKey(name: "categories_datetime") final DateTime? categoriesDatetime,
-      @JsonKey(name: "branch_id") final int? branchId}) = _$CategoriesModelImpl;
+      @JsonKey(name: "branch_ids")
+      final List<String>? branchIds}) = _$CategoriesModelImpl;
 
   factory _CategoriesModel.fromJson(Map<String, dynamic> json) =
       _$CategoriesModelImpl.fromJson;
@@ -297,14 +284,11 @@ abstract class _CategoriesModel implements CategoriesModel {
   @JsonKey(name: "categories_image")
   String? get categoriesImage;
   @override
-  @JsonKey(name: "categories_isActive")
-  int? get categoriesIsActive;
-  @override
   @JsonKey(name: "categories_datetime")
   DateTime? get categoriesDatetime;
   @override
-  @JsonKey(name: "branch_id")
-  int? get branchId;
+  @JsonKey(name: "branch_ids")
+  List<String>? get branchIds;
   @override
   @JsonKey(ignore: true)
   _$$CategoriesModelImplCopyWith<_$CategoriesModelImpl> get copyWith =>

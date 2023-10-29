@@ -1,3 +1,4 @@
+import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:get/get.dart';
 
 import '../../core/class/status_request.dart';
@@ -39,10 +40,36 @@ class ViewCategoriesController extends GetxController {
     update();
   }
 
+  deleteCategory(int id) async {
+    statusRequest = StatusRequest.loading;
+    update();
+    var response = await categoriesData.deleteCategory(id.toString());
+    statusRequest = handlingData(response);
+    if (statusRequest == StatusRequest.success) {
+      if (response['status'] == 'success') {
+        SmartDialog.showToast("تم الحذف بنجاح");
+        getCategories();
+      }
+    } else {
+      statusRequest = StatusRequest.failed;
+    }
+    update();
+  }
+
   goToViewItems(CategoriesModel categoriesModel) {
     Get.toNamed(AppRoutes.viewItems, arguments: {
       'categoriesModel': categoriesModel,
     });
+  }
+
+  goToEditCategory(CategoriesModel categoriesModel) {
+    Get.toNamed(AppRoutes.editCategory, arguments: {
+      'model': categoriesModel,
+    });
+  }
+
+  goToAddCategory() {
+    Get.toNamed(AppRoutes.addCategory);
   }
 
   @override

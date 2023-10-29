@@ -31,6 +31,8 @@ class AppLink {
 //============================ categories ==============================//
   static const String addCategories = "$server/categories/add.php";
   static const String editCategories = "$server/categories/edit.php";
+  static const String editWithImageCategories =
+      "$server/categories/edit_with_image.php";
   static const String viewCategories = "$server/categories/view.php";
   static const String deleteCategories = "$server/categories/delete.php";
 

@@ -13,11 +13,12 @@ _$CategoriesModelImpl _$$CategoriesModelImplFromJson(
       categoriesName: json['categories_name'] as String?,
       categoriesNameAr: json['categories_name_ar'] as String?,
       categoriesImage: json['categories_image'] as String?,
-      categoriesIsActive: json['categories_isActive'] as int?,
       categoriesDatetime: json['categories_datetime'] == null
           ? null
           : DateTime.parse(json['categories_datetime'] as String),
-      branchId: json['branch_id'] as int?,
+      branchIds: (json['branch_ids'] as List<dynamic>?)
+          ?.map((e) => e as String)
+          .toList(),
     );
 
 Map<String, dynamic> _$$CategoriesModelImplToJson(
@@ -27,7 +28,6 @@ Map<String, dynamic> _$$CategoriesModelImplToJson(
       'categories_name': instance.categoriesName,
       'categories_name_ar': instance.categoriesNameAr,
       'categories_image': instance.categoriesImage,
-      'categories_isActive': instance.categoriesIsActive,
       'categories_datetime': instance.categoriesDatetime?.toIso8601String(),
-      'branch_id': instance.branchId,
+      'branch_ids': instance.branchIds,
     };

@@ -5,7 +5,8 @@ import 'circular_cached_network_image.dart';
 
 class ItemDashBoard extends StatelessWidget {
   final String title;
-  final String subtitle;
+  final String? subtitle;
+  final Widget? subWidget;
   final String imageUrl;
   final Color background;
   final void Function()? onTap;
@@ -16,7 +17,8 @@ class ItemDashBoard extends StatelessWidget {
       required this.imageUrl,
       required this.background,
       this.onTap,
-      required this.subtitle});
+      this.subtitle,
+      this.subWidget});
 
   @override
   Widget build(BuildContext context) {
@@ -59,10 +61,12 @@ class ItemDashBoard extends StatelessWidget {
                     title.tr,
                     style: Theme.of(context).textTheme.titleMedium,
                   ),
-                  Text(
-                    subtitle.tr,
-                    style: Theme.of(context).textTheme.titleSmall,
-                  ),
+                  if (subtitle != null)
+                    Text(
+                      subtitle!.tr,
+                      style: Theme.of(context).textTheme.titleSmall,
+                    ),
+                  if (subWidget != null) subWidget!,
                 ],
               ),
             ),
