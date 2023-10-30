@@ -35,6 +35,10 @@ class AppLink {
       "$server/categories/edit_with_image.php";
   static const String viewCategories = "$server/categories/view.php";
   static const String deleteCategories = "$server/categories/delete.php";
+  static const String addCategoriesToBranch =
+      "$server/categories/add_to_branch.php";
+  static const String removeCategoriesfromBranch =
+      "$server/categories/remove_from_branch.php";
 
 //============================ Weight And Size ==============================//
   static const String addWeightSize = "$server/weight_size/add.php";

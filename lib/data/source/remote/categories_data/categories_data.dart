@@ -66,4 +66,20 @@ class CategoriesData {
     );
     return response.fold((l) => l, (r) => r);
   }
+
+  addToBranch(int branchId, int categoryId) async {
+    var response = await crud.postData(AppLink.addCategoriesToBranch, {
+      'branchId': branchId.toString(),
+      'categoryId': categoryId.toString(),
+    });
+    return response.fold((l) => l, (r) => r);
+  }
+
+  removeFromBranch(int branchId, int categoryId) async {
+    var response = await crud.postData(AppLink.removeCategoriesfromBranch, {
+      'branchId': branchId.toString(),
+      'categoryId': categoryId.toString(),
+    });
+    return response.fold((l) => l, (r) => r);
+  }
 }

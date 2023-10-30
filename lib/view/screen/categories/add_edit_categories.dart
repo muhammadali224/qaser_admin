@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../controller/categories_controller/add_edit_categories_controller.dart';
+import '../../../core/function/get_branch_name.dart';
 import '../../../core/function/valid_input.dart';
+import '../../../data/source/shared/branch_list.dart';
 import '../../widget/categories/category_image_header.dart';
 import '../../widget/shred_component/input_form_field.dart';
 import '../../widget/shred_component/material_button.dart';
@@ -43,6 +45,20 @@ class AddEditCategories extends StatelessWidget {
                     return validInput(val!, 3, 50, 'name');
                   },
                 ),
+                ...List.generate(
+                    branchList.length,
+                    (index) => CheckboxListTile(
+                          title: Text(
+                            getBranchName(branchList[index].branchId!)!,
+                            style: const TextStyle(color: Colors.black),
+                          ),
+                          value: controller.categoryModel!.branchIds
+                              ?.contains(branchList[index].branchId.toString()),
+                          onChanged: (bool? value) {
+                            controller.editAvailableInBranch(
+                                branchList[index].branchId!, value!);
+                          },
+                        )),
                 MaterialCustomButton(
                   onPressed: () => controller.isEdit
                       ? controller.editCategory()

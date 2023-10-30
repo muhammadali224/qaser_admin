@@ -126,6 +126,33 @@ class AddEditCategoryController extends GetxController {
     update();
   }
 
+  editAvailableInBranch(int branchId, bool val) async {
+    try {
+      SmartDialog.showLoading(msg: 'loading'.tr);
+      var response = val == true
+          ? await categoriesViewController.categoriesData
+              .addToBranch(branchId, categoryModel!.categoriesId!)
+          : await categoriesViewController.categoriesData
+              .removeFromBranch(branchId, categoryModel!.categoriesId!);
+      statusRequest = handlingData(response);
+      if (statusRequest == StatusRequest.success) {
+        if (response["status"] == "success") {
+          SmartDialog.dismiss();
+          SmartDialog.showNotify(
+              msg: "تم التعديل بنجاح", notifyType: NotifyType.success);
+          var responseList = response["data"][0];
+          categoryModel = CategoriesModel.fromJson(responseList);
+        }
+      } else {
+        statusRequest = StatusRequest.failed;
+      }
+    } catch (e) {
+      SmartDialog.dismiss();
+      SmartDialog.showToast(e.toString());
+    }
+    update();
+  }
+
   initData() {
     nameAr = TextEditingController();
     nameEn = TextEditingController();
