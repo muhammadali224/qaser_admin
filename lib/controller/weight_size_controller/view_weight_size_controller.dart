@@ -8,17 +8,18 @@ import '../../core/services/user_preference.dart';
 import '../../data/model/admin_model/admin_model.dart';
 import '../../data/model/weight_size_model/weight_size_model.dart';
 import '../../data/source/remote/weight_size_data/weight_size_data.dart';
+import '../../data/source/shared/sub_item_weight_list.dart';
 
 class WeightSizeViewController extends GetxController {
   StatusRequest statusRequest = StatusRequest.none;
   final UserPreferences userManagement = Get.find<UserPreferences>();
   late AdminModel adminData;
-  List<WeightSizeModel> weightSizeList = [];
+
   final SubItemsData subItemsData = SubItemsData(Get.find());
 
   getSubItems() async {
     try {
-      weightSizeList.clear();
+      subItemsList.clear();
       statusRequest = StatusRequest.loading;
       update();
       var response = await subItemsData.getSubItems();
@@ -26,7 +27,7 @@ class WeightSizeViewController extends GetxController {
       if (statusRequest == StatusRequest.success) {
         if (response["status"] == "success") {
           List responseList = response['data'];
-          weightSizeList
+          subItemsList
               .addAll(responseList.map((e) => WeightSizeModel.fromJson(e)));
         }
       } else {

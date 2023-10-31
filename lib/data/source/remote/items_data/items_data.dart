@@ -2,7 +2,6 @@ import 'dart:io';
 
 import '../../../../core/class/crud.dart';
 import '../../../../core/constant/api_link.dart';
-import '../../../model/categories_model/categories_model.dart';
 import '../../../model/items_model/items_model.dart';
 
 class ItemsData {
@@ -17,17 +16,25 @@ class ItemsData {
     return response.fold((l) => l, (r) => r);
   }
 
-  editCategoryWithImage(
-      {required CategoriesModel categoryModel,
+  editItemWithImage(
+      {required ItemsModel itemModel,
       required String id,
       required File file,
       required String oldFile}) async {
     var response = await crud.addRequestWithImage(
-      AppLink.editWithImageCategories,
+      AppLink.editWithImageItem,
       {
-        "catId": id,
-        "catNameEn": categoryModel.categoriesName,
-        "catNameAr": categoryModel.categoriesNameAr,
+        "itemId": id,
+        "itemNameEn": itemModel.itemsName,
+        "itemNameAr": itemModel.itemsNameAr,
+        "itemDescEn": itemModel.itemsDesc,
+        "itemDescAr": itemModel.itemsDescAr,
+        "itemCount": itemModel.itemsCount.toString(),
+        "itemActive": itemModel.itemsActive.toString(),
+        "itemPrice": itemModel.itemsPrice.toString(),
+        "itemDiscount": itemModel.itemsDiscount.toString(),
+        "itemPoint": itemModel.itemsPointPerVal.toString(),
+        "itemCat": itemModel.itemsCat.toString(),
         "oldFile": oldFile,
       },
       file,
@@ -35,22 +42,30 @@ class ItemsData {
     return response.fold((l) => l, (r) => r);
   }
 
-  editCategory(
-      {required CategoriesModel categoryModel, required String id}) async {
+  editItem({required ItemsModel itemModel, required String id}) async {
     var response = await crud.postData(
       AppLink.editItem,
       {
-        "catId": id,
-        "catNameEn": categoryModel.categoriesName,
-        "catNameAr": categoryModel.categoriesNameAr,
+        "itemId": id,
+        "itemNameEn": itemModel.itemsName,
+        "itemNameAr": itemModel.itemsNameAr,
+        "itemDescEn": itemModel.itemsDesc,
+        "itemDescAr": itemModel.itemsDescAr,
+        "itemCount": itemModel.itemsCount.toString(),
+        "itemActive": itemModel.itemsActive.toString(),
+        "itemPrice": itemModel.itemsPrice.toString(),
+        "itemDiscount": itemModel.itemsDiscount.toString(),
+        "itemPoint": itemModel.itemsPointPerVal.toString(),
+        "itemCat": itemModel.itemsCat.toString(),
       },
     );
     return response.fold((l) => l, (r) => r);
   }
 
-  deleteCategory(String categoryId) async {
+  deleteItem(String itemId, String imageName) async {
     var response = await crud.postData(AppLink.deleteItem, {
-      'categoryId': categoryId,
+      'itermId': itemId,
+      "image": imageName,
     });
     return response.fold((l) => l, (r) => r);
   }
@@ -75,18 +90,34 @@ class ItemsData {
     return response.fold((l) => l, (r) => r);
   }
 
-  addToBranch(int branchId, int categoryId) async {
-    var response = await crud.postData(AppLink.addCategoriesToBranch, {
+  addToBranch(int branchId, int itemId) async {
+    var response = await crud.postData(AppLink.addItemToBranch, {
       'branchId': branchId.toString(),
-      'categoryId': categoryId.toString(),
+      'itemId': itemId.toString(),
     });
     return response.fold((l) => l, (r) => r);
   }
 
-  removeFromBranch(int branchId, int categoryId) async {
-    var response = await crud.postData(AppLink.removeCategoriesFromBranch, {
+  removeFromBranch(int branchId, int itemId) async {
+    var response = await crud.postData(AppLink.removeItemFromBranch, {
       'branchId': branchId.toString(),
-      'categoryId': categoryId.toString(),
+      'itemId': itemId.toString(),
+    });
+    return response.fold((l) => l, (r) => r);
+  }
+
+  addItemWeight(int weightId, int itemId) async {
+    var response = await crud.postData(AppLink.addItemWeight, {
+      'weightId': weightId.toString(),
+      'itemId': itemId.toString(),
+    });
+    return response.fold((l) => l, (r) => r);
+  }
+
+  removeItemWeight(int weightId, int itemId) async {
+    var response = await crud.postData(AppLink.removeItemWeight, {
+      'weightId': weightId.toString(),
+      'itemId': itemId.toString(),
     });
     return response.fold((l) => l, (r) => r);
   }

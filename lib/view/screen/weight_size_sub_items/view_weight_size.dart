@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 
 import '../../../controller/weight_size_controller/view_weight_size_controller.dart';
 import '../../../core/class/handling_data_view.dart';
+import '../../../data/source/shared/sub_item_weight_list.dart';
 import '../../widget/shred_component/app_drawer.dart';
 import '../../widget/shred_component/curved_header.dart';
 import '../../widget/shred_component/fab.dart';
@@ -32,17 +33,16 @@ class ViewWeightSize extends StatelessWidget {
                   statusRequest: controller.statusRequest,
                   widget: ListView.builder(
                     shrinkWrap: true,
-                    itemCount: controller.weightSizeList.length,
+                    itemCount: subItemsList.length,
                     itemBuilder: (context, index) => Padding(
                       padding: const EdgeInsets.all(5.0),
                       child: ItemListTile(
-                        title: controller.weightSizeList[index].subItemNameAr!,
-                        subtitle: controller.weightSizeList[index].subItemValue
-                            .toString(),
-                        onEditTap: () => controller
-                            .goToEditSubItem(controller.weightSizeList[index]),
-                        onDeleteTap: () => controller.deleteSubItem(
-                            controller.weightSizeList[index].weightSizeId!),
+                        title: subItemsList[index].subItemNameAr!,
+                        subtitle: subItemsList[index].subItemValue.toString(),
+                        onEditTap: () =>
+                            controller.goToEditSubItem(subItemsList[index]),
+                        onDeleteTap: () => controller
+                            .deleteSubItem(subItemsList[index].weightSizeId!),
                       ),
                     ),
                   ),

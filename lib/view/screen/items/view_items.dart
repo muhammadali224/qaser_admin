@@ -43,7 +43,8 @@ class ViewItems extends StatelessWidget {
                           alignment: AlignmentDirectional.topEnd,
                           children: [
                             ItemDashBoard(
-                                onTap: () {},
+                                onTap: () => controller.goToItemDetails(
+                                    controller.itemsList[index]),
                                 title: controller.itemsList[index].itemsNameAr!,
                                 subtitle: controller.itemsList[index].itemsPrice
                                     .toString(),
@@ -56,7 +57,8 @@ class ViewItems extends StatelessWidget {
                                   onEditTap: () => controller.goToEditItem(
                                       controller.itemsList[index]),
                                   onDeleteTap: () => controller.deleteItems(
-                                      controller.itemsList[index].itemsId!)),
+                                      controller.itemsList[index].itemsId!,
+                                      controller.itemsList[index].itemsImage!)),
                             ),
                           ],
                         ),

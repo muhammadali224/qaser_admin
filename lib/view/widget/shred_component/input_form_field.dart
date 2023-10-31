@@ -10,6 +10,7 @@ class InputFormField extends StatelessWidget {
   final TextInputType? keyboardType;
   final Color? iconColor;
   final bool? isPassword;
+  final bool? isExpanded;
 
   const InputFormField({
     super.key,
@@ -21,6 +22,7 @@ class InputFormField extends StatelessWidget {
     this.icon,
     this.iconColor,
     this.isPassword,
+    this.isExpanded,
   });
 
   @override
@@ -28,6 +30,8 @@ class InputFormField extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
       child: TextFormField(
+        maxLines: isExpanded == false || isExpanded == null ? 1 : 6,
+        minLines: 1,
         autovalidateMode: AutovalidateMode.onUserInteraction,
         validator: validate,
         style: const TextStyle(color: Colors.black),

@@ -23,9 +23,14 @@ _$ItemsModelImpl _$$ItemsModelImplFromJson(Map<String, dynamic> json) =>
           ? null
           : DateTime.parse(json['items_data'] as String),
       itemsCat: json['items_cat'] as int?,
+      weighIds: (json['weigh_ids'] as List<dynamic>?)
+          ?.map((e) => e as String)
+          .toList(),
       branchIds: (json['branch_ids'] as List<dynamic>?)
           ?.map((e) => e as String)
           .toList(),
+      images:
+          (json['images'] as List<dynamic>?)?.map((e) => e as String).toList(),
     );
 
 Map<String, dynamic> _$$ItemsModelImplToJson(_$ItemsModelImpl instance) =>
@@ -43,5 +48,7 @@ Map<String, dynamic> _$$ItemsModelImplToJson(_$ItemsModelImpl instance) =>
       'items_point_per_val': instance.itemsPointPerVal,
       'items_data': instance.itemsData?.toIso8601String(),
       'items_cat': instance.itemsCat,
+      'weigh_ids': instance.weighIds,
       'branch_ids': instance.branchIds,
+      'images': instance.images,
     };

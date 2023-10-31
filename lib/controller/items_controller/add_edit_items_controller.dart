@@ -39,42 +39,49 @@ class AddEditItemsController extends GetxController {
   }
 
   editItem() async {
-    //   if (formKey.currentState!.validate()) {
-    //     try {
-    //       SmartDialog.showLoading(msg: 'loading'.tr);
-    //       var catModel = CategoriesModel(
-    //         categoriesNameAr: nameAr.text,
-    //         categoriesName: nameEn.text,
-    //       );
-    //
-    //       var response = file == null
-    //           ? await itemsViewController.itemsData.editCategory(
-    //               categoryModel: catModel,
-    //               id: categoryModel!.categoriesId.toString(),
-    //             )
-    //           : await categoriesViewController.categoriesData
-    //               .editCategoryWithImage(
-    //                   categoryModel: catModel,
-    //                   id: categoryModel!.categoriesId.toString(),
-    //                   file: file!,
-    //                   oldFile: categoryModel!.categoriesImage!);
-    //       statusRequest = handlingData(response);
-    //       if (statusRequest == StatusRequest.success) {
-    //         if (response["status"] == "success") {
-    //           SmartDialog.dismiss();
-    //           SmartDialog.showNotify(
-    //               msg: "تم التعديل بنجاح", notifyType: NotifyType.success);
-    //           Get.offAndToNamed(AppRoutes.viewCategories);
-    //           itemsViewController.getItems();
-    //         }
-    //       } else {
-    //         statusRequest = StatusRequest.failed;
-    //       }
-    //     } catch (e) {
-    //       SmartDialog.showToast(e.toString());
-    //     }
-    //   }
-    //   update();
+    if (formKey.currentState!.validate()) {
+      try {
+        SmartDialog.showLoading(msg: 'loading'.tr);
+        var itemEditModel = ItemsModel(
+          itemsName: nameEn.text,
+          itemsNameAr: nameAr.text,
+          itemsDesc: descEn.text,
+          itemsDescAr: descAr.text,
+          itemsPrice: num.parse(price.text),
+          itemsCount: int.parse(count.text),
+          itemsActive: 1,
+          itemsDiscount: num.parse(discount.text),
+          itemsCat: catModel.categoriesId,
+        );
+
+        var response = file == null
+            ? await itemsViewController.itemsData.editItem(
+                itemModel: itemEditModel,
+                id: itemsModel!.itemsId.toString(),
+              )
+            : await itemsViewController.itemsData.editItemWithImage(
+                itemModel: itemEditModel,
+                id: itemsModel!.itemsId.toString(),
+                file: file!,
+                oldFile: itemsModel!.itemsImage!);
+        statusRequest = handlingData(response);
+        if (statusRequest == StatusRequest.success) {
+          if (response["status"] == "success") {
+            SmartDialog.dismiss();
+            SmartDialog.showNotify(
+                msg: "تم التعديل بنجاح", notifyType: NotifyType.success);
+            Get.offAndToNamed(AppRoutes.viewItems,
+                arguments: {'model': catModel});
+            itemsViewController.getItems();
+          }
+        } else {
+          statusRequest = StatusRequest.failed;
+        }
+      } catch (e) {
+        SmartDialog.showToast(e.toString());
+      }
+    }
+    update();
   }
 
   addItemWithImage() async {
@@ -116,30 +123,34 @@ class AddEditItemsController extends GetxController {
   }
 
   editAvailableInBranch(int branchId, bool val) async {
-    //   try {
-    //     SmartDialog.showLoading(msg: 'loading'.tr);
-    //     var response = val == true
-    //         ? await categoriesViewController.categoriesData
-    //             .addToBranch(branchId, categoryModel!.categoriesId!)
-    //         : await categoriesViewController.categoriesData
-    //             .removeFromBranch(branchId, categoryModel!.categoriesId!);
-    //     statusRequest = handlingData(response);
-    //     if (statusRequest == StatusRequest.success) {
-    //       if (response["status"] == "success") {
-    //         SmartDialog.dismiss();
-    //         SmartDialog.showNotify(
-    //             msg: "تم التعديل بنجاح", notifyType: NotifyType.success);
-    //         var responseList = response["data"][0];
-    //         categoryModel = CategoriesModel.fromJson(responseList);
-    //       }
-    //     } else {
-    //       statusRequest = StatusRequest.failed;
-    //     }
-    //   } catch (e) {
-    //     SmartDialog.dismiss();
-    //     SmartDialog.showToast(e.toString());
-    //   }
-    //   update();
+    try {
+      SmartDialog.showLoading(msg: 'loading'.tr);
+      var response = val == true
+          ? await itemsViewController.itemsData.addToBranch(
+              branchId,
+              itemsModel!.itemsId!,
+            )
+          : await itemsViewController.itemsData.removeFromBranch(
+              branchId,
+              itemsModel!.itemsId!,
+            );
+      statusRequest = handlingData(response);
+      if (statusRequest == StatusRequest.success) {
+        if (response["status"] == "success") {
+          SmartDialog.dismiss();
+          SmartDialog.showNotify(
+              msg: "تم التعديل بنجاح", notifyType: NotifyType.success);
+          var responseList = response["data"][0];
+          itemsModel = ItemsModel.fromJson(responseList);
+        }
+      } else {
+        statusRequest = StatusRequest.failed;
+      }
+    } catch (e) {
+      SmartDialog.dismiss();
+      SmartDialog.showToast(e.toString());
+    }
+    update();
   }
 
   initData() {
@@ -182,6 +193,12 @@ class AddEditItemsController extends GetxController {
   void dispose() {
     nameAr.dispose();
     nameEn.dispose();
+    descEn.dispose();
+    descAr.dispose();
+    count.dispose();
+    price.dispose();
+    discount.dispose();
+    point.dispose();
 
     super.dispose();
   }

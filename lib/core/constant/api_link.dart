@@ -49,6 +49,12 @@ class AppLink {
 //============================== Items ==============================//
   static const String addItem = "$server/items/add.php";
   static const String editItem = "$server/items/edit.php";
+  static const String editWithImageItem = "$server/items/edit_with_image.php";
   static const String viewItem = "$server/items/view.php";
   static const String deleteItem = "$server/items/delete.php";
+  static const String addItemToBranch = "$server/items/add_to_branch.php";
+  static const String removeItemFromBranch =
+      "$server/items/remove_from_branch.php";
+  static const String addItemWeight = "$server/items/add_weight.php";
+  static const String removeItemWeight = "$server/items/remove_weight.php";
 }

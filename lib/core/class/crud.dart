@@ -42,29 +42,6 @@ class CRUD {
     }
   }
 
-  // Future<Either<StatusRequest, Map>> postData(String url, Map data) async {
-  //   try {
-  //     if (await checkInternet()) {
-  //       var response = await dio.post(url, data: data);
-  //       if (response.statusCode == 200 || response.statusCode == 201) {
-  //         var responseBody = jsonDecode(response.data);
-  //         // ignore: avoid_print
-  //         print(responseBody);
-  //         return right(responseBody);
-  //       } else {
-  //         return left(StatusRequest.serverFail);
-  //       }
-  //     } else {
-  //       return left(StatusRequest.offline);
-  //     }
-  //   } catch (e) {
-  //     SmartDialog.showToast(e.toString(),
-  //         displayTime: const Duration(seconds: 3));
-  //     print(e.toString());
-  //     return left(StatusRequest.serverException);
-  //   }
-  // }
-
   Future<Either<StatusRequest, Map>> addRequestWithImage(
     String url,
     Map data,

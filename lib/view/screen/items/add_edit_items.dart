@@ -2,9 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../controller/items_controller/add_edit_items_controller.dart';
-import '../../../core/function/get_branch_name.dart';
 import '../../../core/function/valid_input.dart';
-import '../../../data/source/shared/branch_list.dart';
 import '../../widget/items/item_image_header.dart';
 import '../../widget/shred_component/input_form_field.dart';
 import '../../widget/shred_component/material_button.dart';
@@ -45,19 +43,21 @@ class AddEditItems extends StatelessWidget {
                   },
                 ),
                 InputFormField(
+                  isExpanded: true,
                   hintTitle: 'وصف المنتج بالعربي ',
                   controller: controller.descAr,
                   icon: Icons.description,
                   validate: (val) {
-                    return validInput(val!, 5, 50, 'name');
+                    return validInput(val!, 5, 550, 'name');
                   },
                 ),
                 InputFormField(
+                  isExpanded: true,
                   hintTitle: 'وصف المنتج بالانجليزي ',
                   controller: controller.descEn,
                   icon: Icons.description_outlined,
                   validate: (val) {
-                    return validInput(val!, 5, 50, 'name');
+                    return validInput(val!, 5, 550, 'name');
                   },
                 ),
                 InputFormField(
@@ -84,7 +84,7 @@ class AddEditItems extends StatelessWidget {
                   keyboardType: const TextInputType.numberWithOptions(),
                   icon: Icons.percent_rounded,
                   validate: (val) {
-                    return validInput(val!, 3, 50, 'name');
+                    return validInput(val!, 1, 50, 'name');
                   },
                 ),
                 InputFormField(
@@ -93,24 +93,9 @@ class AddEditItems extends StatelessWidget {
                   keyboardType: const TextInputType.numberWithOptions(),
                   icon: Icons.redeem,
                   validate: (val) {
-                    return validInput(val!, 3, 50, 'name');
+                    return validInput(val!, 1, 50, 'name');
                   },
                 ),
-                if (controller.isEdit)
-                  ...List.generate(
-                      branchList.length,
-                      (index) => CheckboxListTile(
-                            title: Text(
-                              getBranchName(branchList[index].branchId!)!,
-                              style: const TextStyle(color: Colors.black),
-                            ),
-                            value: controller.itemsModel!.branchIds?.contains(
-                                branchList[index].branchId.toString()),
-                            onChanged: (bool? value) {
-                              // controller.editAvailableInBranch(
-                              //     branchList[index].branchId!, value!);
-                            },
-                          )),
                 MaterialCustomButton(
                   onPressed: () => controller.isEdit
                       ? controller.editItem()
