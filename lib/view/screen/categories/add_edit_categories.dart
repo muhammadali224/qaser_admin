@@ -45,20 +45,22 @@ class AddEditCategories extends StatelessWidget {
                     return validInput(val!, 3, 50, 'name');
                   },
                 ),
-                ...List.generate(
-                    branchList.length,
-                    (index) => CheckboxListTile(
-                          title: Text(
-                            getBranchName(branchList[index].branchId!)!,
-                            style: const TextStyle(color: Colors.black),
-                          ),
-                          value: controller.categoryModel!.branchIds
-                              ?.contains(branchList[index].branchId.toString()),
-                          onChanged: (bool? value) {
-                            controller.editAvailableInBranch(
-                                branchList[index].branchId!, value!);
-                          },
-                        )),
+                if (controller.isEdit)
+                  ...List.generate(
+                      branchList.length,
+                      (index) => CheckboxListTile(
+                            title: Text(
+                              getBranchName(branchList[index].branchId!)!,
+                              style: const TextStyle(color: Colors.black),
+                            ),
+                            value: controller.categoryModel!.branchIds
+                                ?.contains(
+                                    branchList[index].branchId.toString()),
+                            onChanged: (bool? value) {
+                              controller.editAvailableInBranch(
+                                  branchList[index].branchId!, value!);
+                            },
+                          )),
                 MaterialCustomButton(
                   onPressed: () => controller.isEdit
                       ? controller.editCategory()

@@ -24,4 +24,6 @@ class AppRoutes {
   static const String editCategory = "/editCategory";
 
   static const String viewItems = "/viewItems";
+  static const String addItems = "/addItems";
+  static const String editItems = "/editItems";
 }

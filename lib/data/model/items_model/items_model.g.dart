@@ -18,11 +18,14 @@ _$ItemsModelImpl _$$ItemsModelImplFromJson(Map<String, dynamic> json) =>
       itemsActive: json['items_active'] as int?,
       itemsPrice: json['items_price'] as num?,
       itemsDiscount: json['items_discount'] as num?,
+      itemsPointPerVal: json['items_point_per_val'] as num?,
       itemsData: json['items_data'] == null
           ? null
           : DateTime.parse(json['items_data'] as String),
       itemsCat: json['items_cat'] as int?,
-      branchId: json['branch_id'] as int?,
+      branchIds: (json['branch_ids'] as List<dynamic>?)
+          ?.map((e) => e as String)
+          .toList(),
     );
 
 Map<String, dynamic> _$$ItemsModelImplToJson(_$ItemsModelImpl instance) =>
@@ -37,7 +40,8 @@ Map<String, dynamic> _$$ItemsModelImplToJson(_$ItemsModelImpl instance) =>
       'items_active': instance.itemsActive,
       'items_price': instance.itemsPrice,
       'items_discount': instance.itemsDiscount,
+      'items_point_per_val': instance.itemsPointPerVal,
       'items_data': instance.itemsData?.toIso8601String(),
       'items_cat': instance.itemsCat,
-      'branch_id': instance.branchId,
+      'branch_ids': instance.branchIds,
     };

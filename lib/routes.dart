@@ -14,6 +14,8 @@ import 'view/screen/cash_user/view_cash_user.dart';
 import 'view/screen/categories/add_edit_categories.dart';
 import 'view/screen/categories/view_categories.dart';
 import 'view/screen/home/home.dart';
+import 'view/screen/items/add_edit_items.dart';
+import 'view/screen/items/view_items.dart';
 import 'view/screen/weight_size_sub_items/add_edit_weight_size.dart';
 import 'view/screen/weight_size_sub_items/view_weight_size.dart';
 
@@ -44,4 +46,7 @@ List<GetPage<dynamic>>? routes = [
   GetPage(name: AppRoutes.viewCategories, page: () => const ViewCategories()),
   GetPage(name: AppRoutes.addCategory, page: () => const AddEditCategories()),
   GetPage(name: AppRoutes.editCategory, page: () => const AddEditCategories()),
+  GetPage(name: AppRoutes.viewItems, page: () => const ViewItems()),
+  GetPage(name: AppRoutes.addItems, page: () => const AddEditItems()),
+  GetPage(name: AppRoutes.editItems, page: () => const AddEditItems()),
 ];

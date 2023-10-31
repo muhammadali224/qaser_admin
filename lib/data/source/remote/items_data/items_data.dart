@@ -3,14 +3,17 @@ import 'dart:io';
 import '../../../../core/class/crud.dart';
 import '../../../../core/constant/api_link.dart';
 import '../../../model/categories_model/categories_model.dart';
+import '../../../model/items_model/items_model.dart';
 
-class CategoriesData {
+class ItemsData {
   CRUD crud;
 
-  CategoriesData(this.crud);
+  ItemsData(this.crud);
 
-  getCategories() async {
-    var response = await crud.postData(AppLink.viewCategories, {});
+  getItems(String catId) async {
+    var response = await crud.postData(AppLink.viewItem, {
+      'catId': catId,
+    });
     return response.fold((l) => l, (r) => r);
   }
 
@@ -35,7 +38,7 @@ class CategoriesData {
   editCategory(
       {required CategoriesModel categoryModel, required String id}) async {
     var response = await crud.postData(
-      AppLink.editCategories,
+      AppLink.editItem,
       {
         "catId": id,
         "catNameEn": categoryModel.categoriesName,
@@ -46,18 +49,26 @@ class CategoriesData {
   }
 
   deleteCategory(String categoryId) async {
-    var response = await crud.postData(AppLink.deleteCategories, {
+    var response = await crud.postData(AppLink.deleteItem, {
       'categoryId': categoryId,
     });
     return response.fold((l) => l, (r) => r);
   }
 
-  addImage(CategoriesModel categoryModel, File file) async {
+  addItemWithImage(ItemsModel itemModel, File file) async {
     var response = await crud.addRequestWithImage(
-      AppLink.addCategories,
+      AppLink.addItem,
       {
-        "catNameEn": categoryModel.categoriesName,
-        "catNameAr": categoryModel.categoriesNameAr,
+        "itemNameEn": itemModel.itemsName,
+        "itemNameAr": itemModel.itemsNameAr,
+        "itemDescEn": itemModel.itemsDesc,
+        "itemDescAr": itemModel.itemsDescAr,
+        "itemCount": itemModel.itemsCount.toString(),
+        "itemActive": itemModel.itemsActive.toString(),
+        "itemPrice": itemModel.itemsPrice.toString(),
+        "itemDiscount": itemModel.itemsDiscount.toString(),
+        "itemPoint": itemModel.itemsPointPerVal.toString(),
+        "itemCat": itemModel.itemsCat.toString(),
       },
       file,
     );

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../controller/categories_controller/view_categories_controller.dart';
+import '../../../controller/items_controller/view_items_controller.dart';
 import '../../../core/class/handling_data_view.dart';
 import '../../../core/constant/api_link.dart';
 import '../../widget/shred_component/app_drawer.dart';
@@ -15,21 +15,20 @@ class ViewItems extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    ViewCategoriesController controller = Get.put(ViewCategoriesController());
+    ViewItemController controller = Get.put(ViewItemController());
     return Scaffold(
-      floatingActionButton: FAB(
-        onTap: controller.goToAddCategory,
-      ),
+      floatingActionButton: FAB(onTap: () => controller.goToAddItems()),
       floatingActionButtonLocation: FloatingActionButtonLocation.startFloat,
       drawer: const AppDrawer(),
       body: RefreshIndicator(
-        onRefresh: () => controller.getCategories(),
+        onRefresh: () => controller.getItems(),
         child: Column(
           children: [
-            const CurvedHeader(title: 'categories', background: Colors.green),
+            CurvedHeader(
+                title: controller.categoriesModel.categoriesNameAr!,
+                background: Colors.purple),
             Expanded(
-              child:
-                  GetBuilder<ViewCategoriesController>(builder: (controller) {
+              child: GetBuilder<ViewItemController>(builder: (controller) {
                 return HandlingDataView(
                   statusRequest: controller.statusRequest,
                   widget: GridView.count(
@@ -39,26 +38,25 @@ class ViewItems extends StatelessWidget {
                     crossAxisSpacing: 30,
                     children: [
                       ...List.generate(
-                        controller.categoriesList.length,
+                        controller.itemsList.length,
                         (index) => Stack(
                           alignment: AlignmentDirectional.topEnd,
                           children: [
                             ItemDashBoard(
-                                onTap: () => controller.goToViewItems(
-                                    controller.categoriesList[index]),
-                                title: controller
-                                    .categoriesList[index].categoriesNameAr!,
+                                onTap: () {},
+                                title: controller.itemsList[index].itemsNameAr!,
+                                subtitle: controller.itemsList[index].itemsPrice
+                                    .toString(),
                                 imageUrl:
-                                    "${AppLink.imagesCategories}${controller.categoriesList[index].categoriesImage}",
+                                    "${AppLink.imagesItems}${controller.itemsList[index].itemsImage}",
                                 background: Colors.amber),
                             Container(
                               margin: const EdgeInsets.all(5),
                               child: PopMenuEditDelete(
-                                  onEditTap: () => controller.goToEditCategory(
-                                      controller.categoriesList[index]),
-                                  onDeleteTap: () => controller.deleteCategory(
-                                      controller.categoriesList[index]
-                                          .categoriesId!)),
+                                  onEditTap: () => controller.goToEditItem(
+                                      controller.itemsList[index]),
+                                  onDeleteTap: () => controller.deleteItems(
+                                      controller.itemsList[index].itemsId!)),
                             ),
                           ],
                         ),

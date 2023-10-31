@@ -37,7 +37,7 @@ class AppLink {
   static const String deleteCategories = "$server/categories/delete.php";
   static const String addCategoriesToBranch =
       "$server/categories/add_to_branch.php";
-  static const String removeCategoriesfromBranch =
+  static const String removeCategoriesFromBranch =
       "$server/categories/remove_from_branch.php";
 
 //============================ Weight And Size ==============================//
@@ -46,5 +46,9 @@ class AppLink {
   static const String viewWeightSize = "$server/weight_size/view.php";
   static const String deleteWeightSize = "$server/weight_size/delete.php";
 
-//============================ branch Setting ==============================//
+//============================== Items ==============================//
+  static const String addItem = "$server/items/add.php";
+  static const String editItem = "$server/items/edit.php";
+  static const String viewItem = "$server/items/view.php";
+  static const String deleteItem = "$server/items/delete.php";
 }
