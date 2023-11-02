@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:get/get.dart';
 
@@ -15,6 +17,7 @@ class ItemsDetailsController extends GetxController {
   bool branchIsExpanded = false;
   bool weightIsExpanded = false;
   bool imagesIsExpanded = false;
+  File? file;
 
   changeExpanded(int index) {
     switch (index) {
@@ -88,6 +91,53 @@ class ItemsDetailsController extends GetxController {
     } catch (e) {
       SmartDialog.dismiss();
       SmartDialog.showToast(e.toString());
+    }
+    update();
+  }
+
+  addItemImage() async {
+    try {
+      SmartDialog.showLoading(msg: 'loading'.tr);
+      var response = await itemsData.addItemImage(itemModel!.itemsId!, file!);
+      statusRequest = handlingData(response);
+      if (statusRequest == StatusRequest.success) {
+        if (response["status"] == "success") {
+          SmartDialog.dismiss();
+          SmartDialog.showNotify(
+              msg: "تم التعديل بنجاح", notifyType: NotifyType.success);
+          var responseList = response["data"][0];
+          itemModel = ItemsModel.fromJson(responseList);
+        }
+      } else {
+        statusRequest = StatusRequest.failed;
+      }
+    } catch (e) {
+      SmartDialog.dismiss();
+      print(e.toString());
+    }
+    update();
+  }
+
+  deleteItemImage(String imageName) async {
+    try {
+      SmartDialog.showLoading(msg: 'loading'.tr);
+      var response =
+          await itemsData.removeItemImage(itemModel!.itemsId!, imageName);
+      statusRequest = handlingData(response);
+      if (statusRequest == StatusRequest.success) {
+        if (response["status"] == "success") {
+          SmartDialog.dismiss();
+          SmartDialog.showNotify(
+              msg: "تم التعديل بنجاح", notifyType: NotifyType.success);
+          var responseList = response["data"][0];
+          itemModel = ItemsModel.fromJson(responseList);
+        }
+      } else {
+        statusRequest = StatusRequest.failed;
+      }
+    } catch (e) {
+      SmartDialog.dismiss();
+      print(e.toString());
     }
     update();
   }

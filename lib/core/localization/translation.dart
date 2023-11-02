@@ -247,6 +247,8 @@ class MyTranslation extends Translations {
           "addCategories": "إضافة تصنيفات",
           "addWeightSize": "إضافة وزن او حجم",
           "weightSize": "الاوزان والاحجام",
+          "coupons": "كوبونات الخصم",
+          "addCoupon": "إضافة كوبون",
         },
         'en': {
           'chooseLang': 'Choose Language',
@@ -493,6 +495,8 @@ class MyTranslation extends Translations {
           "addCategories": "Add Categories",
           "addWeightSize": "Add Weight Or Size",
           "weightSize": "Weights And Sizes",
+          "coupons": "Discount Coupons",
+          "addCoupon": "Add Coupon",
         },
       };
 }

@@ -14,7 +14,7 @@ class ItemImageHeader extends GetView<AddEditItemsController> {
   @override
   Widget build(BuildContext context) {
     return GetBuilder<AddEditItemsController>(builder: (controller) {
-      return Container(
+      return SizedBox(
           height: Get.height / 3,
           width: double.infinity,
           child: Stack(

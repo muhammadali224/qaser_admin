@@ -45,6 +45,11 @@ class AppLink {
   static const String editWeightSize = "$server/weight_size/edit.php";
   static const String viewWeightSize = "$server/weight_size/view.php";
   static const String deleteWeightSize = "$server/weight_size/delete.php";
+//============================ Coupon ==============================//
+  static const String addCoupon = "$server/coupon/add.php";
+  static const String editCoupon = "$server/coupon/edit.php";
+  static const String viewCoupon = "$server/coupon/view.php";
+  static const String deleteCoupon = "$server/coupon/delete.php";
 
 //============================== Items ==============================//
   static const String addItem = "$server/items/add.php";
@@ -57,4 +62,6 @@ class AppLink {
       "$server/items/remove_from_branch.php";
   static const String addItemWeight = "$server/items/add_weight.php";
   static const String removeItemWeight = "$server/items/remove_weight.php";
+  static const String addItemImage = "$server/items/add_image.php";
+  static const String deleteItemImage = "$server/items/delete_image.php";
 }

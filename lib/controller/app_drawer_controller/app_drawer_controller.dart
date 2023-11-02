@@ -23,6 +23,10 @@ class AppDrawerController extends GetxController {
     Get.offNamed(AppRoutes.viewCategories);
   }
 
+  goToCoupons() {
+    Get.offNamed(AppRoutes.viewCoupon);
+  }
+
   goToWeightSize() {
     Get.offNamed(AppRoutes.weightSize);
   }

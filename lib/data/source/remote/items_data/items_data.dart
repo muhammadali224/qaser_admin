@@ -121,4 +121,26 @@ class ItemsData {
     });
     return response.fold((l) => l, (r) => r);
   }
+
+  addItemImage(int itemId, File file) async {
+    var response = await crud.addRequestWithImage(
+      AppLink.addItemImage,
+      {
+        "itemId": itemId.toString(),
+      },
+      file,
+    );
+    return response.fold((l) => l, (r) => r);
+  }
+
+  removeItemImage(int itemId, String imageName) async {
+    var response = await crud.postData(
+      AppLink.deleteItemImage,
+      {
+        "itemId": itemId.toString(),
+        "imageName": imageName,
+      },
+    );
+    return response.fold((l) => l, (r) => r);
+  }
 }

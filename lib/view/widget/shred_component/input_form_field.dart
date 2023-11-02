@@ -6,11 +6,14 @@ class InputFormField extends StatelessWidget {
   final String hintTitle;
   final IconData? icon;
   final void Function()? onIconTap;
+  final void Function()? onTap;
   final String? Function(String?)? validate;
   final TextInputType? keyboardType;
   final Color? iconColor;
   final bool? isPassword;
   final bool? isExpanded;
+  final bool? readOnly;
+  final String? labelString;
 
   const InputFormField({
     super.key,
@@ -23,6 +26,9 @@ class InputFormField extends StatelessWidget {
     this.iconColor,
     this.isPassword,
     this.isExpanded,
+    this.readOnly = false,
+    this.onTap,
+    this.labelString,
   });
 
   @override
@@ -30,6 +36,8 @@ class InputFormField extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
       child: TextFormField(
+        onTap: onTap,
+        readOnly: readOnly!,
         maxLines: isExpanded == false || isExpanded == null ? 1 : 6,
         minLines: 1,
         autovalidateMode: AutovalidateMode.onUserInteraction,
@@ -40,12 +48,13 @@ class InputFormField extends StatelessWidget {
         obscureText: isPassword ?? false,
         decoration: InputDecoration(
           hintText: hintTitle.tr,
+          labelText: labelString,
+          labelStyle: const TextStyle(fontSize: 20),
           contentPadding:
               const EdgeInsets.symmetric(vertical: 5, horizontal: 15),
           focusedBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(10),
-            borderSide: const BorderSide(color: Colors.red, width: 2),
-          ),
+              borderRadius: BorderRadius.circular(10),
+              borderSide: const BorderSide(color: Colors.red, width: 2)),
           suffixIcon: IconButton(
             onPressed: onIconTap,
             icon: Icon(

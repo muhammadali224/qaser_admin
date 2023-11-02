@@ -13,6 +13,8 @@ import 'view/screen/cash_user/add_edit_cash_user.dart';
 import 'view/screen/cash_user/view_cash_user.dart';
 import 'view/screen/categories/add_edit_categories.dart';
 import 'view/screen/categories/view_categories.dart';
+import 'view/screen/coupon/add_edit_copun.dart';
+import 'view/screen/coupon/view_coupon.dart';
 import 'view/screen/home/home.dart';
 import 'view/screen/items/add_edit_items.dart';
 import 'view/screen/items/item_details.dart';
@@ -51,4 +53,7 @@ List<GetPage<dynamic>>? routes = [
   GetPage(name: AppRoutes.addItems, page: () => const AddEditItems()),
   GetPage(name: AppRoutes.editItems, page: () => const AddEditItems()),
   GetPage(name: AppRoutes.itemDetails, page: () => const ItemDetails()),
+  GetPage(name: AppRoutes.viewCoupon, page: () => const ViewCoupon()),
+  GetPage(name: AppRoutes.editCoupon, page: () => const AddEditCoupon()),
+  GetPage(name: AppRoutes.addCoupon, page: () => const AddEditCoupon()),
 ];

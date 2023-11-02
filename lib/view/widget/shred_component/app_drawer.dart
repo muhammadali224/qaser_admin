@@ -41,6 +41,11 @@ class AppDrawer extends StatelessWidget {
             onTap: controller.goToCategories,
           ),
           DrawerItem(
+            title: 'coupons',
+            icon: IconBroken.Discount,
+            onTap: controller.goToCoupons,
+          ),
+          DrawerItem(
             title: 'weightSize',
             icon: FontAwesome.weight_scale,
             onTap: controller.goToWeightSize,
