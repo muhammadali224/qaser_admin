@@ -29,7 +29,6 @@ dependencies:
   image_picker:
   lottie:
   firebase_analytics:
-#  firebase_analytics: ^10.2.1
   string_capitalize: ^0.0.10
   badges: ^3.1.1
   flutter_ringtone_player: ^3.2.0

@@ -13,17 +13,33 @@ class CouponData {
   }
 
   addCoupon(CouponModel couponModel) async {
-    var response = await crud.postData(AppLink.addCoupon, {});
+    var response = await crud.postData(AppLink.addCoupon, {
+      "couponName": couponModel.couponName,
+      "couponCount": couponModel.couponCount.toString(),
+      "couponDiscount": couponModel.couponDiscount.toString(),
+      "couponBranchId": couponModel.branchId.toString(),
+      "couponStartDate": couponModel.couponStartDate.toString(),
+      "couponEndDate": couponModel.couponExpireDate.toString(),
+    });
     return response.fold((l) => l, (r) => r);
   }
 
-  editCoupon(CouponModel couponModel, String id) async {
-    var response = await crud.postData(AppLink.editCoupon, {});
+  editCoupon(CouponModel couponModel) async {
+    var response = await crud.postData(AppLink.editCoupon, {
+      "couponId": couponModel.couponId.toString(),
+      "couponName": couponModel.couponName,
+      "couponCount": couponModel.couponCount.toString(),
+      "couponDiscount": couponModel.couponDiscount.toString(),
+      "couponBranchId": couponModel.branchId.toString(),
+      "couponStartDate": couponModel.couponStartDate.toString(),
+      "couponEndDate": couponModel.couponExpireDate.toString(),
+    });
     return response.fold((l) => l, (r) => r);
   }
 
   deleteCoupon(String couponId) async {
-    var response = await crud.postData(AppLink.deleteCoupon, {});
+    var response =
+        await crud.postData(AppLink.deleteCoupon, {"couponId": couponId});
     return response.fold((l) => l, (r) => r);
   }
 }

@@ -11,8 +11,12 @@ _$CouponModelImpl _$$CouponModelImplFromJson(Map<String, dynamic> json) =>
       couponId: json['coupon_id'] as int?,
       couponName: json['coupon_name'] as String?,
       couponCount: json['coupon_count'] as int?,
-      couponStartDate: json['coupon_startdate'] as String?,
-      couponExpireDate: json['coupon_expiredate'] as String?,
+      couponStartDate: json['coupon_startdate'] == null
+          ? null
+          : DateTime.parse(json['coupon_startdate'] as String),
+      couponExpireDate: json['coupon_expiredate'] == null
+          ? null
+          : DateTime.parse(json['coupon_expiredate'] as String),
       couponDiscount: json['coupon_discount'] as num?,
       branchId: json['branch_id'] as int?,
     );
@@ -22,8 +26,8 @@ Map<String, dynamic> _$$CouponModelImplToJson(_$CouponModelImpl instance) =>
       'coupon_id': instance.couponId,
       'coupon_name': instance.couponName,
       'coupon_count': instance.couponCount,
-      'coupon_startdate': instance.couponStartDate,
-      'coupon_expiredate': instance.couponExpireDate,
+      'coupon_startdate': instance.couponStartDate?.toIso8601String(),
+      'coupon_expiredate': instance.couponExpireDate?.toIso8601String(),
       'coupon_discount': instance.couponDiscount,
       'branch_id': instance.branchId,
     };

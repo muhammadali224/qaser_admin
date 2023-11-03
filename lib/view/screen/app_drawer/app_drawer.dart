@@ -4,7 +4,7 @@ import 'package:icon_broken/icon_broken.dart';
 import 'package:icons_plus/icons_plus.dart';
 
 import '../../../controller/app_drawer_controller/app_drawer_controller.dart';
-import '../app_drawer/drawer_item.dart';
+import '../../widget/app_drawer/drawer_item.dart';
 
 class AppDrawer extends StatelessWidget {
   const AppDrawer({super.key});
@@ -26,9 +26,19 @@ class AppDrawer extends StatelessWidget {
             onTap: controller.goToHome,
           ),
           DrawerItem(
-            title: 'Admins',
+            title: 'branches',
+            icon: Icons.business,
+            onTap: controller.goToBranches,
+          ),
+          DrawerItem(
+            title: 'الادمن',
             icon: Icons.admin_panel_settings_rounded,
             onTap: controller.goToAdminUser,
+          ),
+          DrawerItem(
+            title: 'users',
+            icon: FontAwesome.user,
+            onTap: controller.goToUsers,
           ),
           DrawerItem(
             title: 'cashUser',
@@ -41,6 +51,16 @@ class AppDrawer extends StatelessWidget {
             onTap: controller.goToCategories,
           ),
           DrawerItem(
+            title: 'notification',
+            icon: IconBroken.Notification,
+            onTap: controller.goToCoupons,
+          ),
+          DrawerItem(
+            title: 'offersImage',
+            icon: FontAwesome.images,
+            onTap: controller.goToOffersImage,
+          ),
+          DrawerItem(
             title: 'coupons',
             icon: IconBroken.Discount,
             onTap: controller.goToCoupons,
@@ -49,11 +69,6 @@ class AppDrawer extends StatelessWidget {
             title: 'weightSize',
             icon: FontAwesome.weight_scale,
             onTap: controller.goToWeightSize,
-          ),
-          DrawerItem(
-            title: 'branches',
-            icon: Icons.business,
-            onTap: controller.goToBranches,
           ),
         ],
       ),

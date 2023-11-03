@@ -44,7 +44,7 @@ class AddEditCoupon extends StatelessWidget {
                   keyboardType:
                       const TextInputType.numberWithOptions(decimal: true),
                   validate: (val) {
-                    return validInput(val!, 1, 50, 'email');
+                    return validInput(val!, 1, 50, 'text');
                   },
                 ),
                 InputFormField(
@@ -59,6 +59,10 @@ class AddEditCoupon extends StatelessWidget {
                 InputFormField(
                   hintTitle: 'تاريخ البداية',
                   labelString: 'تاريخ البداية',
+                  onTap: () async {
+                    controller.startDate.text = (await pickDate(context))!;
+                    controller.update();
+                  },
                   controller: controller.startDate,
                   readOnly: true,
                   icon: FontAwesome.calendar,
@@ -70,7 +74,8 @@ class AddEditCoupon extends StatelessWidget {
                   labelString: 'تاريخ النهاية',
                   hintTitle: 'تاريخ النهاية',
                   onTap: () async {
-                    await pickDate(context);
+                    controller.endDate.text = (await pickDate(context))!;
+                    controller.update();
                   },
                   readOnly: true,
                   controller: controller.endDate,

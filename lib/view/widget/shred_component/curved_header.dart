@@ -4,18 +4,19 @@ import 'package:get/get.dart';
 class CurvedHeader extends StatelessWidget {
   final String title;
   final Color background;
+  final Widget? trailing;
 
   const CurvedHeader({
     super.key,
     required this.title,
     required this.background,
+    this.trailing,
   });
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: SizedBox(
-        // width: double.infinity,
         child: Column(
           children: [
             Container(
@@ -33,6 +34,7 @@ class CurvedHeader extends StatelessWidget {
                       .displayLarge!
                       .copyWith(color: Colors.white),
                 ),
+                trailing: trailing,
                 leading: const DrawerButton(
                   style: ButtonStyle(
                       iconColor: MaterialStatePropertyAll<Color>(Colors.white),

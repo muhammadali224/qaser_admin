@@ -19,7 +19,7 @@ class CircularNetworkImages extends StatelessWidget {
           const Center(child: CircularProgressIndicator()),
       errorWidget: (context, url, error) => const Icon(
         Icons.warning_amber_rounded,
-        color: Colors.red,
+        size: 45,
       ),
     );
   }

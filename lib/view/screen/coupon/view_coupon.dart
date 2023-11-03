@@ -3,10 +3,10 @@ import 'package:get/get.dart';
 
 import '../../../controller/coupon_controller/view_coupon_controller.dart';
 import '../../../core/class/handling_data_view.dart';
-import '../../widget/shred_component/app_drawer.dart';
 import '../../widget/shred_component/curved_header.dart';
 import '../../widget/shred_component/fab.dart';
 import '../../widget/shred_component/item_list_tile.dart';
+import '../app_drawer/app_drawer.dart';
 
 class ViewCoupon extends StatelessWidget {
   const ViewCoupon({super.key});
@@ -24,7 +24,8 @@ class ViewCoupon extends StatelessWidget {
         onRefresh: () => controller.getCoupon(),
         child: Column(
           children: [
-            const CurvedHeader(title: 'coupons', background: Colors.lightGreen),
+            const CurvedHeader(
+                title: 'coupons', background: Colors.amberAccent),
             Expanded(
               child: GetBuilder<CouponViewController>(builder: (controller) {
                 return HandlingDataView(

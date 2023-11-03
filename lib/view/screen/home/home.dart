@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 
 import '../../../controller/home_controller/home_controller.dart';
 import '../../../core/class/handling_data_view.dart';
-import '../../widget/shred_component/app_drawer.dart';
+import '../app_drawer/app_drawer.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});

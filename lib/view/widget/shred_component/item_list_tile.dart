@@ -5,15 +5,19 @@ import 'popup_edit_delete.dart';
 class ItemListTile extends StatelessWidget {
   final String title;
   final String subtitle;
-  final void Function() onEditTap;
-  final void Function() onDeleteTap;
+  final void Function()? onEditTap;
+  final void Function()? onDeleteTap;
+  final void Function()? onTap;
+  final Widget? trailing;
 
   const ItemListTile({
     super.key,
     required this.title,
     required this.subtitle,
-    required this.onEditTap,
-    required this.onDeleteTap,
+    this.onEditTap,
+    this.onDeleteTap,
+    this.trailing,
+    this.onTap,
   });
 
   @override
@@ -24,6 +28,7 @@ class ItemListTile extends StatelessWidget {
         color: Colors.white,
         elevation: 15,
         child: ListTile(
+          onTap: onTap ?? () {},
           contentPadding: const EdgeInsets.symmetric(horizontal: 30),
           title: Container(
             margin: const EdgeInsets.all(10),
@@ -39,10 +44,11 @@ class ItemListTile extends StatelessWidget {
               style: Theme.of(context).textTheme.titleMedium,
             ),
           ),
-          trailing: PopMenuEditDelete(
-            onEditTap: onEditTap,
-            onDeleteTap: onDeleteTap,
-          ),
+          trailing: trailing ??
+              PopMenuEditDelete(
+                onEditTap: onEditTap ?? () {},
+                onDeleteTap: onDeleteTap ?? () {},
+              ),
         ),
       ),
     );

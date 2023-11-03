@@ -4,7 +4,7 @@ import '../../core/constant/routes.dart';
 
 class AppDrawerController extends GetxController {
   goToHome() {
-    Get.offNamed(AppRoutes.home);
+    Get.offAllNamed(AppRoutes.home);
   }
 
   goToBranches() {
@@ -25,6 +25,14 @@ class AppDrawerController extends GetxController {
 
   goToCoupons() {
     Get.offNamed(AppRoutes.viewCoupon);
+  }
+
+  goToOffersImage() {
+    Get.offNamed(AppRoutes.viewOffersImage);
+  }
+
+  goToUsers() {
+    Get.offNamed(AppRoutes.usersView);
   }
 
   goToWeightSize() {

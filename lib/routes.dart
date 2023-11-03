@@ -16,9 +16,12 @@ import 'view/screen/categories/view_categories.dart';
 import 'view/screen/coupon/add_edit_copun.dart';
 import 'view/screen/coupon/view_coupon.dart';
 import 'view/screen/home/home.dart';
+import 'view/screen/image_offer/edit_imags.dart';
+import 'view/screen/image_offer/view_images.dart';
 import 'view/screen/items/add_edit_items.dart';
 import 'view/screen/items/item_details.dart';
 import 'view/screen/items/view_items.dart';
+import 'view/screen/users/view_users.dart';
 import 'view/screen/weight_size_sub_items/add_edit_weight_size.dart';
 import 'view/screen/weight_size_sub_items/view_weight_size.dart';
 
@@ -56,4 +59,8 @@ List<GetPage<dynamic>>? routes = [
   GetPage(name: AppRoutes.viewCoupon, page: () => const ViewCoupon()),
   GetPage(name: AppRoutes.editCoupon, page: () => const AddEditCoupon()),
   GetPage(name: AppRoutes.addCoupon, page: () => const AddEditCoupon()),
+  GetPage(name: AppRoutes.viewOffersImage, page: () => const ViewImageOffer()),
+  GetPage(name: AppRoutes.editOffersImage, page: () => const EditImagesOffer()),
+  GetPage(name: AppRoutes.addOffersImage, page: () => const EditImagesOffer()),
+  GetPage(name: AppRoutes.usersView, page: () => const ViewUsers()),
 ];

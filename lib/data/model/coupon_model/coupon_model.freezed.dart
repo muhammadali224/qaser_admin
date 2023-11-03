@@ -27,9 +27,9 @@ mixin _$CouponModel {
   @JsonKey(name: "coupon_count")
   int? get couponCount => throw _privateConstructorUsedError;
   @JsonKey(name: "coupon_startdate")
-  String? get couponStartDate => throw _privateConstructorUsedError;
+  DateTime? get couponStartDate => throw _privateConstructorUsedError;
   @JsonKey(name: "coupon_expiredate")
-  String? get couponExpireDate => throw _privateConstructorUsedError;
+  DateTime? get couponExpireDate => throw _privateConstructorUsedError;
   @JsonKey(name: "coupon_discount")
   num? get couponDiscount => throw _privateConstructorUsedError;
   @JsonKey(name: "branch_id")
@@ -51,8 +51,8 @@ abstract class $CouponModelCopyWith<$Res> {
       {@JsonKey(name: "coupon_id") int? couponId,
       @JsonKey(name: "coupon_name") String? couponName,
       @JsonKey(name: "coupon_count") int? couponCount,
-      @JsonKey(name: "coupon_startdate") String? couponStartDate,
-      @JsonKey(name: "coupon_expiredate") String? couponExpireDate,
+      @JsonKey(name: "coupon_startdate") DateTime? couponStartDate,
+      @JsonKey(name: "coupon_expiredate") DateTime? couponExpireDate,
       @JsonKey(name: "coupon_discount") num? couponDiscount,
       @JsonKey(name: "branch_id") int? branchId});
 }
@@ -94,11 +94,11 @@ class _$CouponModelCopyWithImpl<$Res, $Val extends CouponModel>
       couponStartDate: freezed == couponStartDate
           ? _value.couponStartDate
           : couponStartDate // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as DateTime?,
       couponExpireDate: freezed == couponExpireDate
           ? _value.couponExpireDate
           : couponExpireDate // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as DateTime?,
       couponDiscount: freezed == couponDiscount
           ? _value.couponDiscount
           : couponDiscount // ignore: cast_nullable_to_non_nullable
@@ -123,8 +123,8 @@ abstract class _$$CouponModelImplCopyWith<$Res>
       {@JsonKey(name: "coupon_id") int? couponId,
       @JsonKey(name: "coupon_name") String? couponName,
       @JsonKey(name: "coupon_count") int? couponCount,
-      @JsonKey(name: "coupon_startdate") String? couponStartDate,
-      @JsonKey(name: "coupon_expiredate") String? couponExpireDate,
+      @JsonKey(name: "coupon_startdate") DateTime? couponStartDate,
+      @JsonKey(name: "coupon_expiredate") DateTime? couponExpireDate,
       @JsonKey(name: "coupon_discount") num? couponDiscount,
       @JsonKey(name: "branch_id") int? branchId});
 }
@@ -164,11 +164,11 @@ class __$$CouponModelImplCopyWithImpl<$Res>
       couponStartDate: freezed == couponStartDate
           ? _value.couponStartDate
           : couponStartDate // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as DateTime?,
       couponExpireDate: freezed == couponExpireDate
           ? _value.couponExpireDate
           : couponExpireDate // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as DateTime?,
       couponDiscount: freezed == couponDiscount
           ? _value.couponDiscount
           : couponDiscount // ignore: cast_nullable_to_non_nullable
@@ -207,10 +207,10 @@ class _$CouponModelImpl implements _CouponModel {
   final int? couponCount;
   @override
   @JsonKey(name: "coupon_startdate")
-  final String? couponStartDate;
+  final DateTime? couponStartDate;
   @override
   @JsonKey(name: "coupon_expiredate")
-  final String? couponExpireDate;
+  final DateTime? couponExpireDate;
   @override
   @JsonKey(name: "coupon_discount")
   final num? couponDiscount;
@@ -268,8 +268,8 @@ abstract class _CouponModel implements CouponModel {
       {@JsonKey(name: "coupon_id") final int? couponId,
       @JsonKey(name: "coupon_name") final String? couponName,
       @JsonKey(name: "coupon_count") final int? couponCount,
-      @JsonKey(name: "coupon_startdate") final String? couponStartDate,
-      @JsonKey(name: "coupon_expiredate") final String? couponExpireDate,
+      @JsonKey(name: "coupon_startdate") final DateTime? couponStartDate,
+      @JsonKey(name: "coupon_expiredate") final DateTime? couponExpireDate,
       @JsonKey(name: "coupon_discount") final num? couponDiscount,
       @JsonKey(name: "branch_id") final int? branchId}) = _$CouponModelImpl;
 
@@ -287,10 +287,10 @@ abstract class _CouponModel implements CouponModel {
   int? get couponCount;
   @override
   @JsonKey(name: "coupon_startdate")
-  String? get couponStartDate;
+  DateTime? get couponStartDate;
   @override
   @JsonKey(name: "coupon_expiredate")
-  String? get couponExpireDate;
+  DateTime? get couponExpireDate;
   @override
   @JsonKey(name: "coupon_discount")
   num? get couponDiscount;

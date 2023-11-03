@@ -8,14 +8,13 @@ class ItemDashBoard extends StatelessWidget {
   final String? subtitle;
   final Widget? subWidget;
   final String imageUrl;
-  final Color background;
+
   final void Function()? onTap;
 
   const ItemDashBoard(
       {super.key,
       required this.title,
       required this.imageUrl,
-      required this.background,
       this.onTap,
       this.subtitle,
       this.subWidget});
@@ -37,7 +36,6 @@ class ItemDashBoard extends StatelessWidget {
                 boxShadow: [
                   BoxShadow(
                     offset: const Offset(0, 5),
-                    // color: Theme.of(context).primaryColor.withOpacity(0.2),
                     color: Colors.grey.withOpacity(0.5),
                     spreadRadius: 3,
                     blurRadius: 5,
@@ -48,24 +46,14 @@ class ItemDashBoard extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Container(
-                    // padding: const EdgeInsets.all(10),
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: background,
-                    ),
-                    // child: Icon(icon, color: Colors.white),
-                    child: CircularNetworkImages(imageUrl: imageUrl),
-                  ),
+                      decoration: const BoxDecoration(shape: BoxShape.circle),
+                      child: CircularNetworkImages(imageUrl: imageUrl)),
                   const SizedBox(height: 10),
-                  Text(
-                    title.tr,
-                    style: Theme.of(context).textTheme.titleMedium,
-                  ),
+                  Text(title.tr,
+                      style: Theme.of(context).textTheme.titleMedium),
                   if (subtitle != null)
-                    Text(
-                      subtitle!.tr,
-                      style: Theme.of(context).textTheme.titleSmall,
-                    ),
+                    Text(subtitle!.tr,
+                        style: Theme.of(context).textTheme.titleSmall),
                   if (subWidget != null) subWidget!,
                 ],
               ),

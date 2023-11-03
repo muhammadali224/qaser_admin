@@ -4,6 +4,8 @@ import 'package:get/get.dart';
 
 import '../../core/class/status_request.dart';
 import '../../core/constant/routes.dart';
+import '../../core/extension/date_extension.dart';
+import '../../core/extension/string_extension.dart';
 import '../../core/function/get_branch_name.dart';
 import '../../core/function/handling_data_controller.dart';
 import '../../data/model/coupon_model/coupon_model.dart';
@@ -45,8 +47,9 @@ class AddEditCouponController extends GetxController {
             couponCount: int.parse(count.text),
             couponDiscount: num.parse(discountValue.text),
             couponName: name.text,
-            couponExpireDate: endDate.text,
-            couponStartDate: startDate.text);
+            couponExpireDate: endDate.text.parseStringToDateTime(),
+            couponStartDate: startDate.text.parseStringToDateTime(),
+            branchId: selectedBranch);
         var response =
             await _couponViewController.couponData.addCoupon(couponModel);
         statusRequest = handlingData(response);
@@ -73,14 +76,15 @@ class AddEditCouponController extends GetxController {
       try {
         SmartDialog.showLoading(msg: 'loading'.tr);
         var couponEditModel = CouponModel(
+            couponId: couponModel!.couponId,
             couponCount: int.parse(count.text),
             couponDiscount: num.parse(discountValue.text),
             couponName: name.text,
-            couponExpireDate: endDate.text,
-            couponStartDate: startDate.text);
-
-        var response = await _couponViewController.couponData
-            .editCoupon(couponEditModel, couponModel!.couponId.toString());
+            couponExpireDate: endDate.text.parseStringToDateTime(),
+            couponStartDate: startDate.text.parseStringToDateTime(),
+            branchId: selectedBranch);
+        var response =
+            await _couponViewController.couponData.editCoupon(couponEditModel);
         statusRequest = handlingData(response);
         if (statusRequest == StatusRequest.success) {
           if (response["status"] == "success") {
@@ -104,18 +108,21 @@ class AddEditCouponController extends GetxController {
     name = TextEditingController();
     discountValue = TextEditingController();
     count = TextEditingController();
-    startDate = TextEditingController(text: DateTime.now().toString());
+    startDate = TextEditingController(text: DateTime.now().parseDate());
     endDate = TextEditingController(
-        text: DateTime.now().add(const Duration(days: 30)).toString());
+        text: DateTime.now().add(const Duration(days: 30)).parseDate());
     dropDownValue = getBranchName(1)!;
   }
 
   initEditData(CouponModel couponModel) {
     name = TextEditingController(text: couponModel.couponName);
-    startDate = TextEditingController(text: couponModel.couponStartDate);
-    endDate = TextEditingController(text: couponModel.couponExpireDate);
+    startDate =
+        TextEditingController(text: couponModel.couponStartDate!.parseDate());
+    endDate =
+        TextEditingController(text: couponModel.couponExpireDate!.parseDate());
     discountValue =
         TextEditingController(text: couponModel.couponDiscount.toString());
+
     count = TextEditingController(text: couponModel.couponCount.toString());
     selectedBranch = couponModel.branchId!;
 

@@ -22,8 +22,8 @@ class CouponModel with _$CouponModel {
     @JsonKey(name: "coupon_id") int? couponId,
     @JsonKey(name: "coupon_name") String? couponName,
     @JsonKey(name: "coupon_count") int? couponCount,
-    @JsonKey(name: "coupon_startdate") String? couponStartDate,
-    @JsonKey(name: "coupon_expiredate") String? couponExpireDate,
+    @JsonKey(name: "coupon_startdate") DateTime? couponStartDate,
+    @JsonKey(name: "coupon_expiredate") DateTime? couponExpireDate,
     @JsonKey(name: "coupon_discount") num? couponDiscount,
     @JsonKey(name: "branch_id") int? branchId,
   }) = _CouponModel;

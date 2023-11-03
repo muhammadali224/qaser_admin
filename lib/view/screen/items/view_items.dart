@@ -4,11 +4,11 @@ import 'package:get/get.dart';
 import '../../../controller/items_controller/view_items_controller.dart';
 import '../../../core/class/handling_data_view.dart';
 import '../../../core/constant/api_link.dart';
-import '../../widget/shred_component/app_drawer.dart';
 import '../../widget/shred_component/curved_header.dart';
 import '../../widget/shred_component/fab.dart';
 import '../../widget/shred_component/item_dashboard.dart';
 import '../../widget/shred_component/popup_edit_delete.dart';
+import '../app_drawer/app_drawer.dart';
 
 class ViewItems extends StatelessWidget {
   const ViewItems({super.key});
@@ -43,14 +43,14 @@ class ViewItems extends StatelessWidget {
                           alignment: AlignmentDirectional.topEnd,
                           children: [
                             ItemDashBoard(
-                                onTap: () => controller.goToItemDetails(
-                                    controller.itemsList[index]),
-                                title: controller.itemsList[index].itemsNameAr!,
-                                subtitle: controller.itemsList[index].itemsPrice
-                                    .toString(),
-                                imageUrl:
-                                    "${AppLink.imagesItems}${controller.itemsList[index].itemsImage}",
-                                background: Colors.amber),
+                              onTap: () => controller
+                                  .goToItemDetails(controller.itemsList[index]),
+                              title: controller.itemsList[index].itemsNameAr!,
+                              subtitle: controller.itemsList[index].itemsPrice
+                                  .toString(),
+                              imageUrl:
+                                  "${AppLink.imagesItems}${controller.itemsList[index].itemsImage}",
+                            ),
                             Container(
                               margin: const EdgeInsets.all(5),
                               child: PopMenuEditDelete(

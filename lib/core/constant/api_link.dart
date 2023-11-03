@@ -45,11 +45,26 @@ class AppLink {
   static const String editWeightSize = "$server/weight_size/edit.php";
   static const String viewWeightSize = "$server/weight_size/view.php";
   static const String deleteWeightSize = "$server/weight_size/delete.php";
+
 //============================ Coupon ==============================//
   static const String addCoupon = "$server/coupon/add.php";
   static const String editCoupon = "$server/coupon/edit.php";
   static const String viewCoupon = "$server/coupon/view.php";
   static const String deleteCoupon = "$server/coupon/delete.php";
+
+//============================ Users ==============================//
+  static const String addUsers = "$server/users/add.php";
+  static const String editUsers = "$server/users/edit.php";
+  static const String viewUsers = "$server/users/view.php";
+  static const String deleteUsers = "$server/users/delete.php";
+
+//============================ Coupon ==============================//
+  static const String addOffersImage = "$server/image_offers/add.php";
+  static const String editOffers = "$server/image_offers/edit.php";
+  static const String editOffersWithImage =
+      "$server/image_offers/edit_with_image.php";
+  static const String viewOffersImage = "$server/image_offers/view.php";
+  static const String deleteOffersImage = "$server/image_offers/delete.php";
 
 //============================== Items ==============================//
   static const String addItem = "$server/items/add.php";

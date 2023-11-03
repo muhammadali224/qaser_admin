@@ -21,9 +21,7 @@ class ItemImageHeader extends GetView<AddEditItemsController> {
             children: [
               Center(
                 child: controller.file == null && controller.isEdit == false
-                    ? Image.asset(
-                        Assets.imagesQaser,
-                      )
+                    ? Image.asset(Assets.imagesQaser)
                     : controller.file != null
                         ? Image.file(controller.file!)
                         : CachedNetworkImage(imageUrl: controller.imageUrl),

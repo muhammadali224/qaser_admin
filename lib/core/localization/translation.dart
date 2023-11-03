@@ -249,6 +249,11 @@ class MyTranslation extends Translations {
           "weightSize": "الاوزان والاحجام",
           "coupons": "كوبونات الخصم",
           "addCoupon": "إضافة كوبون",
+          "offersImage": "صور العروض",
+          "editOfferImage": "تعديل صورة العرض",
+          "addImage": "إضافة صورة",
+          "activeUser": "تفعيل المستخدمين",
+          "users": "المستخدمين",
         },
         'en': {
           'chooseLang': 'Choose Language',
@@ -497,6 +502,11 @@ class MyTranslation extends Translations {
           "weightSize": "Weights And Sizes",
           "coupons": "Discount Coupons",
           "addCoupon": "Add Coupon",
+          "offersImage": "Offers Image",
+          "editOfferImage": "Edit Offers Image",
+          "addImage": "Add Images",
+          "activeUser": "Active User",
+          "users": "User",
         },
       };
 }

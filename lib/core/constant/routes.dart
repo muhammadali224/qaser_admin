@@ -27,8 +27,15 @@ class AppRoutes {
   static const String addCoupon = "/addCoupon";
   static const String editCoupon = "/editCoupon";
 
+  static const String viewOffersImage = "/viewOffersImage";
+  static const String addOffersImage = "/addOffersImage";
+  static const String editOffersImage = "/editOffersImage";
+
   static const String viewItems = "/viewItems";
   static const String addItems = "/addItems";
   static const String editItems = "/editItems";
   static const String itemDetails = "/itemDetails";
+
+  static const String userDetails = "/userDetails";
+  static const String usersView = "/usersView";
 }

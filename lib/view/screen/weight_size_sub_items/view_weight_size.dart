@@ -4,10 +4,10 @@ import 'package:get/get.dart';
 import '../../../controller/weight_size_controller/view_weight_size_controller.dart';
 import '../../../core/class/handling_data_view.dart';
 import '../../../data/source/shared/sub_item_weight_list.dart';
-import '../../widget/shred_component/app_drawer.dart';
 import '../../widget/shred_component/curved_header.dart';
 import '../../widget/shred_component/fab.dart';
 import '../../widget/shred_component/item_list_tile.dart';
+import '../app_drawer/app_drawer.dart';
 
 class ViewWeightSize extends StatelessWidget {
   const ViewWeightSize({super.key});
