@@ -1,8 +1,8 @@
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:get/get.dart';
 
-import '../../core/class/status_request.dart';
 import '../../core/constant/routes.dart';
+import '../../core/enum/status_request.dart';
 import '../../core/function/handling_data_controller.dart';
 import '../../core/services/user_preference.dart';
 import '../../data/model/admin_model/admin_model.dart';

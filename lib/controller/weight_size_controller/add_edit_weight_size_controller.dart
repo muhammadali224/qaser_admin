@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:get/get.dart';
 
-import '../../core/class/status_request.dart';
 import '../../core/constant/routes.dart';
+import '../../core/enum/status_request.dart';
 import '../../core/function/handling_data_controller.dart';
 import '../../data/model/weight_size_model/weight_size_model.dart';
 import 'view_weight_size_controller.dart';

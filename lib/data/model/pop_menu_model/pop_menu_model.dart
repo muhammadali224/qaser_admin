@@ -1,6 +1,9 @@
+import 'package:flutter/material.dart';
+
 class PopMenuModel {
   final String name;
   final String value;
+  final IconData? icon;
 
-  PopMenuModel({required this.name, required this.value});
+  PopMenuModel({this.icon, required this.name, required this.value});
 }

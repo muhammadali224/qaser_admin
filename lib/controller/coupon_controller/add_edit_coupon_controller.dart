@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:get/get.dart';
 
-import '../../core/class/status_request.dart';
 import '../../core/constant/routes.dart';
+import '../../core/enum/status_request.dart';
 import '../../core/extension/date_extension.dart';
 import '../../core/extension/string_extension.dart';
 import '../../core/function/get_branch_name.dart';

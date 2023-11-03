@@ -4,9 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:get/get.dart';
 
-import '../../core/class/status_request.dart';
 import '../../core/constant/api_link.dart';
 import '../../core/constant/routes.dart';
+import '../../core/enum/status_request.dart';
 import '../../core/function/handling_data_controller.dart';
 import '../../data/model/categories_model/categories_model.dart';
 import 'view_categories_controller.dart';

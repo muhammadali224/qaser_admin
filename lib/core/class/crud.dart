@@ -6,8 +6,8 @@ import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:http/http.dart' as http;
 import 'package:path/path.dart';
 
+import '../enum/status_request.dart';
 import '../function/check_internet.dart';
-import 'status_request.dart';
 
 String _basicAuth =
     'Basic ${base64Encode(utf8.encode('muhammad:muhammad224'))}';

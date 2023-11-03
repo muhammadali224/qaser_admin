@@ -4,7 +4,7 @@ import 'package:lottie/lottie.dart';
 
 import '../../generated/assets.dart';
 import '../constant/color.dart';
-import 'status_request.dart';
+import '../enum/status_request.dart';
 
 class HandlingDataView extends StatelessWidget {
   final StatusRequest statusRequest;

@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
 
-import '../core/class/status_request.dart';
+import '../core/enum/status_request.dart';
 import '../core/function/handling_data_controller.dart';
 import '../data/source/remote/test_data.dart';
 

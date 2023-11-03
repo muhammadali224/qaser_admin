@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:get/get.dart';
 
-import '../../core/class/status_request.dart';
+import '../../core/enum/status_request.dart';
 import '../../core/function/handling_data_controller.dart';
 import '../../data/model/items_model/items_model.dart';
 import '../../data/source/remote/items_data/items_data.dart';
