@@ -1,30 +1,34 @@
 import 'package:flutter/material.dart';
-import 'package:get/get_state_manager/src/simple/get_view.dart';
 
-import '../../../controller/users_controller/view_users_controller.dart';
+import '../../../data/model/pop_menu_model/pop_menu_model.dart';
 
-class SortPopUpMenu extends GetView<UsersViewController> {
-  const SortPopUpMenu({super.key});
+class SortPopUpMenu extends StatelessWidget {
+  final List<PopMenuModel> optionMenu;
+  final Function(String)? onSelected;
+  final Widget? icon;
+
+  const SortPopUpMenu(
+      {super.key, required this.optionMenu, this.onSelected, this.icon});
 
   @override
   Widget build(BuildContext context) {
     return PopupMenuButton(
       surfaceTintColor: Colors.white,
       elevation: 10,
-      icon: const Icon(Icons.sort, color: Colors.white),
+      icon: icon ?? const Icon(Icons.sort, color: Colors.white),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
       itemBuilder: (BuildContext context) {
         return [
           ...List.generate(
-            controller.optionMenu.length,
+            optionMenu.length,
             (index) => PopupMenuItem(
-              value: controller.optionMenu[index].value,
+              value: optionMenu[index].value,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(controller.optionMenu[index].name),
+                  Text(optionMenu[index].name),
                   Icon(
-                    controller.optionMenu[index].icon,
+                    optionMenu[index].icon,
                     color: Colors.black,
                   ),
                 ],
@@ -33,9 +37,7 @@ class SortPopUpMenu extends GetView<UsersViewController> {
           )
         ];
       },
-      onSelected: (value) {
-        controller.selectOptionList(value);
-      },
+      onSelected: onSelected,
     );
   }
 }

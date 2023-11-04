@@ -14,7 +14,6 @@ class UsersViewController extends GetxController {
   StatusRequest statusRequest = StatusRequest.none;
   List<UsersModel> usersList = [];
   List<UsersModel> outputUserList = [];
-
   List<UsersModel> listSearchResult = [];
   SearchState searchState = SearchState.none;
   late TextEditingController searchText;
@@ -25,8 +24,14 @@ class UsersViewController extends GetxController {
     PopMenuModel(name: "حسب الاسم", value: "3", icon: Icons.abc_outlined),
     PopMenuModel(name: "حسب التاريخ", value: "4", icon: Icons.date_range),
     PopMenuModel(
-        name: "الاكثر طلبا", value: "5", icon: Icons.shopping_cart_checkout),
-    PopMenuModel(name: "الاقل طلبا", value: "6", icon: Icons.no_food),
+        name: "الاكثر عدد طلبات",
+        value: "5",
+        icon: Icons.shopping_cart_checkout),
+    PopMenuModel(name: "الاقل عدد طلبات", value: "6", icon: Icons.no_food),
+    PopMenuModel(name: "الاكثر سعر طلبات", value: "7", icon: Icons.money),
+    PopMenuModel(
+        name: "الاقل سعر طلبات", value: "8", icon: Icons.money_off_rounded),
+    PopMenuModel(name: "المستخدمين المحظورين", value: "9", icon: Icons.block),
   ];
 
   selectOptionList(String val) {
@@ -43,6 +48,22 @@ class UsersViewController extends GetxController {
         break;
       case "4":
         outputUserList.sort((a, b) => a.usersCreate!.compareTo(b.usersCreate!));
+        break;
+      case "5":
+        outputUserList.sort((a, b) => a.ordersCount!.compareTo(b.ordersCount!));
+        break;
+      case "6":
+        outputUserList.sort((a, b) => b.ordersCount!.compareTo(a.ordersCount!));
+        break;
+      case "7":
+        outputUserList.sort((a, b) => a.totalsPrice!.compareTo(b.totalsPrice!));
+        break;
+      case "8":
+        outputUserList.sort((a, b) => b.totalsPrice!.compareTo(a.totalsPrice!));
+        break;
+      case "9":
+        outputUserList =
+            usersList.where((element) => element.usersApprove == 2).toList();
         break;
     }
 
@@ -111,9 +132,9 @@ class UsersViewController extends GetxController {
     update();
   }
 
-  goToUserDetails(UsersModel userModel) {
-    Get.toNamed(AppRoutes.editCoupon, arguments: {
-      "model": userModel,
+  goToUserDetails(UsersModel userMod) {
+    Get.toNamed(AppRoutes.userDetails, arguments: {
+      "model": userMod,
     });
   }
 

@@ -40,6 +40,18 @@ mixin _$UsersModel {
   DateTime? get usersCreate => throw _privateConstructorUsedError;
   @JsonKey(name: "user_fav_branch_id")
   int? get userFavBranchId => throw _privateConstructorUsedError;
+  @JsonKey(name: "ordersCount")
+  int? get ordersCount => throw _privateConstructorUsedError;
+  @JsonKey(name: "totalsPrice")
+  num? get totalsPrice => throw _privateConstructorUsedError;
+  @JsonKey(name: "pickupOrdersPrice")
+  num? get pickupOrdersPrice => throw _privateConstructorUsedError;
+  @JsonKey(name: "pickupOrdersCount")
+  int? get pickupOrdersCount => throw _privateConstructorUsedError;
+  @JsonKey(name: "deliveryOrdersPrice")
+  num? get deliveryOrdersPrice => throw _privateConstructorUsedError;
+  @JsonKey(name: "deliveryOrdersCount")
+  int? get deliveryOrdersCount => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -63,7 +75,13 @@ abstract class $UsersModelCopyWith<$Res> {
       @JsonKey(name: "users_verifycode") int? usersVerifycode,
       @JsonKey(name: "users_approve") int? usersApprove,
       @JsonKey(name: "users_create") DateTime? usersCreate,
-      @JsonKey(name: "user_fav_branch_id") int? userFavBranchId});
+      @JsonKey(name: "user_fav_branch_id") int? userFavBranchId,
+      @JsonKey(name: "ordersCount") int? ordersCount,
+      @JsonKey(name: "totalsPrice") num? totalsPrice,
+      @JsonKey(name: "pickupOrdersPrice") num? pickupOrdersPrice,
+      @JsonKey(name: "pickupOrdersCount") int? pickupOrdersCount,
+      @JsonKey(name: "deliveryOrdersPrice") num? deliveryOrdersPrice,
+      @JsonKey(name: "deliveryOrdersCount") int? deliveryOrdersCount});
 }
 
 /// @nodoc
@@ -89,6 +107,12 @@ class _$UsersModelCopyWithImpl<$Res, $Val extends UsersModel>
     Object? usersApprove = freezed,
     Object? usersCreate = freezed,
     Object? userFavBranchId = freezed,
+    Object? ordersCount = freezed,
+    Object? totalsPrice = freezed,
+    Object? pickupOrdersPrice = freezed,
+    Object? pickupOrdersCount = freezed,
+    Object? deliveryOrdersPrice = freezed,
+    Object? deliveryOrdersCount = freezed,
   }) {
     return _then(_value.copyWith(
       usersId: freezed == usersId
@@ -131,6 +155,30 @@ class _$UsersModelCopyWithImpl<$Res, $Val extends UsersModel>
           ? _value.userFavBranchId
           : userFavBranchId // ignore: cast_nullable_to_non_nullable
               as int?,
+      ordersCount: freezed == ordersCount
+          ? _value.ordersCount
+          : ordersCount // ignore: cast_nullable_to_non_nullable
+              as int?,
+      totalsPrice: freezed == totalsPrice
+          ? _value.totalsPrice
+          : totalsPrice // ignore: cast_nullable_to_non_nullable
+              as num?,
+      pickupOrdersPrice: freezed == pickupOrdersPrice
+          ? _value.pickupOrdersPrice
+          : pickupOrdersPrice // ignore: cast_nullable_to_non_nullable
+              as num?,
+      pickupOrdersCount: freezed == pickupOrdersCount
+          ? _value.pickupOrdersCount
+          : pickupOrdersCount // ignore: cast_nullable_to_non_nullable
+              as int?,
+      deliveryOrdersPrice: freezed == deliveryOrdersPrice
+          ? _value.deliveryOrdersPrice
+          : deliveryOrdersPrice // ignore: cast_nullable_to_non_nullable
+              as num?,
+      deliveryOrdersCount: freezed == deliveryOrdersCount
+          ? _value.deliveryOrdersCount
+          : deliveryOrdersCount // ignore: cast_nullable_to_non_nullable
+              as int?,
     ) as $Val);
   }
 }
@@ -153,7 +201,13 @@ abstract class _$$UsersModelImplCopyWith<$Res>
       @JsonKey(name: "users_verifycode") int? usersVerifycode,
       @JsonKey(name: "users_approve") int? usersApprove,
       @JsonKey(name: "users_create") DateTime? usersCreate,
-      @JsonKey(name: "user_fav_branch_id") int? userFavBranchId});
+      @JsonKey(name: "user_fav_branch_id") int? userFavBranchId,
+      @JsonKey(name: "ordersCount") int? ordersCount,
+      @JsonKey(name: "totalsPrice") num? totalsPrice,
+      @JsonKey(name: "pickupOrdersPrice") num? pickupOrdersPrice,
+      @JsonKey(name: "pickupOrdersCount") int? pickupOrdersCount,
+      @JsonKey(name: "deliveryOrdersPrice") num? deliveryOrdersPrice,
+      @JsonKey(name: "deliveryOrdersCount") int? deliveryOrdersCount});
 }
 
 /// @nodoc
@@ -177,6 +231,12 @@ class __$$UsersModelImplCopyWithImpl<$Res>
     Object? usersApprove = freezed,
     Object? usersCreate = freezed,
     Object? userFavBranchId = freezed,
+    Object? ordersCount = freezed,
+    Object? totalsPrice = freezed,
+    Object? pickupOrdersPrice = freezed,
+    Object? pickupOrdersCount = freezed,
+    Object? deliveryOrdersPrice = freezed,
+    Object? deliveryOrdersCount = freezed,
   }) {
     return _then(_$UsersModelImpl(
       usersId: freezed == usersId
@@ -219,6 +279,30 @@ class __$$UsersModelImplCopyWithImpl<$Res>
           ? _value.userFavBranchId
           : userFavBranchId // ignore: cast_nullable_to_non_nullable
               as int?,
+      ordersCount: freezed == ordersCount
+          ? _value.ordersCount
+          : ordersCount // ignore: cast_nullable_to_non_nullable
+              as int?,
+      totalsPrice: freezed == totalsPrice
+          ? _value.totalsPrice
+          : totalsPrice // ignore: cast_nullable_to_non_nullable
+              as num?,
+      pickupOrdersPrice: freezed == pickupOrdersPrice
+          ? _value.pickupOrdersPrice
+          : pickupOrdersPrice // ignore: cast_nullable_to_non_nullable
+              as num?,
+      pickupOrdersCount: freezed == pickupOrdersCount
+          ? _value.pickupOrdersCount
+          : pickupOrdersCount // ignore: cast_nullable_to_non_nullable
+              as int?,
+      deliveryOrdersPrice: freezed == deliveryOrdersPrice
+          ? _value.deliveryOrdersPrice
+          : deliveryOrdersPrice // ignore: cast_nullable_to_non_nullable
+              as num?,
+      deliveryOrdersCount: freezed == deliveryOrdersCount
+          ? _value.deliveryOrdersCount
+          : deliveryOrdersCount // ignore: cast_nullable_to_non_nullable
+              as int?,
     ));
   }
 }
@@ -236,7 +320,13 @@ class _$UsersModelImpl implements _UsersModel {
       @JsonKey(name: "users_verifycode") this.usersVerifycode,
       @JsonKey(name: "users_approve") this.usersApprove,
       @JsonKey(name: "users_create") this.usersCreate,
-      @JsonKey(name: "user_fav_branch_id") this.userFavBranchId});
+      @JsonKey(name: "user_fav_branch_id") this.userFavBranchId,
+      @JsonKey(name: "ordersCount") this.ordersCount,
+      @JsonKey(name: "totalsPrice") this.totalsPrice,
+      @JsonKey(name: "pickupOrdersPrice") this.pickupOrdersPrice,
+      @JsonKey(name: "pickupOrdersCount") this.pickupOrdersCount,
+      @JsonKey(name: "deliveryOrdersPrice") this.deliveryOrdersPrice,
+      @JsonKey(name: "deliveryOrdersCount") this.deliveryOrdersCount});
 
   factory _$UsersModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$UsersModelImplFromJson(json);
@@ -271,10 +361,28 @@ class _$UsersModelImpl implements _UsersModel {
   @override
   @JsonKey(name: "user_fav_branch_id")
   final int? userFavBranchId;
+  @override
+  @JsonKey(name: "ordersCount")
+  final int? ordersCount;
+  @override
+  @JsonKey(name: "totalsPrice")
+  final num? totalsPrice;
+  @override
+  @JsonKey(name: "pickupOrdersPrice")
+  final num? pickupOrdersPrice;
+  @override
+  @JsonKey(name: "pickupOrdersCount")
+  final int? pickupOrdersCount;
+  @override
+  @JsonKey(name: "deliveryOrdersPrice")
+  final num? deliveryOrdersPrice;
+  @override
+  @JsonKey(name: "deliveryOrdersCount")
+  final int? deliveryOrdersCount;
 
   @override
   String toString() {
-    return 'UsersModel(usersId: $usersId, usersName: $usersName, usersEmail: $usersEmail, usersPassword: $usersPassword, usersPhone: $usersPhone, usersImage: $usersImage, usersVerifycode: $usersVerifycode, usersApprove: $usersApprove, usersCreate: $usersCreate, userFavBranchId: $userFavBranchId)';
+    return 'UsersModel(usersId: $usersId, usersName: $usersName, usersEmail: $usersEmail, usersPassword: $usersPassword, usersPhone: $usersPhone, usersImage: $usersImage, usersVerifycode: $usersVerifycode, usersApprove: $usersApprove, usersCreate: $usersCreate, userFavBranchId: $userFavBranchId, ordersCount: $ordersCount, totalsPrice: $totalsPrice, pickupOrdersPrice: $pickupOrdersPrice, pickupOrdersCount: $pickupOrdersCount, deliveryOrdersPrice: $deliveryOrdersPrice, deliveryOrdersCount: $deliveryOrdersCount)';
   }
 
   @override
@@ -300,7 +408,19 @@ class _$UsersModelImpl implements _UsersModel {
             (identical(other.usersCreate, usersCreate) ||
                 other.usersCreate == usersCreate) &&
             (identical(other.userFavBranchId, userFavBranchId) ||
-                other.userFavBranchId == userFavBranchId));
+                other.userFavBranchId == userFavBranchId) &&
+            (identical(other.ordersCount, ordersCount) ||
+                other.ordersCount == ordersCount) &&
+            (identical(other.totalsPrice, totalsPrice) ||
+                other.totalsPrice == totalsPrice) &&
+            (identical(other.pickupOrdersPrice, pickupOrdersPrice) ||
+                other.pickupOrdersPrice == pickupOrdersPrice) &&
+            (identical(other.pickupOrdersCount, pickupOrdersCount) ||
+                other.pickupOrdersCount == pickupOrdersCount) &&
+            (identical(other.deliveryOrdersPrice, deliveryOrdersPrice) ||
+                other.deliveryOrdersPrice == deliveryOrdersPrice) &&
+            (identical(other.deliveryOrdersCount, deliveryOrdersCount) ||
+                other.deliveryOrdersCount == deliveryOrdersCount));
   }
 
   @JsonKey(ignore: true)
@@ -316,7 +436,13 @@ class _$UsersModelImpl implements _UsersModel {
       usersVerifycode,
       usersApprove,
       usersCreate,
-      userFavBranchId);
+      userFavBranchId,
+      ordersCount,
+      totalsPrice,
+      pickupOrdersPrice,
+      pickupOrdersCount,
+      deliveryOrdersPrice,
+      deliveryOrdersCount);
 
   @JsonKey(ignore: true)
   @override
@@ -334,17 +460,23 @@ class _$UsersModelImpl implements _UsersModel {
 
 abstract class _UsersModel implements UsersModel {
   const factory _UsersModel(
-          {@JsonKey(name: "users_id") final int? usersId,
-          @JsonKey(name: "users_name") final String? usersName,
-          @JsonKey(name: "users_email") final String? usersEmail,
-          @JsonKey(name: "users_password") final String? usersPassword,
-          @JsonKey(name: "users_phone") final String? usersPhone,
-          @JsonKey(name: "users_image") final String? usersImage,
-          @JsonKey(name: "users_verifycode") final int? usersVerifycode,
-          @JsonKey(name: "users_approve") final int? usersApprove,
-          @JsonKey(name: "users_create") final DateTime? usersCreate,
-          @JsonKey(name: "user_fav_branch_id") final int? userFavBranchId}) =
-      _$UsersModelImpl;
+      {@JsonKey(name: "users_id") final int? usersId,
+      @JsonKey(name: "users_name") final String? usersName,
+      @JsonKey(name: "users_email") final String? usersEmail,
+      @JsonKey(name: "users_password") final String? usersPassword,
+      @JsonKey(name: "users_phone") final String? usersPhone,
+      @JsonKey(name: "users_image") final String? usersImage,
+      @JsonKey(name: "users_verifycode") final int? usersVerifycode,
+      @JsonKey(name: "users_approve") final int? usersApprove,
+      @JsonKey(name: "users_create") final DateTime? usersCreate,
+      @JsonKey(name: "user_fav_branch_id") final int? userFavBranchId,
+      @JsonKey(name: "ordersCount") final int? ordersCount,
+      @JsonKey(name: "totalsPrice") final num? totalsPrice,
+      @JsonKey(name: "pickupOrdersPrice") final num? pickupOrdersPrice,
+      @JsonKey(name: "pickupOrdersCount") final int? pickupOrdersCount,
+      @JsonKey(name: "deliveryOrdersPrice") final num? deliveryOrdersPrice,
+      @JsonKey(name: "deliveryOrdersCount")
+      final int? deliveryOrdersCount}) = _$UsersModelImpl;
 
   factory _UsersModel.fromJson(Map<String, dynamic> json) =
       _$UsersModelImpl.fromJson;
@@ -379,6 +511,24 @@ abstract class _UsersModel implements UsersModel {
   @override
   @JsonKey(name: "user_fav_branch_id")
   int? get userFavBranchId;
+  @override
+  @JsonKey(name: "ordersCount")
+  int? get ordersCount;
+  @override
+  @JsonKey(name: "totalsPrice")
+  num? get totalsPrice;
+  @override
+  @JsonKey(name: "pickupOrdersPrice")
+  num? get pickupOrdersPrice;
+  @override
+  @JsonKey(name: "pickupOrdersCount")
+  int? get pickupOrdersCount;
+  @override
+  @JsonKey(name: "deliveryOrdersPrice")
+  num? get deliveryOrdersPrice;
+  @override
+  @JsonKey(name: "deliveryOrdersCount")
+  int? get deliveryOrdersCount;
   @override
   @JsonKey(ignore: true)
   _$$UsersModelImplCopyWith<_$UsersModelImpl> get copyWith =>

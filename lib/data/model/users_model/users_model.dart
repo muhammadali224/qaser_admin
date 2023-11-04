@@ -29,6 +29,12 @@ class UsersModel with _$UsersModel {
     @JsonKey(name: "users_approve") int? usersApprove,
     @JsonKey(name: "users_create") DateTime? usersCreate,
     @JsonKey(name: "user_fav_branch_id") int? userFavBranchId,
+    @JsonKey(name: "ordersCount") int? ordersCount,
+    @JsonKey(name: "totalsPrice") num? totalsPrice,
+    @JsonKey(name: "pickupOrdersPrice") num? pickupOrdersPrice,
+    @JsonKey(name: "pickupOrdersCount") int? pickupOrdersCount,
+    @JsonKey(name: "deliveryOrdersPrice") num? deliveryOrdersPrice,
+    @JsonKey(name: "deliveryOrdersCount") int? deliveryOrdersCount,
   }) = _UsersModel;
 
   factory UsersModel.fromJson(Map<String, dynamic> json) =>

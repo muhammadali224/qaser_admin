@@ -43,4 +43,12 @@ class UsersData {
     });
     return response.fold((l) => l, (r) => r);
   }
+
+  changeUserState(int userId, int userState) async {
+    var response = await crud.postData(AppLink.changeUserState, {
+      "userId": userId.toString(),
+      "userState": userState.toString(),
+    });
+    return response.fold((l) => l, (r) => r);
+  }
 }

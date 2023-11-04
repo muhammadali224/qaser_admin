@@ -29,36 +29,6 @@ class AddEditCategoryController extends GetxController {
     isEdit = value;
   }
 
-  // addCategory() async {
-  //   if (formKey.currentState!.validate()) {
-  //     try {
-  //       SmartDialog.showLoading(msg: 'loading'.tr);
-  //       var catModel = CategoriesModel(
-  //           categoriesNameAr: nameAr.text,
-  //           categoriesName: nameEn.text,
-  //           categoriesDatetime: DateTime.now(),
-  //           categoriesImage: "images");
-  //       var response = await categoriesViewController.categoriesData
-  //           .addCategories(catModel);
-  //       statusRequest = handlingData(response);
-  //       if (statusRequest == StatusRequest.success) {
-  //         if (response["status"] == "success") {
-  //           SmartDialog.dismiss();
-  //           SmartDialog.showNotify(
-  //               msg: "تم الاضافة بنجاح", notifyType: NotifyType.success);
-  //           Get.offAndToNamed(AppRoutes.viewCategories);
-  //           categoriesViewController.getCategories();
-  //         }
-  //       } else {
-  //         statusRequest = StatusRequest.failed;
-  //       }
-  //     } catch (e) {
-  //       SmartDialog.showToast(e.toString());
-  //     }
-  //   }
-  //   update();
-  // }
-
   editCategory() async {
     if (formKey.currentState!.validate()) {
       try {

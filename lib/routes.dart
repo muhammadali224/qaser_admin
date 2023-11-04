@@ -21,6 +21,7 @@ import 'view/screen/image_offer/view_images.dart';
 import 'view/screen/items/add_edit_items.dart';
 import 'view/screen/items/item_details.dart';
 import 'view/screen/items/view_items.dart';
+import 'view/screen/users/user_details.dart';
 import 'view/screen/users/view_users.dart';
 import 'view/screen/weight_size_sub_items/add_edit_weight_size.dart';
 import 'view/screen/weight_size_sub_items/view_weight_size.dart';
@@ -63,4 +64,5 @@ List<GetPage<dynamic>>? routes = [
   GetPage(name: AppRoutes.editOffersImage, page: () => const EditImagesOffer()),
   GetPage(name: AppRoutes.addOffersImage, page: () => const EditImagesOffer()),
   GetPage(name: AppRoutes.usersView, page: () => const ViewUsers()),
+  GetPage(name: AppRoutes.userDetails, page: () => const UserDetails()),
 ];

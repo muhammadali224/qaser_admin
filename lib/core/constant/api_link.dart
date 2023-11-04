@@ -53,7 +53,7 @@ class AppLink {
   static const String deleteCoupon = "$server/coupon/delete.php";
 
 //============================ Users ==============================//
-  static const String addUsers = "$server/users/add.php";
+  static const String changeUserState = "$server/users/change_user_state.php";
   static const String editUsers = "$server/users/edit.php";
   static const String viewUsers = "$server/users/view.php";
   static const String deleteUsers = "$server/users/delete.php";
