@@ -25,16 +25,6 @@ class AllUserView extends StatelessWidget {
                     .goToUserDetails(controller.outputUserList[index]),
                 title: controller.outputUserList[index].usersName!,
                 subtitle: controller.outputUserList[index].usersPhone!,
-                subWidget: Text(
-                    controller.outputUserList[index].usersApprove == 0
-                        ? "غير مفعل"
-                        : "مفعل",
-                    style: TextStyle(
-                        color:
-                            controller.outputUserList[index].usersApprove == 0
-                                ? Colors.red
-                                : Colors.green,
-                        fontWeight: FontWeight.bold)),
                 imageUrl:
                     "${AppLink.imageUserProfile}${controller.outputUserList[index].usersImage}",
               ),

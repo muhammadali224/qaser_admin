@@ -14,6 +14,7 @@ class InputFormField extends StatelessWidget {
   final bool? isExpanded;
   final bool? readOnly;
   final String? labelString;
+  final void Function(String?)? onSubmit;
 
   const InputFormField({
     super.key,
@@ -29,6 +30,7 @@ class InputFormField extends StatelessWidget {
     this.readOnly = false,
     this.onTap,
     this.labelString,
+    this.onSubmit,
   });
 
   @override
@@ -36,6 +38,7 @@ class InputFormField extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
       child: TextFormField(
+        onFieldSubmitted: onSubmit,
         onTap: onTap,
         readOnly: readOnly!,
         maxLines: isExpanded == false || isExpanded == null ? 1 : 6,

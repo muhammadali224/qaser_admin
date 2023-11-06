@@ -89,6 +89,7 @@ class AddBranch extends StatelessWidget {
                 ),
                 InputFormField(
                   hintTitle: 'رسوم التوصيل لكل كيلومتر',
+                  labelString: 'رسوم التوصيل لكل كيلومتر',
                   icon: FontAwesome.money_bill_1_wave,
                   controller: controller.deleveryCharge,
                   keyboardType: const TextInputType.numberWithOptions(),
@@ -98,6 +99,7 @@ class AddBranch extends StatelessWidget {
                 ),
                 InputFormField(
                   hintTitle: 'مسافة حدود التوصيل بالكيلومتر',
+                  labelString: 'مسافة حدود التوصيل بالكيلومتر',
                   keyboardType: const TextInputType.numberWithOptions(),
                   icon: Icons.social_distance,
                   controller: controller.deleveryMaxZone,
@@ -133,6 +135,7 @@ class AddBranch extends StatelessWidget {
                 if (controller.selectedOption == 1)
                   InputFormField(
                     hintTitle: 'رسوم التوصيل الثابته',
+                    labelString: 'رسوم التوصيل الثابته',
                     icon: FontAwesome.money_check_dollar,
                     keyboardType: const TextInputType.numberWithOptions(),
                     iconColor: Colors.teal,
@@ -147,6 +150,7 @@ class AddBranch extends StatelessWidget {
                 if (controller.selectedOption == 1)
                   InputFormField(
                     hintTitle: 'مسافة التوصيل الثابته بالكيلومتر',
+                    labelString: 'مسافة التوصيل الثابته بالكيلومتر',
                     icon: FontAwesome.ruler,
                     keyboardType: const TextInputType.numberWithOptions(),
                     iconColor: Colors.deepPurpleAccent,

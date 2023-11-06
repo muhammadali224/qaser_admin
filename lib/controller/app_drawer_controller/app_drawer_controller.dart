@@ -8,34 +8,34 @@ class AppDrawerController extends GetxController {
   }
 
   goToBranches() {
-    Get.offNamed(AppRoutes.branches);
+    Get.toNamed(AppRoutes.branches);
   }
 
   goToAdminUser() {
-    Get.offNamed(AppRoutes.adminUser);
+    Get.toNamed(AppRoutes.adminUser);
   }
 
   goToCashUser() {
-    Get.offNamed(AppRoutes.cashUser);
+    Get.toNamed(AppRoutes.cashUser);
   }
 
   goToCategories() {
-    Get.offNamed(AppRoutes.viewCategories);
+    Get.toNamed(AppRoutes.viewCategories);
   }
 
   goToCoupons() {
-    Get.offNamed(AppRoutes.viewCoupon);
+    Get.toNamed(AppRoutes.viewCoupon);
   }
 
   goToOffersImage() {
-    Get.offNamed(AppRoutes.viewOffersImage);
+    Get.toNamed(AppRoutes.viewOffersImage);
   }
 
   goToUsers() {
-    Get.offNamed(AppRoutes.usersView);
+    Get.toNamed(AppRoutes.usersView);
   }
 
   goToWeightSize() {
-    Get.offNamed(AppRoutes.weightSize);
+    Get.toNamed(AppRoutes.weightSize);
   }
 }

@@ -4,9 +4,11 @@ import 'package:get/get.dart';
 
 import '../../core/enum/status_request.dart';
 import '../../core/function/handling_data_controller.dart';
+import '../../core/function/show_modal_sheet.dart';
 import '../../data/model/pop_menu_model/pop_menu_model.dart';
 import '../../data/model/users_model/users_model.dart';
 import '../../data/source/remote/users_data/users_data.dart';
+import '../../view/widget/users/send_notification_container.dart';
 
 class UserDetailsController extends GetxController {
   UsersModel? userModel;
@@ -15,21 +17,62 @@ class UserDetailsController extends GetxController {
   StatusRequest statusRequest = StatusRequest.none;
   Map<String, double> mapCount = {};
   Map<String, double> mapPrice = {};
+  TextEditingController titleText = TextEditingController();
+  TextEditingController bodyText = TextEditingController();
+  TextEditingController pointCountText = TextEditingController();
 
-  Future<void> selectOptionList(String val) async {
+  Future<void> selectOptionList(String val, BuildContext context) async {
     switch (val) {
       case "1":
-        await editUserDetails(1);
+        await editUserState(1);
         break;
       case "2":
-        await editUserDetails(userModel!.usersApprove == 2 ? 1 : 2);
+        await editUserState(userModel!.usersApprove == 2 ? 1 : 2);
+        break;
+      case "3":
+        showModelSheet(
+            context,
+            SendNotificationContainer(
+              isForPoint: false,
+              onTap: () async {
+                await sendUserNotifications();
+                Get.back();
+              },
+            ));
+        break;
+      case "4":
+        showModelSheet(
+            context,
+            SendNotificationContainer(
+              isForPoint: true,
+              onTap: () async {
+                await sendUserPoints();
+                Get.back();
+              },
+            ));
         break;
     }
 
     update();
   }
 
-  Future<void> editUserDetails(int userState) async {
+  String getUserState() {
+    String state = "";
+    switch (userModel!.usersApprove) {
+      case 0:
+        state = "غير مفعل";
+        break;
+      case 1:
+        state = "مفعل";
+        break;
+      case 2:
+        state = "الحساب محظور";
+        break;
+    }
+    return state;
+  }
+
+  Future<void> editUserState(int userState) async {
     try {
       SmartDialog.showLoading(msg: 'loading'.tr);
       var response =
@@ -51,18 +94,50 @@ class UserDetailsController extends GetxController {
     update();
   }
 
-  Future<void> sendUserNotifications(
-      {required String title, required String body}) async {
+  Future<void> sendUserNotifications() async {
     try {
       SmartDialog.showLoading(msg: 'loading'.tr);
       var response = await usersData.sendUserNotification(
-          userId: userModel!.usersId!, body: body, title: title);
+          userId: userModel!.usersId!,
+          body: bodyText.text,
+          title: titleText.text);
       statusRequest = handlingData(response);
       if (statusRequest == StatusRequest.success) {
         if (response["status"] == "success") {
           SmartDialog.dismiss();
           SmartDialog.showNotify(
               msg: "تم الإرسال بنجاح", notifyType: NotifyType.success);
+          bodyText.clear();
+          titleText.clear();
+        }
+      } else {
+        statusRequest = StatusRequest.failed;
+      }
+    } catch (e) {
+      SmartDialog.dismiss();
+      SmartDialog.showToast(e.toString());
+    }
+    update();
+  }
+
+  Future<void> sendUserPoints() async {
+    try {
+      SmartDialog.showLoading(msg: 'loading'.tr);
+      var response = await usersData.sendUserPoint(
+        userId: userModel!.usersId!,
+        body: bodyText.text,
+        title: titleText.text,
+        pointCount: pointCountText.text,
+      );
+      statusRequest = handlingData(response);
+      if (statusRequest == StatusRequest.success) {
+        if (response["status"] == "success") {
+          SmartDialog.dismiss();
+          SmartDialog.showNotify(
+              msg: "تم الإرسال بنجاح", notifyType: NotifyType.success);
+          bodyText.clear();
+          titleText.clear();
+          pointCountText.clear();
         }
       } else {
         statusRequest = StatusRequest.failed;
@@ -105,5 +180,13 @@ class UserDetailsController extends GetxController {
           name: "تفعيل", value: "1", icon: Icons.verified_user_rounded));
     }
     super.onInit();
+  }
+
+  @override
+  void dispose() {
+    pointCountText.dispose();
+    titleText.dispose();
+    bodyText.dispose();
+    super.dispose();
   }
 }

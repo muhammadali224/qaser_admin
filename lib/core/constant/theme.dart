@@ -3,14 +3,12 @@ import 'package:flutter/material.dart';
 import 'color.dart';
 
 ThemeData themeEnglish = ThemeData(
-    floatingActionButtonTheme: FloatingActionButtonThemeData(
-      backgroundColor: AppColor.red,
-    ),
+    floatingActionButtonTheme:
+        FloatingActionButtonThemeData(backgroundColor: AppColor.red),
     appBarTheme: const AppBarTheme(
-      centerTitle: true,
-      surfaceTintColor: Colors.white,
-      elevation: 25,
-    ),
+        centerTitle: true, surfaceTintColor: Colors.white, elevation: 25),
+    bottomSheetTheme: const BottomSheetThemeData(
+        backgroundColor: Colors.white, surfaceTintColor: Colors.white),
     switchTheme: SwitchThemeData(
         thumbColor: MaterialStateProperty.all(Colors.white),
         trackColor: MaterialStateProperty.resolveWith((states) =>
@@ -44,14 +42,12 @@ ThemeData themeEnglish = ThemeData(
       ),
     ));
 ThemeData themeArabic = ThemeData(
-    floatingActionButtonTheme: FloatingActionButtonThemeData(
-      backgroundColor: AppColor.red,
-    ),
+    floatingActionButtonTheme:
+        FloatingActionButtonThemeData(backgroundColor: AppColor.red),
     appBarTheme: const AppBarTheme(
-      centerTitle: true,
-      surfaceTintColor: Colors.white,
-      elevation: 25,
-    ),
+        centerTitle: true, surfaceTintColor: Colors.white, elevation: 25),
+    bottomSheetTheme: const BottomSheetThemeData(
+        backgroundColor: Colors.white, surfaceTintColor: Colors.white),
     switchTheme: SwitchThemeData(
         thumbColor: MaterialStateProperty.all(Colors.white),
         trackColor: MaterialStateProperty.resolveWith((states) =>

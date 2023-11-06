@@ -17,8 +17,8 @@ class HomeController extends GetxController {
   StatusRequest statusRequest = StatusRequest.none;
 
   getBranches() async {
+    branchList.clear();
     try {
-      branchList.clear();
       statusRequest = StatusRequest.loading;
       update();
       var response = await branchesData.getBranches(

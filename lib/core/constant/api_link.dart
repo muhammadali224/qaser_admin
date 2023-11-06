@@ -58,6 +58,7 @@ class AppLink {
       "$server/users/send_notification.php";
   static const String viewUsers = "$server/users/view.php";
   static const String deleteUsers = "$server/users/delete.php";
+  static const String addUserPoint = "$server/users/add_point.php";
 
 //============================ Coupon ==============================//
   static const String addOffersImage = "$server/image_offers/add.php";
