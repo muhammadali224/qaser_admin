@@ -54,7 +54,8 @@ class AppLink {
 
 //============================ Users ==============================//
   static const String changeUserState = "$server/users/change_user_state.php";
-  static const String editUsers = "$server/users/edit.php";
+  static const String sendUserNotification =
+      "$server/users/send_notification.php";
   static const String viewUsers = "$server/users/view.php";
   static const String deleteUsers = "$server/users/delete.php";
 

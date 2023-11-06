@@ -11,31 +11,6 @@ class UsersData {
     return response.fold((l) => l, (r) => r);
   }
 
-  // addCoupon(CouponModel couponModel) async {
-//   var response = await crud.postData(AppLink.addCoupon, {
-//     "couponName": couponModel.couponName,
-//     "couponCount": couponModel.couponCount.toString(),
-//     "couponDiscount": couponModel.couponDiscount.toString(),
-//     "couponBranchId": couponModel.branchId.toString(),
-//     "couponStartDate": couponModel.couponStartDate.toString(),
-//     "couponEndDate": couponModel.couponExpireDate.toString(),
-//   });
-//   return response.fold((l) => l, (r) => r);
-// }
-//
-// editCoupon(CouponModel couponModel) async {
-//   var response = await crud.postData(AppLink.editCoupon, {
-//     "couponId": couponModel.couponId.toString(),
-//     "couponName": couponModel.couponName,
-//     "couponCount": couponModel.couponCount.toString(),
-//     "couponDiscount": couponModel.couponDiscount.toString(),
-//     "couponBranchId": couponModel.branchId.toString(),
-//     "couponStartDate": couponModel.couponStartDate.toString(),
-//     "couponEndDate": couponModel.couponExpireDate.toString(),
-//   });
-//   return response.fold((l) => l, (r) => r);
-// }
-//
   deleteUser(String userId, String userImage) async {
     var response = await crud.postData(AppLink.deleteUsers, {
       "userId": userId,
@@ -48,6 +23,19 @@ class UsersData {
     var response = await crud.postData(AppLink.changeUserState, {
       "userId": userId.toString(),
       "userState": userState.toString(),
+    });
+    return response.fold((l) => l, (r) => r);
+  }
+
+  sendUserNotification({
+    required int userId,
+    required String body,
+    required String title,
+  }) async {
+    var response = await crud.postData(AppLink.sendUserNotification, {
+      "userId": userId.toString(),
+      "title": title,
+      "body": body,
     });
     return response.fold((l) => l, (r) => r);
   }

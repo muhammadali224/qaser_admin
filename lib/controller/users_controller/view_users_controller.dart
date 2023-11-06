@@ -49,16 +49,16 @@ class UsersViewController extends GetxController {
       case "4":
         outputUserList.sort((a, b) => a.usersCreate!.compareTo(b.usersCreate!));
         break;
-      case "5":
+      case "6":
         outputUserList.sort((a, b) => a.ordersCount!.compareTo(b.ordersCount!));
         break;
-      case "6":
+      case "5":
         outputUserList.sort((a, b) => b.ordersCount!.compareTo(a.ordersCount!));
         break;
-      case "7":
+      case "8":
         outputUserList.sort((a, b) => a.totalsPrice!.compareTo(b.totalsPrice!));
         break;
-      case "8":
+      case "7":
         outputUserList.sort((a, b) => b.totalsPrice!.compareTo(a.totalsPrice!));
         break;
       case "9":

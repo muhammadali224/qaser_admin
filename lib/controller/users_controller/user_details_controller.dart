@@ -13,8 +13,10 @@ class UserDetailsController extends GetxController {
   List<PopMenuModel> optionMenu = [];
   final UsersData usersData = UsersData(Get.find());
   StatusRequest statusRequest = StatusRequest.none;
+  Map<String, double> mapCount = {};
+  Map<String, double> mapPrice = {};
 
-  selectOptionList(String val) async {
+  Future<void> selectOptionList(String val) async {
     switch (val) {
       case "1":
         await editUserDetails(1);
@@ -27,7 +29,7 @@ class UserDetailsController extends GetxController {
     update();
   }
 
-  editUserDetails(int userState) async {
+  Future<void> editUserDetails(int userState) async {
     try {
       SmartDialog.showLoading(msg: 'loading'.tr);
       var response =
@@ -49,17 +51,55 @@ class UserDetailsController extends GetxController {
     update();
   }
 
+  Future<void> sendUserNotifications(
+      {required String title, required String body}) async {
+    try {
+      SmartDialog.showLoading(msg: 'loading'.tr);
+      var response = await usersData.sendUserNotification(
+          userId: userModel!.usersId!, body: body, title: title);
+      statusRequest = handlingData(response);
+      if (statusRequest == StatusRequest.success) {
+        if (response["status"] == "success") {
+          SmartDialog.dismiss();
+          SmartDialog.showNotify(
+              msg: "تم الإرسال بنجاح", notifyType: NotifyType.success);
+        }
+      } else {
+        statusRequest = StatusRequest.failed;
+      }
+    } catch (e) {
+      SmartDialog.dismiss();
+      SmartDialog.showToast(e.toString());
+    }
+    update();
+  }
+
   @override
   void onInit() {
     userModel = Get.arguments["model"];
-    optionMenu.add(
+    mapCount = {
+      "التوصيل": userModel!.deliveryOrdersCount!.toDouble(),
+      "الاستلام": userModel!.pickupOrdersCount!.toDouble(),
+    };
+    mapPrice = {
+      "التوصيل": userModel!.deliveryOrdersPrice!.toDouble(),
+      "الاستلام": userModel!.pickupOrdersPrice!.toDouble(),
+    };
+
+    optionMenu.addAll([
       PopMenuModel(
           name: userModel!.usersApprove == 2
               ? "إلغاء حظر المستخدم"
               : "حظر المستخدم",
           value: "2",
-          icon: Icons.no_accounts),
-    );
+          icon: Icons.no_accounts_outlined),
+      PopMenuModel(
+          name: "إرسال إشعار",
+          value: "3",
+          icon: Icons.notification_add_outlined),
+      PopMenuModel(
+          name: "إرسال نقاط كهدية", value: "4", icon: Icons.redeem_rounded),
+    ]);
     if (userModel!.usersApprove == 0) {
       optionMenu.add(PopMenuModel(
           name: "تفعيل", value: "1", icon: Icons.verified_user_rounded));

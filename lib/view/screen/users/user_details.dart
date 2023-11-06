@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../controller/users_controller/user_details_controller.dart';
+import '../../widget/shred_component/padding_container.dart';
 import '../../widget/users/sort_popuo_menu.dart';
+import '../../widget/users/users_header_pie.dart';
 
 class UserDetails extends StatelessWidget {
   const UserDetails({super.key});
@@ -21,7 +23,13 @@ class UserDetails extends StatelessWidget {
           )
         ],
       ),
-      body: Container(),
+      body: PaddingContainer(
+        child: ListView(
+          children: [
+            UserHeaderPie(),
+          ],
+        ),
+      ),
     );
   }
 }
