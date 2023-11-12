@@ -38,4 +38,6 @@ class AppRoutes {
 
   static const String userDetails = "/userDetails";
   static const String usersView = "/usersView";
+
+  static const String viewNotification = "/viewNotification";
 }

@@ -53,7 +53,7 @@ class AppDrawer extends StatelessWidget {
           DrawerItem(
             title: 'notification',
             icon: IconBroken.Notification,
-            onTap: controller.goToCoupons,
+            onTap: controller.goToNotification,
           ),
           DrawerItem(
             title: 'offersImage',

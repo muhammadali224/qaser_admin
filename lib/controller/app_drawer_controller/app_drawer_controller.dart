@@ -27,6 +27,10 @@ class AppDrawerController extends GetxController {
     Get.toNamed(AppRoutes.viewCoupon);
   }
 
+  goToNotification() {
+    Get.toNamed(AppRoutes.viewNotification);
+  }
+
   goToOffersImage() {
     Get.toNamed(AppRoutes.viewOffersImage);
   }

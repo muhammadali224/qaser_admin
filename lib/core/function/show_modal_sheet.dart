@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-void showModelSheet(BuildContext context, Widget widget) async {
+void showModalSheet(BuildContext context, Widget widget) async {
   await showModalBottomSheet(
     context: context,
     isScrollControlled: true,

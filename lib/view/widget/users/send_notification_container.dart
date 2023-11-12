@@ -16,54 +16,57 @@ class SendNotificationContainer extends GetView<UserDetailsController> {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding:
-          EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Center(
-            child: Text(isForPoint ? "إرسال نقاط كهدية" : "إرسال إشعار",
-                style: const TextStyle(fontSize: 22, color: Colors.black)),
-          ),
-          if (isForPoint)
+    return Form(
+      key: controller.formKey,
+      child: Padding(
+        padding:
+            EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Center(
+              child: Text(isForPoint ? "إرسال نقاط كهدية" : "إرسال إشعار",
+                  style: const TextStyle(fontSize: 22, color: Colors.black)),
+            ),
+            if (isForPoint)
+              InputFormField(
+                hintTitle: 'عدد النقاط',
+                labelString: 'أدخل عدد النقاط المراد إرسالها',
+                controller: controller.pointCountText,
+                icon: Icons.redeem_rounded,
+                keyboardType: const TextInputType.numberWithOptions(),
+                validate: (val) {
+                  return validInput(val!, 1, 50, 'name');
+                },
+              ),
             InputFormField(
-              hintTitle: 'عدد النقاط',
-              labelString: 'أدخل عدد النقاط المراد إرسالها',
-              controller: controller.pointCountText,
-              icon: Icons.redeem_rounded,
-              keyboardType: const TextInputType.numberWithOptions(),
+              hintTitle: 'عنوان الاشعار',
+              labelString: 'أدخل عنوان الاشعار',
+              controller: controller.titleText,
+              icon: Icons.title,
               validate: (val) {
-                return validInput(val!, 1, 50, 'name');
+                return validInput(val!, 2, 50, 'name');
               },
             ),
-          InputFormField(
-            hintTitle: 'عنوان الاشعار',
-            labelString: 'أدخل عنوان الاشعار',
-            controller: controller.titleText,
-            icon: Icons.title,
-            validate: (val) {
-              return validInput(val!, 2, 50, 'name');
-            },
-          ),
-          InputFormField(
-            hintTitle: 'نص الاشعار',
-            labelString: 'أدخل نص الاشعار',
-            controller: controller.bodyText,
-            icon: Icons.text_fields,
-            isExpanded: true,
-            validate: (val) {
-              return validInput(val!, 3, 50, 'name');
-            },
-          ),
-          MaterialCustomButton(
-            onPressed: onTap,
-            title: 'إرسال',
-            color: Colors.green,
-          ),
-          30.height,
-        ],
+            InputFormField(
+              hintTitle: 'نص الاشعار',
+              labelString: 'أدخل نص الاشعار',
+              controller: controller.bodyText,
+              icon: Icons.text_fields,
+              isExpanded: true,
+              validate: (val) {
+                return validInput(val!, 3, 50, 'name');
+              },
+            ),
+            MaterialCustomButton(
+              onPressed: onTap,
+              title: 'إرسال',
+              color: Colors.green,
+            ),
+            30.height,
+          ],
+        ),
       ),
     );
   }

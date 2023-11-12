@@ -46,7 +46,10 @@ class UserDetails extends StatelessWidget {
               title: 'حالة الحساب', subtitle: controller.getUserState()),
           UserDetailsSection(
               title: 'رقم الهاتف', subtitle: controller.userModel!.usersPhone!),
-          const UserDetailsSection(title: 'النقاط', subtitle: "0"),
+          GetBuilder<UserDetailsController>(builder: (controller) {
+            return UserDetailsSection(
+                title: 'النقاط', subtitle: controller.pointCount.toString());
+          }),
           UserDetailsSection(
               title: 'عدد الطلبات الكلي',
               subtitle: controller.userModel!.ordersCount.toString()),

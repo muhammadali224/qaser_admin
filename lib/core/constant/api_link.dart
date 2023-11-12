@@ -53,6 +53,7 @@ class AppLink {
   static const String deleteCoupon = "$server/coupon/delete.php";
 
 //============================ Users ==============================//
+  static const String getUserPoint = "$server/users/view_point.php";
   static const String changeUserState = "$server/users/change_user_state.php";
   static const String sendUserNotification =
       "$server/users/send_notification.php";
@@ -67,7 +68,10 @@ class AppLink {
       "$server/image_offers/edit_with_image.php";
   static const String viewOffersImage = "$server/image_offers/view.php";
   static const String deleteOffersImage = "$server/image_offers/delete.php";
-
+//============================== Notifications ==============================//
+  static const String sendNotifications = "$server/notifications/send.php";
+  static const String viewNotifications = "$server/notifications/view.php";
+  static const String deleteNotifications = "$server/notifications/delete.php";
 //============================== Items ==============================//
   static const String addItem = "$server/items/add.php";
   static const String editItem = "$server/items/edit.php";

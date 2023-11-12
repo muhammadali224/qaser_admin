@@ -47,18 +47,12 @@ class AddEditItems extends StatelessWidget {
                   hintTitle: 'وصف المنتج بالعربي ',
                   controller: controller.descAr,
                   icon: Icons.description,
-                  validate: (val) {
-                    return validInput(val!, 5, 550, 'name');
-                  },
                 ),
                 InputFormField(
                   isExpanded: true,
                   hintTitle: 'وصف المنتج بالانجليزي ',
                   controller: controller.descEn,
                   icon: Icons.description_outlined,
-                  validate: (val) {
-                    return validInput(val!, 5, 550, 'name');
-                  },
                 ),
                 InputFormField(
                   hintTitle: 'عدد المنتج',

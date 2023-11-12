@@ -14,9 +14,11 @@ class UserDetailsController extends GetxController {
   UsersModel? userModel;
   List<PopMenuModel> optionMenu = [];
   final UsersData usersData = UsersData(Get.find());
+  num pointCount = 0.0;
   StatusRequest statusRequest = StatusRequest.none;
   Map<String, double> mapCount = {};
   Map<String, double> mapPrice = {};
+  GlobalKey<FormState> formKey = GlobalKey<FormState>();
   TextEditingController titleText = TextEditingController();
   TextEditingController bodyText = TextEditingController();
   TextEditingController pointCountText = TextEditingController();
@@ -30,7 +32,7 @@ class UserDetailsController extends GetxController {
         await editUserState(userModel!.usersApprove == 2 ? 1 : 2);
         break;
       case "3":
-        showModelSheet(
+        showModalSheet(
             context,
             SendNotificationContainer(
               isForPoint: false,
@@ -41,7 +43,7 @@ class UserDetailsController extends GetxController {
             ));
         break;
       case "4":
-        showModelSheet(
+        showModalSheet(
             context,
             SendNotificationContainer(
               isForPoint: true,
@@ -94,6 +96,26 @@ class UserDetailsController extends GetxController {
     update();
   }
 
+  Future<void> getUserPoint() async {
+    try {
+      SmartDialog.showLoading(msg: 'loading'.tr);
+      var response = await usersData.getUserPoint(userModel!.usersId!);
+      statusRequest = handlingData(response);
+      if (statusRequest == StatusRequest.success) {
+        if (response["status"] == "success") {
+          SmartDialog.dismiss();
+          pointCount = response["data"]["user_point_count"];
+        }
+      } else {
+        statusRequest = StatusRequest.failed;
+      }
+    } catch (e) {
+      SmartDialog.dismiss();
+      SmartDialog.showToast(e.toString());
+    }
+    update();
+  }
+
   Future<void> sendUserNotifications() async {
     try {
       SmartDialog.showLoading(msg: 'loading'.tr);
@@ -135,6 +157,7 @@ class UserDetailsController extends GetxController {
           SmartDialog.dismiss();
           SmartDialog.showNotify(
               msg: "تم الإرسال بنجاح", notifyType: NotifyType.success);
+          getUserPoint();
           bodyText.clear();
           titleText.clear();
           pointCountText.clear();
@@ -179,6 +202,8 @@ class UserDetailsController extends GetxController {
       optionMenu.add(PopMenuModel(
           name: "تفعيل", value: "1", icon: Icons.verified_user_rounded));
     }
+
+    getUserPoint();
     super.onInit();
   }
 

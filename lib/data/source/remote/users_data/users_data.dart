@@ -1,6 +1,5 @@
 import '../../../../core/class/crud.dart';
 import '../../../../core/constant/api_link.dart';
-import '../../../../core/extension/date_extension.dart';
 
 class UsersData {
   CRUD crud;
@@ -24,6 +23,13 @@ class UsersData {
     var response = await crud.postData(AppLink.changeUserState, {
       "userId": userId.toString(),
       "userState": userState.toString(),
+    });
+    return response.fold((l) => l, (r) => r);
+  }
+
+  getUserPoint(int userId) async {
+    var response = await crud.postData(AppLink.getUserPoint, {
+      "userId": userId.toString(),
     });
     return response.fold((l) => l, (r) => r);
   }
@@ -52,8 +58,8 @@ class UsersData {
       "title": title,
       "body": body,
       "pointCount": pointCount,
-      "expireDate": DateTime.now().parseDate(),
-      "createDate": DateTime.now().add(const Duration(days: 100)).parseDate(),
+      "createDate": DateTime.now().toString(),
+      "expireDate": DateTime.now().add(const Duration(days: 100)).toString(),
     });
     return response.fold((l) => l, (r) => r);
   }
