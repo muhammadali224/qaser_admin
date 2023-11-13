@@ -25,14 +25,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "5.13.0"
-  animated_text_kit:
-    dependency: "direct main"
-    description:
-      name: animated_text_kit
-      sha256: "37392a5376c9a1a503b02463c38bc0342ef814ddbb8f9977bc90f2a84b22fa92"
-      url: "https://pub.dev"
-    source: hosted
-    version: "4.2.2"
   archive:
     dependency: transitive
     description:
@@ -57,14 +49,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.11.0"
-  badges:
-    dependency: "direct main"
-    description:
-      name: badges
-      sha256: a7b6bbd60dce418df0db3058b53f9d083c22cdb5132a052145dc267494df0b84
-      url: "https://pub.dev"
-    source: hosted
-    version: "3.1.2"
   boolean_selector:
     dependency: transitive
     description:
@@ -462,30 +446,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.0.3"
-  flutter_local_notifications:
-    dependency: "direct main"
-    description:
-      name: flutter_local_notifications
-      sha256: "6d11ea777496061e583623aaf31923f93a9409ef8fcaeeefdd6cd78bf4fe5bb3"
-      url: "https://pub.dev"
-    source: hosted
-    version: "16.1.0"
-  flutter_local_notifications_linux:
-    dependency: transitive
-    description:
-      name: flutter_local_notifications_linux
-      sha256: "33f741ef47b5f63cc7f78fe75eeeac7e19f171ff3c3df054d84c1e38bedb6a03"
-      url: "https://pub.dev"
-    source: hosted
-    version: "4.0.0+1"
-  flutter_local_notifications_platform_interface:
-    dependency: transitive
-    description:
-      name: flutter_local_notifications_platform_interface
-      sha256: "7cf643d6d5022f3baed0be777b0662cce5919c0a7b86e700299f22dc4ae660ef"
-      url: "https://pub.dev"
-    source: hosted
-    version: "7.0.0+1"
   flutter_localizations:
     dependency: transitive
     description: flutter
@@ -524,7 +484,7 @@ packages:
     source: hosted
     version: "2.0.9"
   flutter_test:
-    dependency: "direct dev"
+    dependency: transitive
     description: flutter
     source: sdk
     version: "0.0.0"
@@ -557,38 +517,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.2.0"
-  geocoding:
-    dependency: "direct main"
-    description:
-      name: geocoding
-      sha256: e1dc0ac56666d9ed1d5a9ae5543ce9eb5986db6209cc7600103487d09192059c
-      url: "https://pub.dev"
-    source: hosted
-    version: "2.1.1"
-  geocoding_android:
-    dependency: transitive
-    description:
-      name: geocoding_android
-      sha256: "609db1d71bc364dd9d0616f72a41c01e0c74f3a3807efb85e0d5a67e57baf50f"
-      url: "https://pub.dev"
-    source: hosted
-    version: "2.1.2"
-  geocoding_ios:
-    dependency: transitive
-    description:
-      name: geocoding_ios
-      sha256: "8f79e380abb640ef4d88baee8bb65390058c802601158d0813dc990b36b189d2"
-      url: "https://pub.dev"
-    source: hosted
-    version: "2.1.1"
-  geocoding_platform_interface:
-    dependency: transitive
-    description:
-      name: geocoding_platform_interface
-      sha256: "8848605d307d844d89937cdb4b8ad7dfa880552078f310fa24d8a460f6dddab4"
-      url: "https://pub.dev"
-    source: hosted
-    version: "2.0.1"
   geolocator:
     dependency: "direct main"
     description:
@@ -870,21 +798,13 @@ packages:
     source: hosted
     version: "0.7.4"
   json_annotation:
-    dependency: "direct main"
+    dependency: transitive
     description:
       name: json_annotation
       sha256: b10a7b2ff83d83c777edba3c6a0f97045ddadd56c944e1a23a3fdf43a1bf4467
       url: "https://pub.dev"
     source: hosted
     version: "4.8.1"
-  json_reflectable:
-    dependency: "direct main"
-    description:
-      name: json_reflectable
-      sha256: "16801b7d205f2e95bf2d0ab639b848b86c07a181b63f00658802c819aa8eb8dc"
-      url: "https://pub.dev"
-    source: hosted
-    version: "1.0.1"
   json_serializable:
     dependency: "direct dev"
     description:
@@ -1125,14 +1045,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.2.3"
-  reflectable:
-    dependency: transitive
-    description:
-      name: reflectable
-      sha256: "775388897bfce5b1d0386b7160706367b565cdc72b5870bc6a198d0f7be1aa0b"
-      url: "https://pub.dev"
-    source: hosted
-    version: "4.0.5"
   rxdart:
     dependency: transitive
     description:
@@ -1338,14 +1250,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.6.0"
-  timezone:
-    dependency: transitive
-    description:
-      name: timezone
-      sha256: "1cfd8ddc2d1cfd836bc93e67b9be88c3adaeca6f40a00ca999104c30693cdca0"
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.9.2"
   timing:
     dependency: transitive
     description:
@@ -1362,70 +1266,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.3.2"
-  url_launcher:
-    dependency: "direct main"
-    description:
-      name: url_launcher
-      sha256: "47e208a6711459d813ba18af120d9663c20bdf6985d6ad39fe165d2538378d27"
-      url: "https://pub.dev"
-    source: hosted
-    version: "6.1.14"
-  url_launcher_android:
-    dependency: transitive
-    description:
-      name: url_launcher_android
-      sha256: "31222ffb0063171b526d3e569079cf1f8b294075ba323443fdc690842bfd4def"
-      url: "https://pub.dev"
-    source: hosted
-    version: "6.2.0"
-  url_launcher_ios:
-    dependency: transitive
-    description:
-      name: url_launcher_ios
-      sha256: "4ac97281cf60e2e8c5cc703b2b28528f9b50c8f7cebc71df6bdf0845f647268a"
-      url: "https://pub.dev"
-    source: hosted
-    version: "6.2.0"
-  url_launcher_linux:
-    dependency: transitive
-    description:
-      name: url_launcher_linux
-      sha256: "9f2d390e096fdbe1e6e6256f97851e51afc2d9c423d3432f1d6a02a8a9a8b9fd"
-      url: "https://pub.dev"
-    source: hosted
-    version: "3.1.0"
-  url_launcher_macos:
-    dependency: transitive
-    description:
-      name: url_launcher_macos
-      sha256: b7244901ea3cf489c5335bdacda07264a6e960b1c1b1a9f91e4bc371d9e68234
-      url: "https://pub.dev"
-    source: hosted
-    version: "3.1.0"
-  url_launcher_platform_interface:
-    dependency: transitive
-    description:
-      name: url_launcher_platform_interface
-      sha256: "980e8d9af422f477be6948bdfb68df8433be71f5743a188968b0c1b887807e50"
-      url: "https://pub.dev"
-    source: hosted
-    version: "2.2.0"
-  url_launcher_web:
-    dependency: transitive
-    description:
-      name: url_launcher_web
-      sha256: ba140138558fcc3eead51a1c42e92a9fb074a1b1149ed3c73e66035b2ccd94f2
-      url: "https://pub.dev"
-    source: hosted
-    version: "2.0.19"
-  url_launcher_windows:
-    dependency: transitive
-    description:
-      name: url_launcher_windows
-      sha256: "7754a1ad30ee896b265f8d14078b0513a4dba28d358eabb9d5f339886f4a1adc"
-      url: "https://pub.dev"
-    source: hosted
-    version: "3.1.0"
   uuid:
     dependency: transitive
     description:
