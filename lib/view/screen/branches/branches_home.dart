@@ -21,7 +21,7 @@ class BranchesHome extends StatelessWidget {
       floatingActionButtonLocation: FloatingActionButtonLocation.startFloat,
       drawer: const AppDrawer(),
       body: RefreshIndicator(
-        onRefresh: () => controller.homeController.getBranches(),
+        onRefresh: () => controller.getBranches(),
         child: Column(
           children: [
             CurvedHeader(title: 'branches', background: AppColor.red),

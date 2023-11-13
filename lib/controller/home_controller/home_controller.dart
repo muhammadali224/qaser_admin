@@ -21,7 +21,7 @@ class HomeController extends GetxController {
   final HomeData homeData = HomeData(Get.find());
   StatusRequest statusRequest = StatusRequest.none;
 
-  Future<void> getBranches() async {
+  getBranches() async {
     branchList.clear();
     try {
       statusRequest = StatusRequest.loading;
@@ -35,6 +35,7 @@ class HomeController extends GetxController {
         if (response["status"] == "success") {
           List responseList = response['data'];
           branchList.addAll(responseList.map((e) => BranchModel.fromJson(e)));
+          print(branchList.toString());
         }
       } else {
         statusRequest = StatusRequest.failed;
@@ -68,10 +69,13 @@ class HomeController extends GetxController {
 
   @override
   void onInit() async {
+    initializeDateFormatting();
     await userManagement.getUser();
     adminData = userManagement.user;
-    Future.wait([getBranches(), getSummery()]);
-    initializeDateFormatting();
+
+    await getBranches();
+    await getSummery();
+
     super.onInit();
   }
 }
