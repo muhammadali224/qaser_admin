@@ -10,8 +10,7 @@ class MyServices extends GetxService {
 
   Future<MyServices> init() async {
     await Firebase.initializeApp(
-      options: DefaultFirebaseOptions.currentPlatform,
-    );
+        options: DefaultFirebaseOptions.currentPlatform);
     FirebaseAnalytics.instance;
     sharedPref = await SharedPreferences.getInstance();
     sharedPref.setString("language", "ar");

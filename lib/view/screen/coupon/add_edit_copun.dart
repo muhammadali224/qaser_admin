@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:icons_plus/icons_plus.dart';
 
 import '../../../controller/coupon_controller/add_edit_coupon_controller.dart';
+import '../../../core/extension/date_extension.dart';
 import '../../../core/function/pick_date.dart';
 import '../../../core/function/valid_input.dart';
 import '../../widget/shred_component/branch_dropdown.dart';
@@ -60,7 +61,8 @@ class AddEditCoupon extends StatelessWidget {
                   hintTitle: 'تاريخ البداية',
                   labelString: 'تاريخ البداية',
                   onTap: () async {
-                    controller.startDate.text = (await pickDate(context))!;
+                    controller.startDate.text =
+                        (await pickDate(context))!.parseDate();
                     controller.update();
                   },
                   controller: controller.startDate,
@@ -74,7 +76,8 @@ class AddEditCoupon extends StatelessWidget {
                   labelString: 'تاريخ النهاية',
                   hintTitle: 'تاريخ النهاية',
                   onTap: () async {
-                    controller.endDate.text = (await pickDate(context))!;
+                    controller.endDate.text =
+                        (await pickDate(context))!.parseDate();
                     controller.update();
                   },
                   readOnly: true,

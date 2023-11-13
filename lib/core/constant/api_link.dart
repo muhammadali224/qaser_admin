@@ -15,6 +15,8 @@ class AppLink {
   static const String editAdminUser = "$server/auth/edit.php";
   static const String viewAdminUser = "$server/auth/view.php";
   static const String deleteAdminUser = "$server/auth/delete.php";
+//============================== Home  ==============================//
+  static const String getSummery = "$server/home/home.php";
 
 //============================== Branches  ==============================//
   static const String getBranch = "$server/branches/view.php";

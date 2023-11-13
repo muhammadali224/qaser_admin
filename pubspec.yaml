@@ -44,6 +44,7 @@ dependencies:
   icons_plus:
   insta_image_viewer: ^1.0.2
   pie_chart: ^5.3.2
+  month_picker_dialog: ^2.2.1
 
 
 dev_dependencies:
