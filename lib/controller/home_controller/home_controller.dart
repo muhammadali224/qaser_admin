@@ -68,7 +68,6 @@ class HomeController extends GetxController {
 
   @override
   void onInit() async {
-    // myServices.sharedPref.clear(); //
     await userManagement.getUser();
     adminData = userManagement.user;
     Future.wait([getBranches(), getSummery()]);

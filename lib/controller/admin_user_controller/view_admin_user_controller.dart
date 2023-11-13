@@ -4,14 +4,11 @@ import 'package:get/get.dart';
 import '../../core/constant/routes.dart';
 import '../../core/enum/status_request.dart';
 import '../../core/function/handling_data_controller.dart';
-import '../../core/services/user_preference.dart';
 import '../../data/model/admin_model/admin_model.dart';
 import '../../data/source/remote/admin_users_data/admins_user_data.dart';
 
 class AdminUserViewController extends GetxController {
   StatusRequest statusRequest = StatusRequest.none;
-  final UserPreferences userManagement = Get.find<UserPreferences>();
-  late AdminModel adminData;
   List<AdminModel> adminUserList = [];
   final AdminUserData adminUsersData = AdminUserData(Get.find());
 
@@ -64,8 +61,6 @@ class AdminUserViewController extends GetxController {
 
   @override
   void onInit() async {
-    await userManagement.getUser();
-    adminData = userManagement.user;
     await getAdminUsers();
     super.onInit();
   }

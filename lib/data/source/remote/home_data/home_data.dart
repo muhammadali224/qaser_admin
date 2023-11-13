@@ -12,12 +12,6 @@ class HomeData {
       "year": date?.year.toString() ?? DateTime.now().year.toString(),
     });
 
-    print('''
-     "month": ${date?.month.toString() ?? DateTime.now().month.toString()},
-      "year": ${date?.year.toString() ?? DateTime.now().year.toString()},
-   
-    ''');
-
     return response.fold((l) => l, (r) => r);
   }
 }

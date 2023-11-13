@@ -4,15 +4,11 @@ import 'package:get/get.dart';
 import '../../core/constant/routes.dart';
 import '../../core/enum/status_request.dart';
 import '../../core/function/handling_data_controller.dart';
-import '../../core/services/user_preference.dart';
-import '../../data/model/admin_model/admin_model.dart';
 import '../../data/model/branch_model/branch_model.dart';
 import '../home_controller/home_controller.dart';
 
 class BranchViewController extends GetxController {
   StatusRequest statusRequest = StatusRequest.none;
-  final UserPreferences userManagement = Get.find<UserPreferences>();
-  late AdminModel adminData;
   HomeController homeController = Get.put(HomeController());
 
   deleteBranch(int id) async {
@@ -44,9 +40,6 @@ class BranchViewController extends GetxController {
 
   @override
   void onInit() async {
-    await userManagement.getUser();
-    adminData = userManagement.user;
-
     await homeController.getBranches();
     super.onInit();
   }

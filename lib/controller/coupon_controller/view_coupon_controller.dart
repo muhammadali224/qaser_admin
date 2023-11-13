@@ -4,15 +4,12 @@ import 'package:get/get.dart';
 import '../../core/constant/routes.dart';
 import '../../core/enum/status_request.dart';
 import '../../core/function/handling_data_controller.dart';
-import '../../core/services/user_preference.dart';
-import '../../data/model/admin_model/admin_model.dart';
 import '../../data/model/coupon_model/coupon_model.dart';
 import '../../data/source/remote/coupon_data/coupon_data.dart';
 
 class CouponViewController extends GetxController {
   StatusRequest statusRequest = StatusRequest.none;
-  final UserPreferences userManagement = Get.find<UserPreferences>();
-  late AdminModel adminData;
+
   List<CouponModel> couponList = [];
   final CouponData couponData = CouponData(Get.find());
 
@@ -65,8 +62,6 @@ class CouponViewController extends GetxController {
 
   @override
   void onInit() async {
-    await userManagement.getUser();
-    adminData = userManagement.user;
     await getCoupon();
     super.onInit();
   }

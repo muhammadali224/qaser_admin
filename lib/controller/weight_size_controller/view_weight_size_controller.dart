@@ -4,16 +4,12 @@ import 'package:get/get.dart';
 import '../../core/constant/routes.dart';
 import '../../core/enum/status_request.dart';
 import '../../core/function/handling_data_controller.dart';
-import '../../core/services/user_preference.dart';
-import '../../data/model/admin_model/admin_model.dart';
 import '../../data/model/weight_size_model/weight_size_model.dart';
 import '../../data/source/remote/weight_size_data/weight_size_data.dart';
 import '../../data/source/shared/sub_item_weight_list.dart';
 
 class WeightSizeViewController extends GetxController {
   StatusRequest statusRequest = StatusRequest.none;
-  final UserPreferences userManagement = Get.find<UserPreferences>();
-  late AdminModel adminData;
 
   final SubItemsData subItemsData = SubItemsData(Get.find());
 
@@ -67,8 +63,6 @@ class WeightSizeViewController extends GetxController {
 
   @override
   void onInit() async {
-    await userManagement.getUser();
-    adminData = userManagement.user;
     await getSubItems();
     super.onInit();
   }

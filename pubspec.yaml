@@ -45,6 +45,7 @@ dependencies:
   insta_image_viewer: ^1.0.2
   pie_chart: ^5.3.2
   month_picker_dialog: ^2.2.1
+  flutter_dotenv: ^5.1.0
 
 
 dev_dependencies:
@@ -76,3 +77,4 @@ flutter:
     - assets/lottie/
     - assets/images/
     - assets/
+    - .env
