@@ -11,6 +11,7 @@ class Assets {
       'assets/fonts/Cairo/Cairo-Regular.ttf';
   static const String cairoCairoSemiBold =
       'assets/fonts/Cairo/Cairo-SemiBold.ttf';
+  static const String imagesAdmin = 'assets/images/admin.jpg';
   static const String imagesLogo = 'assets/images/logo.png';
   static const String imagesLogo2 = 'assets/images/logo_2.jpg';
   static const String imagesOne = 'assets/images/one.PNG';
@@ -56,4 +57,5 @@ class Assets {
       'assets/fonts/PlayfairDisplay/PlayfairDisplay-SemiBold.ttf';
   static const String playfairDisplayPlayfairDisplaySemiBoldItalic =
       'assets/fonts/PlayfairDisplay/PlayfairDisplay-SemiBoldItalic.ttf';
+  static const String qaserAdmin = '.env';
 }

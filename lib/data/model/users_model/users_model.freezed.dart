@@ -40,6 +40,8 @@ mixin _$UsersModel {
   DateTime? get usersCreate => throw _privateConstructorUsedError;
   @JsonKey(name: "user_fav_branch_id")
   int? get userFavBranchId => throw _privateConstructorUsedError;
+  @JsonKey(name: "users_is_Anonymous")
+  int? get usersIsAnonymous => throw _privateConstructorUsedError;
   @JsonKey(name: "ordersCount")
   int? get ordersCount => throw _privateConstructorUsedError;
   @JsonKey(name: "totalsPrice")
@@ -76,6 +78,7 @@ abstract class $UsersModelCopyWith<$Res> {
       @JsonKey(name: "users_approve") int? usersApprove,
       @JsonKey(name: "users_create") DateTime? usersCreate,
       @JsonKey(name: "user_fav_branch_id") int? userFavBranchId,
+      @JsonKey(name: "users_is_Anonymous") int? usersIsAnonymous,
       @JsonKey(name: "ordersCount") int? ordersCount,
       @JsonKey(name: "totalsPrice") num? totalsPrice,
       @JsonKey(name: "pickupOrdersPrice") num? pickupOrdersPrice,
@@ -107,6 +110,7 @@ class _$UsersModelCopyWithImpl<$Res, $Val extends UsersModel>
     Object? usersApprove = freezed,
     Object? usersCreate = freezed,
     Object? userFavBranchId = freezed,
+    Object? usersIsAnonymous = freezed,
     Object? ordersCount = freezed,
     Object? totalsPrice = freezed,
     Object? pickupOrdersPrice = freezed,
@@ -155,6 +159,10 @@ class _$UsersModelCopyWithImpl<$Res, $Val extends UsersModel>
           ? _value.userFavBranchId
           : userFavBranchId // ignore: cast_nullable_to_non_nullable
               as int?,
+      usersIsAnonymous: freezed == usersIsAnonymous
+          ? _value.usersIsAnonymous
+          : usersIsAnonymous // ignore: cast_nullable_to_non_nullable
+              as int?,
       ordersCount: freezed == ordersCount
           ? _value.ordersCount
           : ordersCount // ignore: cast_nullable_to_non_nullable
@@ -202,6 +210,7 @@ abstract class _$$UsersModelImplCopyWith<$Res>
       @JsonKey(name: "users_approve") int? usersApprove,
       @JsonKey(name: "users_create") DateTime? usersCreate,
       @JsonKey(name: "user_fav_branch_id") int? userFavBranchId,
+      @JsonKey(name: "users_is_Anonymous") int? usersIsAnonymous,
       @JsonKey(name: "ordersCount") int? ordersCount,
       @JsonKey(name: "totalsPrice") num? totalsPrice,
       @JsonKey(name: "pickupOrdersPrice") num? pickupOrdersPrice,
@@ -231,6 +240,7 @@ class __$$UsersModelImplCopyWithImpl<$Res>
     Object? usersApprove = freezed,
     Object? usersCreate = freezed,
     Object? userFavBranchId = freezed,
+    Object? usersIsAnonymous = freezed,
     Object? ordersCount = freezed,
     Object? totalsPrice = freezed,
     Object? pickupOrdersPrice = freezed,
@@ -279,6 +289,10 @@ class __$$UsersModelImplCopyWithImpl<$Res>
           ? _value.userFavBranchId
           : userFavBranchId // ignore: cast_nullable_to_non_nullable
               as int?,
+      usersIsAnonymous: freezed == usersIsAnonymous
+          ? _value.usersIsAnonymous
+          : usersIsAnonymous // ignore: cast_nullable_to_non_nullable
+              as int?,
       ordersCount: freezed == ordersCount
           ? _value.ordersCount
           : ordersCount // ignore: cast_nullable_to_non_nullable
@@ -321,6 +335,7 @@ class _$UsersModelImpl implements _UsersModel {
       @JsonKey(name: "users_approve") this.usersApprove,
       @JsonKey(name: "users_create") this.usersCreate,
       @JsonKey(name: "user_fav_branch_id") this.userFavBranchId,
+      @JsonKey(name: "users_is_Anonymous") this.usersIsAnonymous,
       @JsonKey(name: "ordersCount") this.ordersCount,
       @JsonKey(name: "totalsPrice") this.totalsPrice,
       @JsonKey(name: "pickupOrdersPrice") this.pickupOrdersPrice,
@@ -362,6 +377,9 @@ class _$UsersModelImpl implements _UsersModel {
   @JsonKey(name: "user_fav_branch_id")
   final int? userFavBranchId;
   @override
+  @JsonKey(name: "users_is_Anonymous")
+  final int? usersIsAnonymous;
+  @override
   @JsonKey(name: "ordersCount")
   final int? ordersCount;
   @override
@@ -382,7 +400,7 @@ class _$UsersModelImpl implements _UsersModel {
 
   @override
   String toString() {
-    return 'UsersModel(usersId: $usersId, usersName: $usersName, usersEmail: $usersEmail, usersPassword: $usersPassword, usersPhone: $usersPhone, usersImage: $usersImage, usersVerifycode: $usersVerifycode, usersApprove: $usersApprove, usersCreate: $usersCreate, userFavBranchId: $userFavBranchId, ordersCount: $ordersCount, totalsPrice: $totalsPrice, pickupOrdersPrice: $pickupOrdersPrice, pickupOrdersCount: $pickupOrdersCount, deliveryOrdersPrice: $deliveryOrdersPrice, deliveryOrdersCount: $deliveryOrdersCount)';
+    return 'UsersModel(usersId: $usersId, usersName: $usersName, usersEmail: $usersEmail, usersPassword: $usersPassword, usersPhone: $usersPhone, usersImage: $usersImage, usersVerifycode: $usersVerifycode, usersApprove: $usersApprove, usersCreate: $usersCreate, userFavBranchId: $userFavBranchId, usersIsAnonymous: $usersIsAnonymous, ordersCount: $ordersCount, totalsPrice: $totalsPrice, pickupOrdersPrice: $pickupOrdersPrice, pickupOrdersCount: $pickupOrdersCount, deliveryOrdersPrice: $deliveryOrdersPrice, deliveryOrdersCount: $deliveryOrdersCount)';
   }
 
   @override
@@ -409,6 +427,8 @@ class _$UsersModelImpl implements _UsersModel {
                 other.usersCreate == usersCreate) &&
             (identical(other.userFavBranchId, userFavBranchId) ||
                 other.userFavBranchId == userFavBranchId) &&
+            (identical(other.usersIsAnonymous, usersIsAnonymous) ||
+                other.usersIsAnonymous == usersIsAnonymous) &&
             (identical(other.ordersCount, ordersCount) ||
                 other.ordersCount == ordersCount) &&
             (identical(other.totalsPrice, totalsPrice) ||
@@ -437,6 +457,7 @@ class _$UsersModelImpl implements _UsersModel {
       usersApprove,
       usersCreate,
       userFavBranchId,
+      usersIsAnonymous,
       ordersCount,
       totalsPrice,
       pickupOrdersPrice,
@@ -470,6 +491,7 @@ abstract class _UsersModel implements UsersModel {
       @JsonKey(name: "users_approve") final int? usersApprove,
       @JsonKey(name: "users_create") final DateTime? usersCreate,
       @JsonKey(name: "user_fav_branch_id") final int? userFavBranchId,
+      @JsonKey(name: "users_is_Anonymous") final int? usersIsAnonymous,
       @JsonKey(name: "ordersCount") final int? ordersCount,
       @JsonKey(name: "totalsPrice") final num? totalsPrice,
       @JsonKey(name: "pickupOrdersPrice") final num? pickupOrdersPrice,
@@ -511,6 +533,9 @@ abstract class _UsersModel implements UsersModel {
   @override
   @JsonKey(name: "user_fav_branch_id")
   int? get userFavBranchId;
+  @override
+  @JsonKey(name: "users_is_Anonymous")
+  int? get usersIsAnonymous;
   @override
   @JsonKey(name: "ordersCount")
   int? get ordersCount;

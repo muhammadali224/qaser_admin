@@ -20,6 +20,7 @@ _$UsersModelImpl _$$UsersModelImplFromJson(Map<String, dynamic> json) =>
           ? null
           : DateTime.parse(json['users_create'] as String),
       userFavBranchId: json['user_fav_branch_id'] as int?,
+      usersIsAnonymous: json['users_is_Anonymous'] as int?,
       ordersCount: json['ordersCount'] as int?,
       totalsPrice: json['totalsPrice'] as num?,
       pickupOrdersPrice: json['pickupOrdersPrice'] as num?,
@@ -40,6 +41,7 @@ Map<String, dynamic> _$$UsersModelImplToJson(_$UsersModelImpl instance) =>
       'users_approve': instance.usersApprove,
       'users_create': instance.usersCreate?.toIso8601String(),
       'user_fav_branch_id': instance.userFavBranchId,
+      'users_is_Anonymous': instance.usersIsAnonymous,
       'ordersCount': instance.ordersCount,
       'totalsPrice': instance.totalsPrice,
       'pickupOrdersPrice': instance.pickupOrdersPrice,

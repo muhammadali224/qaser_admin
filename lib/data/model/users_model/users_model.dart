@@ -9,6 +9,7 @@ import 'dart:convert';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'users_model.freezed.dart';
+
 part 'users_model.g.dart';
 
 UsersModel usersModelFromJson(String str) =>
@@ -29,6 +30,7 @@ class UsersModel with _$UsersModel {
     @JsonKey(name: "users_approve") int? usersApprove,
     @JsonKey(name: "users_create") DateTime? usersCreate,
     @JsonKey(name: "user_fav_branch_id") int? userFavBranchId,
+    @JsonKey(name: "users_is_Anonymous") int? usersIsAnonymous,
     @JsonKey(name: "ordersCount") int? ordersCount,
     @JsonKey(name: "totalsPrice") num? totalsPrice,
     @JsonKey(name: "pickupOrdersPrice") num? pickupOrdersPrice,
