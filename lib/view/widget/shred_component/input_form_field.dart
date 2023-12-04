@@ -51,7 +51,7 @@ class InputFormField extends StatelessWidget {
         obscureText: isPassword ?? false,
         decoration: InputDecoration(
           hintText: hintTitle.tr,
-          labelText: labelString,
+          labelText: labelString ?? hintTitle,
           labelStyle: const TextStyle(fontSize: 20),
           contentPadding:
               const EdgeInsets.symmetric(vertical: 5, horizontal: 15),

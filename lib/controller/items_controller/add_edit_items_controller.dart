@@ -30,6 +30,7 @@ class AddEditItemsController extends GetxController {
   late TextEditingController price;
   late TextEditingController discount;
   late TextEditingController point;
+  int selectedWeightAndSize = 1;
 
   File? file;
   String imageUrl = "";
@@ -97,6 +98,8 @@ class AddEditItemsController extends GetxController {
         itemsActive: 1,
         itemsDiscount: num.parse(discount.text),
         itemsCat: catModel.categoriesId,
+        itemsAttrId: selectedWeightAndSize,
+        itemsPointPerVal: num.parse(point.text),
       );
       var response = await itemsViewController.itemsData.addItemWithImage(
         itemModel,
@@ -174,6 +177,7 @@ class AddEditItemsController extends GetxController {
     discount = TextEditingController(text: itemsModel.itemsDiscount.toString());
     point = TextEditingController(text: itemsModel.itemsPointPerVal.toString());
     imageUrl = "${AppLink.imagesItems}${itemsModel.itemsImage}";
+    selectedWeightAndSize = itemsModel.itemsAttrId!;
   }
 
   @override

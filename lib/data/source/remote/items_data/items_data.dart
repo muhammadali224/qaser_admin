@@ -84,6 +84,7 @@ class ItemsData {
         "itemDiscount": itemModel.itemsDiscount.toString(),
         "itemPoint": itemModel.itemsPointPerVal.toString(),
         "itemCat": itemModel.itemsCat.toString(),
+        "itemAttr": itemModel.itemsAttrId.toString(),
       },
       file,
     );

@@ -32,6 +32,7 @@ class ItemsModel with _$ItemsModel {
     @JsonKey(name: "items_point_per_val") num? itemsPointPerVal,
     @JsonKey(name: "items_data") DateTime? itemsData,
     @JsonKey(name: "items_cat") int? itemsCat,
+    @JsonKey(name: "item_attr_id") int? itemsAttrId,
     @JsonKey(name: "weigh_ids") List<String>? weighIds,
     @JsonKey(name: "branch_ids") List<String>? branchIds,
     @JsonKey(name: "images") List<String>? images,
