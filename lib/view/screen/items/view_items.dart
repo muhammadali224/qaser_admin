@@ -34,22 +34,25 @@ class ViewItems extends StatelessWidget {
                   widget: GridView.count(
                     crossAxisCount: 2,
                     shrinkWrap: true,
-                    mainAxisSpacing: 10,
-                    crossAxisSpacing: 30,
+                    crossAxisSpacing: 10,
                     children: [
                       ...List.generate(
                         controller.itemsList.length,
                         (index) => Stack(
                           alignment: AlignmentDirectional.topEnd,
                           children: [
-                            ItemDashBoard(
-                              onTap: () => controller
-                                  .goToItemDetails(controller.itemsList[index]),
-                              title: controller.itemsList[index].itemsNameAr!,
-                              subtitle: controller.itemsList[index].itemsPrice
-                                  .toString(),
-                              imageUrl:
-                                  "${AppLink.imagesItems}${controller.itemsList[index].itemsImage}",
+                            Padding(
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 5.0),
+                              child: ItemDashBoard(
+                                onTap: () => controller.goToItemDetails(
+                                    controller.itemsList[index]),
+                                title: controller.itemsList[index].itemsNameAr!,
+                                subtitle: controller.itemsList[index].itemsPrice
+                                    .toString(),
+                                imageUrl:
+                                    "${AppLink.imagesItems}${controller.itemsList[index].itemsImage}",
+                              ),
                             ),
                             Container(
                               margin: const EdgeInsets.all(5),

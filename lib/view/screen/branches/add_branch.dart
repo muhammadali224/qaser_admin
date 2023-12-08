@@ -65,7 +65,7 @@ class AddBranch extends StatelessWidget {
                   keyboardType: TextInputType.phone,
                   icon: FontAwesome.phone,
                   validate: (val) {
-                    return validInput(val!, 10, 15, 'phone');
+                    return validInput(val!, 10, 10, 'phone');
                   },
                 ),
                 InputFormField(
@@ -75,7 +75,7 @@ class AddBranch extends StatelessWidget {
                   keyboardType: TextInputType.phone,
                   iconColor: Colors.green,
                   validate: (val) {
-                    return validInput(val!, 10, 15, 'phone');
+                    return validInput(val!, 10, 10, 'phone');
                   },
                 ),
                 InputFormField(
@@ -84,7 +84,7 @@ class AddBranch extends StatelessWidget {
                   iconColor: Colors.blue,
                   controller: controller.facebookUrl,
                   validate: (val) {
-                    return validInput(val!, 4, 50, 'name');
+                    return validInput(val!, 4, 150, 'name');
                   },
                 ),
                 InputFormField(
