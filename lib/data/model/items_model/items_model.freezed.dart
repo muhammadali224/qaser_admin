@@ -32,6 +32,8 @@ mixin _$ItemsModel {
   String? get itemsDescAr => throw _privateConstructorUsedError;
   @JsonKey(name: "items_image")
   String? get itemsImage => throw _privateConstructorUsedError;
+  @JsonKey(name: "items_group")
+  int? get itemsGroup => throw _privateConstructorUsedError;
   @JsonKey(name: "items_count")
   int? get itemsCount => throw _privateConstructorUsedError;
   @JsonKey(name: "items_active")
@@ -74,6 +76,7 @@ abstract class $ItemsModelCopyWith<$Res> {
       @JsonKey(name: "items_desc") String? itemsDesc,
       @JsonKey(name: "items_desc_ar") String? itemsDescAr,
       @JsonKey(name: "items_image") String? itemsImage,
+      @JsonKey(name: "items_group") int? itemsGroup,
       @JsonKey(name: "items_count") int? itemsCount,
       @JsonKey(name: "items_active") int? itemsActive,
       @JsonKey(name: "items_price") num? itemsPrice,
@@ -106,6 +109,7 @@ class _$ItemsModelCopyWithImpl<$Res, $Val extends ItemsModel>
     Object? itemsDesc = freezed,
     Object? itemsDescAr = freezed,
     Object? itemsImage = freezed,
+    Object? itemsGroup = freezed,
     Object? itemsCount = freezed,
     Object? itemsActive = freezed,
     Object? itemsPrice = freezed,
@@ -143,6 +147,10 @@ class _$ItemsModelCopyWithImpl<$Res, $Val extends ItemsModel>
           ? _value.itemsImage
           : itemsImage // ignore: cast_nullable_to_non_nullable
               as String?,
+      itemsGroup: freezed == itemsGroup
+          ? _value.itemsGroup
+          : itemsGroup // ignore: cast_nullable_to_non_nullable
+              as int?,
       itemsCount: freezed == itemsCount
           ? _value.itemsCount
           : itemsCount // ignore: cast_nullable_to_non_nullable
@@ -206,6 +214,7 @@ abstract class _$$ItemsModelImplCopyWith<$Res>
       @JsonKey(name: "items_desc") String? itemsDesc,
       @JsonKey(name: "items_desc_ar") String? itemsDescAr,
       @JsonKey(name: "items_image") String? itemsImage,
+      @JsonKey(name: "items_group") int? itemsGroup,
       @JsonKey(name: "items_count") int? itemsCount,
       @JsonKey(name: "items_active") int? itemsActive,
       @JsonKey(name: "items_price") num? itemsPrice,
@@ -236,6 +245,7 @@ class __$$ItemsModelImplCopyWithImpl<$Res>
     Object? itemsDesc = freezed,
     Object? itemsDescAr = freezed,
     Object? itemsImage = freezed,
+    Object? itemsGroup = freezed,
     Object? itemsCount = freezed,
     Object? itemsActive = freezed,
     Object? itemsPrice = freezed,
@@ -273,6 +283,10 @@ class __$$ItemsModelImplCopyWithImpl<$Res>
           ? _value.itemsImage
           : itemsImage // ignore: cast_nullable_to_non_nullable
               as String?,
+      itemsGroup: freezed == itemsGroup
+          ? _value.itemsGroup
+          : itemsGroup // ignore: cast_nullable_to_non_nullable
+              as int?,
       itemsCount: freezed == itemsCount
           ? _value.itemsCount
           : itemsCount // ignore: cast_nullable_to_non_nullable
@@ -331,6 +345,7 @@ class _$ItemsModelImpl implements _ItemsModel {
       @JsonKey(name: "items_desc") this.itemsDesc,
       @JsonKey(name: "items_desc_ar") this.itemsDescAr,
       @JsonKey(name: "items_image") this.itemsImage,
+      @JsonKey(name: "items_group") this.itemsGroup,
       @JsonKey(name: "items_count") this.itemsCount,
       @JsonKey(name: "items_active") this.itemsActive,
       @JsonKey(name: "items_price") this.itemsPrice,
@@ -367,6 +382,9 @@ class _$ItemsModelImpl implements _ItemsModel {
   @override
   @JsonKey(name: "items_image")
   final String? itemsImage;
+  @override
+  @JsonKey(name: "items_group")
+  final int? itemsGroup;
   @override
   @JsonKey(name: "items_count")
   final int? itemsCount;
@@ -426,7 +444,7 @@ class _$ItemsModelImpl implements _ItemsModel {
 
   @override
   String toString() {
-    return 'ItemsModel(itemsId: $itemsId, itemsName: $itemsName, itemsNameAr: $itemsNameAr, itemsDesc: $itemsDesc, itemsDescAr: $itemsDescAr, itemsImage: $itemsImage, itemsCount: $itemsCount, itemsActive: $itemsActive, itemsPrice: $itemsPrice, itemsDiscount: $itemsDiscount, itemsPointPerVal: $itemsPointPerVal, itemsData: $itemsData, itemsCat: $itemsCat, itemsAttrId: $itemsAttrId, weighIds: $weighIds, branchIds: $branchIds, images: $images)';
+    return 'ItemsModel(itemsId: $itemsId, itemsName: $itemsName, itemsNameAr: $itemsNameAr, itemsDesc: $itemsDesc, itemsDescAr: $itemsDescAr, itemsImage: $itemsImage, itemsGroup: $itemsGroup, itemsCount: $itemsCount, itemsActive: $itemsActive, itemsPrice: $itemsPrice, itemsDiscount: $itemsDiscount, itemsPointPerVal: $itemsPointPerVal, itemsData: $itemsData, itemsCat: $itemsCat, itemsAttrId: $itemsAttrId, weighIds: $weighIds, branchIds: $branchIds, images: $images)';
   }
 
   @override
@@ -445,6 +463,8 @@ class _$ItemsModelImpl implements _ItemsModel {
                 other.itemsDescAr == itemsDescAr) &&
             (identical(other.itemsImage, itemsImage) ||
                 other.itemsImage == itemsImage) &&
+            (identical(other.itemsGroup, itemsGroup) ||
+                other.itemsGroup == itemsGroup) &&
             (identical(other.itemsCount, itemsCount) ||
                 other.itemsCount == itemsCount) &&
             (identical(other.itemsActive, itemsActive) ||
@@ -477,6 +497,7 @@ class _$ItemsModelImpl implements _ItemsModel {
       itemsDesc,
       itemsDescAr,
       itemsImage,
+      itemsGroup,
       itemsCount,
       itemsActive,
       itemsPrice,
@@ -511,6 +532,7 @@ abstract class _ItemsModel implements ItemsModel {
       @JsonKey(name: "items_desc") final String? itemsDesc,
       @JsonKey(name: "items_desc_ar") final String? itemsDescAr,
       @JsonKey(name: "items_image") final String? itemsImage,
+      @JsonKey(name: "items_group") final int? itemsGroup,
       @JsonKey(name: "items_count") final int? itemsCount,
       @JsonKey(name: "items_active") final int? itemsActive,
       @JsonKey(name: "items_price") final num? itemsPrice,
@@ -544,6 +566,9 @@ abstract class _ItemsModel implements ItemsModel {
   @override
   @JsonKey(name: "items_image")
   String? get itemsImage;
+  @override
+  @JsonKey(name: "items_group")
+  int? get itemsGroup;
   @override
   @JsonKey(name: "items_count")
   int? get itemsCount;

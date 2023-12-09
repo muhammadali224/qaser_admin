@@ -17,7 +17,7 @@ Future<DateTime?> pickDate(BuildContext context) async {
 Future<DateTime?> pickMonth(BuildContext context) async {
   DateTime? pickedDate = await showMonthPicker(
     context: context,
-    locale: Locale("ar"),
+    locale: const Locale("ar"),
     initialDate: DateTime.now(),
     dismissible: true,
     roundedCornersRadius: 15,

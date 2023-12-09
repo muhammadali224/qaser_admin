@@ -30,8 +30,12 @@ class HomePage extends StatelessWidget {
               icon: const Icon(Icons.calendar_month))
         ],
       ),
-      body: WillPopScope(
-        onWillPop: () => exitAlert(),
+      body: PopScope(
+        canPop: true,
+        onPopInvoked: (didPop) {
+          exitAlert();
+          return;
+        },
         child: GetBuilder<HomeController>(builder: (controller) {
           return HandlingDataRequest(
             statusRequest: controller.statusRequest,

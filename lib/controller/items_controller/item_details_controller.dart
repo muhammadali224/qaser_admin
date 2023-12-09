@@ -1,49 +1,28 @@
 import 'dart:io';
 
+import 'package:flutter/material.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:get/get.dart';
+import 'package:image_picker/image_picker.dart';
 
 import '../../core/enum/status_request.dart';
 import '../../core/function/handling_data_controller.dart';
+import '../../core/function/pick_image.dart';
 import '../../data/model/items_model/items_model.dart';
 import '../../data/source/remote/items_data/items_data.dart';
+import '../../view/widget/items/items_details/show_modal_branch_list.dart';
 import 'view_items_controller.dart';
 
-class ItemsDetailsController extends GetxController {
+class ItemsDetailsController extends GetxController
+    with GetSingleTickerProviderStateMixin {
   ItemsModel? itemModel;
   final ItemsData itemsData = ItemsData(Get.find());
   StatusRequest statusRequest = StatusRequest.none;
+  TextEditingController price = TextEditingController();
   ViewItemController viewItemController = Get.find<ViewItemController>();
-  bool branchIsExpanded = false;
-  bool weightIsExpanded = false;
-  bool imagesIsExpanded = false;
+
   File? file;
-
-  changeExpanded(int index) {
-    switch (index) {
-      case 0:
-        branchIsExpanded = !branchIsExpanded;
-        break;
-      case 1:
-        weightIsExpanded = !weightIsExpanded;
-        break;
-      case 2:
-        imagesIsExpanded = !imagesIsExpanded;
-        break;
-    }
-
-    update();
-  }
-
-  changeWeightExpanded() {
-    weightIsExpanded = !weightIsExpanded;
-    update();
-  }
-
-  changeImagesExpanded() {
-    imagesIsExpanded = !imagesIsExpanded;
-    update();
-  }
+  late TabController tabController;
 
   editAvailableInBranch(int branchId, bool val) async {
     try {
@@ -59,6 +38,7 @@ class ItemsDetailsController extends GetxController {
               msg: "تم التعديل بنجاح", notifyType: NotifyType.success);
           var responseList = response["data"][0];
           itemModel = ItemsModel.fromJson(responseList);
+          if (val == true) Get.back();
         }
       } else {
         statusRequest = StatusRequest.failed;
@@ -74,7 +54,8 @@ class ItemsDetailsController extends GetxController {
     try {
       SmartDialog.showLoading(msg: 'loading'.tr);
       var response = val == true
-          ? await itemsData.addItemWeight(weightId, itemModel!.itemsId!)
+          ? await itemsData.addItemWeight(
+              weightId, itemModel!.itemsId!, price.text)
           : await itemsData.removeItemWeight(weightId, itemModel!.itemsId!);
       statusRequest = handlingData(response);
       if (statusRequest == StatusRequest.success) {
@@ -142,9 +123,29 @@ class ItemsDetailsController extends GetxController {
     update();
   }
 
+  getFloatingAction() async {
+    if (tabController.index == 0) {
+      print("0");
+    } else if (tabController.index == 1) {
+      showCustomModalSheet(Get.context!, editAvailableInBranch);
+    } else if (tabController.index == 2) {
+      file = await pickImage(ImageSource.gallery);
+      if (file != null) {
+        addItemImage();
+      }
+    }
+  }
+
   @override
   void onInit() {
     itemModel = Get.arguments['model'];
+    tabController = TabController(length: 3, vsync: this);
     super.onInit();
+  }
+
+  @override
+  void dispose() {
+    tabController.dispose();
+    super.dispose();
   }
 }

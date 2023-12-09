@@ -30,6 +30,7 @@ class AddEditItemsController extends GetxController {
   late TextEditingController price;
   late TextEditingController discount;
   late TextEditingController point;
+  late TextEditingController itemGroup;
   int selectedWeightAndSize = 1;
 
   File? file;
@@ -53,6 +54,8 @@ class AddEditItemsController extends GetxController {
           itemsActive: 1,
           itemsDiscount: num.parse(discount.text),
           itemsCat: catModel.categoriesId,
+          itemsGroup: int.parse(itemGroup.text),
+          itemsPointPerVal: num.parse(point.text),
         );
 
         var response = file == null
@@ -100,6 +103,7 @@ class AddEditItemsController extends GetxController {
         itemsCat: catModel.categoriesId,
         itemsAttrId: selectedWeightAndSize,
         itemsPointPerVal: num.parse(point.text),
+        itemsGroup: int.parse(itemGroup.text),
       );
       var response = await itemsViewController.itemsData.addItemWithImage(
         itemModel,
@@ -165,6 +169,7 @@ class AddEditItemsController extends GetxController {
     price = TextEditingController();
     discount = TextEditingController();
     point = TextEditingController();
+    itemGroup = TextEditingController(text: "1");
   }
 
   initEditData(ItemsModel itemsModel) {
@@ -176,6 +181,7 @@ class AddEditItemsController extends GetxController {
     price = TextEditingController(text: itemsModel.itemsPrice.toString());
     discount = TextEditingController(text: itemsModel.itemsDiscount.toString());
     point = TextEditingController(text: itemsModel.itemsPointPerVal.toString());
+    itemGroup = TextEditingController(text: itemsModel.itemsGroup.toString());
     imageUrl = "${AppLink.imagesItems}${itemsModel.itemsImage}";
     selectedWeightAndSize = itemsModel.itemsAttrId!;
   }
@@ -190,6 +196,7 @@ class AddEditItemsController extends GetxController {
     } else if (Get.currentRoute == "/addItems") {
       initData();
     }
+
     super.onInit();
   }
 

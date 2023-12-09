@@ -31,8 +31,12 @@ class Login extends StatelessWidget {
                 .copyWith(color: AppColor.grey),
           ),
         ),
-        body: WillPopScope(
-            onWillPop: () => exitAlert(),
+        body: PopScope(
+            canPop: true,
+            onPopInvoked: (didPop) {
+              exitAlert();
+              return;
+            },
             child: GetBuilder<LoginControllerImp>(
                 builder: (controller) => HandlingDataRequest(
                       statusRequest: controller.statusRequest,

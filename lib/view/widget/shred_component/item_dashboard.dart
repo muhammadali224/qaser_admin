@@ -42,11 +42,13 @@ class ItemDashBoard extends StatelessWidget {
                 child: Center(
                   child: CachedNetworkImage(
                     imageUrl: imageUrl,
+                    progressIndicatorBuilder: (_, val, download) =>
+                        const Center(child: CircularProgressIndicator()),
                     imageBuilder: (_, imageProvider) => Container(
                       decoration: BoxDecoration(
                           image: DecorationImage(
                         image: imageProvider,
-                        fit: BoxFit.contain,
+                        fit: BoxFit.cover,
                       )),
                     ),
                   ),

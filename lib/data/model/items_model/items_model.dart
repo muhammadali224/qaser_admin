@@ -25,6 +25,7 @@ class ItemsModel with _$ItemsModel {
     @JsonKey(name: "items_desc") String? itemsDesc,
     @JsonKey(name: "items_desc_ar") String? itemsDescAr,
     @JsonKey(name: "items_image") String? itemsImage,
+    @JsonKey(name: "items_group") int? itemsGroup,
     @JsonKey(name: "items_count") int? itemsCount,
     @JsonKey(name: "items_active") int? itemsActive,
     @JsonKey(name: "items_price") num? itemsPrice,

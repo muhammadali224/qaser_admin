@@ -34,7 +34,7 @@ class ViewItems extends StatelessWidget {
                   widget: GridView.count(
                     crossAxisCount: 2,
                     shrinkWrap: true,
-                    crossAxisSpacing: 10,
+                    crossAxisSpacing: 5,
                     children: [
                       ...List.generate(
                         controller.itemsList.length,
@@ -56,6 +56,9 @@ class ViewItems extends StatelessWidget {
                             ),
                             Container(
                               margin: const EdgeInsets.all(5),
+                              decoration: BoxDecoration(
+                                  color: Colors.white.withOpacity(0.6),
+                                  borderRadius: BorderRadius.circular(50)),
                               child: PopMenuEditDelete(
                                   onEditTap: () => controller.goToEditItem(
                                       controller.itemsList[index]),

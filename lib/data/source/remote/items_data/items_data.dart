@@ -35,6 +35,7 @@ class ItemsData {
         "itemDiscount": itemModel.itemsDiscount.toString(),
         "itemPoint": itemModel.itemsPointPerVal.toString(),
         "itemCat": itemModel.itemsCat.toString(),
+        "itemsGroup": itemModel.itemsGroup.toString(),
         "oldFile": oldFile,
       },
       file,
@@ -57,6 +58,7 @@ class ItemsData {
         "itemDiscount": itemModel.itemsDiscount.toString(),
         "itemPoint": itemModel.itemsPointPerVal.toString(),
         "itemCat": itemModel.itemsCat.toString(),
+        "itemsGroup": itemModel.itemsGroup.toString(),
       },
     );
     return response.fold((l) => l, (r) => r);
@@ -107,10 +109,11 @@ class ItemsData {
     return response.fold((l) => l, (r) => r);
   }
 
-  addItemWeight(int weightId, int itemId) async {
+  addItemWeight(int weightId, int itemId, String price) async {
     var response = await crud.postData(AppLink.addItemWeight, {
       'weightId': weightId.toString(),
       'itemId': itemId.toString(),
+      'price': price,
     });
     return response.fold((l) => l, (r) => r);
   }
