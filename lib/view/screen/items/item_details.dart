@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import '../../../controller/items_controller/item_details_controller.dart';
 import '../../widget/items/items_details/selecte_branch_tab.dart';
 import '../../widget/items/items_details/upload_images_tab.dart';
+import '../../widget/items/items_details/weight_size_tab.dart';
 
 class ItemDetails extends StatelessWidget {
   const ItemDetails({super.key});
@@ -94,7 +95,7 @@ class ItemDetails extends StatelessWidget {
         body: TabBarView(
           controller: controller.tabController,
           children: const [
-            Icon(Icons.flight, size: 350),
+            WeightSizeTab(),
             SelectBranchTab(),
             UploadItemImagesTab(),
           ],

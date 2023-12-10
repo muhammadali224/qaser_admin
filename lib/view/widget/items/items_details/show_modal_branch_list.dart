@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../../core/extension/space_extension.dart';
 import '../../../../data/source/shared/branch_list.dart';
+import 'item_list_tile.dart';
 
 showCustomModalSheet(BuildContext context, Function(int, bool) onTap) {
   showModalBottomSheet(
@@ -26,21 +27,15 @@ showCustomModalSheet(BuildContext context, Function(int, bool) onTap) {
           mainAxisSize: MainAxisSize.min,
           children: branchList
               .map((e) => Padding(
-                    padding: const EdgeInsets.all(10.0),
-                    child: ListTile(
-                      onTap: () {
-                        onTap(e.branchId!, true);
-                      },
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(15)),
-                      tileColor: Colors.red.withOpacity(0.2),
-                      title: Text(e.branchNameAr!),
-                      trailing: const Icon(
-                        Icons.add_circle,
-                        color: Colors.green,
-                      ),
-                    ),
-                  ))
+                  padding: const EdgeInsets.all(10.0),
+                  child: ItemDetailsListTile(
+                    onTap: () {
+                      onTap(e.branchId!, true);
+                    },
+                    title: e.branchNameAr!,
+                    iconData: Icons.add_circle,
+                    color: Colors.green,
+                  )))
               .toList(),
         ),
         20.height,

@@ -9,6 +9,7 @@ import '../../core/enum/status_request.dart';
 import '../../core/function/handling_data_controller.dart';
 import '../../core/function/pick_image.dart';
 import '../../data/model/items_model/items_model.dart';
+import '../../data/model/sub_items/sub_items_model.dart';
 import '../../data/source/remote/items_data/items_data.dart';
 import '../../view/widget/items/items_details/show_modal_branch_list.dart';
 import 'view_items_controller.dart';
@@ -18,6 +19,7 @@ class ItemsDetailsController extends GetxController
   ItemsModel? itemModel;
   final ItemsData itemsData = ItemsData(Get.find());
   StatusRequest statusRequest = StatusRequest.none;
+  List<SubItemsModel> subItemsList = [];
   TextEditingController price = TextEditingController();
   ViewItemController viewItemController = Get.find<ViewItemController>();
 
@@ -123,6 +125,30 @@ class ItemsDetailsController extends GetxController
     update();
   }
 
+  getSubItem() async {
+    try {
+      subItemsList.clear();
+      SmartDialog.showLoading(msg: 'loading'.tr);
+      var response = await itemsData.getSubItems(itemModel!.itemsId!);
+      statusRequest = handlingData(response);
+      if (statusRequest == StatusRequest.success) {
+        if (response["status"] == "success") {
+          SmartDialog.dismiss();
+          List responseList = response['data'];
+          subItemsList
+              .addAll(responseList.map((e) => SubItemsModel.fromJson(e)));
+        }
+      } else {
+        statusRequest = StatusRequest.failed;
+      }
+    } catch (e) {
+      SmartDialog.dismiss();
+      print(e.toString());
+    }
+    SmartDialog.dismiss();
+    update();
+  }
+
   getFloatingAction() async {
     if (tabController.index == 0) {
       print("0");
@@ -137,9 +163,10 @@ class ItemsDetailsController extends GetxController
   }
 
   @override
-  void onInit() {
+  void onInit() async {
     itemModel = Get.arguments['model'];
     tabController = TabController(length: 3, vsync: this);
+    await getSubItem();
     super.onInit();
   }
 

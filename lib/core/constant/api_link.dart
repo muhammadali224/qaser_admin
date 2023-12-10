@@ -85,4 +85,5 @@ class AppLink {
   static String removeItemWeight = "$server/items/remove_weight.php";
   static String addItemImage = "$server/items/add_image.php";
   static String deleteItemImage = "$server/items/delete_image.php";
+  static String viewSubItems = "$server/items/view_sub_item.php";
 }

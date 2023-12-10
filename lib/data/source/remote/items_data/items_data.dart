@@ -147,4 +147,11 @@ class ItemsData {
     );
     return response.fold((l) => l, (r) => r);
   }
+
+  getSubItems(int itemsId) async {
+    var response = await crud.postData(AppLink.viewSubItems, {
+      "itemId": itemsId.toString(),
+    });
+    return response.fold((l) => l, (r) => r);
+  }
 }
