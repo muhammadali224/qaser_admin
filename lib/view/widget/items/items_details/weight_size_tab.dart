@@ -13,7 +13,7 @@ class WeightSizeTab extends GetView<ItemsDetailsController> {
       return RefreshIndicator(
         onRefresh: () => controller.getSubItem(),
         child: Container(
-          padding: const EdgeInsets.all(10),
+          padding: EdgeInsets.all(10),
           child: ListView.builder(
             shrinkWrap: true,
             itemCount: controller.subItemsList.length,
