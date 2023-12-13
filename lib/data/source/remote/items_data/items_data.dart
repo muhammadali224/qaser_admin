@@ -35,7 +35,7 @@ class ItemsData {
         "itemDiscount": itemModel.itemsDiscount.toString(),
         "itemPoint": itemModel.itemsPointPerVal.toString(),
         "itemCat": itemModel.itemsCat.toString(),
-        "itemsGroup": itemModel.itemsGroup.toString(),
+        "itemGroup": itemModel.itemsGroup.toString(),
         "oldFile": oldFile,
       },
       file,
@@ -58,7 +58,7 @@ class ItemsData {
         "itemDiscount": itemModel.itemsDiscount.toString(),
         "itemPoint": itemModel.itemsPointPerVal.toString(),
         "itemCat": itemModel.itemsCat.toString(),
-        "itemsGroup": itemModel.itemsGroup.toString(),
+        "itemGroup": itemModel.itemsGroup.toString(),
       },
     );
     return response.fold((l) => l, (r) => r);
@@ -66,7 +66,7 @@ class ItemsData {
 
   deleteItem(String itemId, String imageName) async {
     var response = await crud.postData(AppLink.deleteItem, {
-      'itermId': itemId,
+      "itemId": itemId,
       "image": imageName,
     });
     return response.fold((l) => l, (r) => r);
@@ -87,6 +87,7 @@ class ItemsData {
         "itemPoint": itemModel.itemsPointPerVal.toString(),
         "itemCat": itemModel.itemsCat.toString(),
         "itemAttr": itemModel.itemsAttrId.toString(),
+        "itemGroup": itemModel.itemsGroup.toString(),
       },
       file,
     );
@@ -118,11 +119,21 @@ class ItemsData {
     return response.fold((l) => l, (r) => r);
   }
 
-  removeItemWeight(int weightId, int itemId) async {
-    var response = await crud.postData(AppLink.removeItemWeight, {
+  editItemWeight(int id, int weightId, int itemId, String price) async {
+    var response = await crud.postData(AppLink.editItemWeight, {
+      'id': id.toString(),
       'weightId': weightId.toString(),
       'itemId': itemId.toString(),
+      'price': price,
     });
+    return response.fold((l) => l, (r) => r);
+  }
+
+  removeItemWeight(int id) async {
+    var response = await crud.postData(AppLink.removeItemWeight, {
+      'id': id.toString(),
+    });
+    print(id);
     return response.fold((l) => l, (r) => r);
   }
 

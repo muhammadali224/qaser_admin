@@ -12,6 +12,7 @@ import '../../data/model/items_model/items_model.dart';
 import '../../data/model/sub_items/sub_items_model.dart';
 import '../../data/source/remote/items_data/items_data.dart';
 import '../../view/widget/items/items_details/show_modal_branch_list.dart';
+import '../../view/widget/items/items_details/show_modal_weight_size_list.dart';
 import 'view_items_controller.dart';
 
 class ItemsDetailsController extends GetxController
@@ -20,9 +21,10 @@ class ItemsDetailsController extends GetxController
   final ItemsData itemsData = ItemsData(Get.find());
   StatusRequest statusRequest = StatusRequest.none;
   List<SubItemsModel> subItemsList = [];
+  GlobalKey<FormState> formKey = GlobalKey<FormState>();
   TextEditingController price = TextEditingController();
   ViewItemController viewItemController = Get.find<ViewItemController>();
-
+  int selectedWeightAndSize = 1;
   File? file;
   late TabController tabController;
 
@@ -52,29 +54,114 @@ class ItemsDetailsController extends GetxController
     update();
   }
 
-  editAvailableWeight(int weightId, bool val) async {
+  addWeightSize() async {
+    if (formKey.currentState!.validate()) {
+      try {
+        SmartDialog.showLoading(msg: 'loading'.tr);
+        var response = await itemsData.addItemWeight(
+            selectedWeightAndSize, itemModel!.itemsId!, price.text);
+
+        statusRequest = handlingData(response);
+        if (statusRequest == StatusRequest.success) {
+          if (response["status"] == "success") {
+            SmartDialog.dismiss();
+            SmartDialog.showNotify(
+                msg: "تم الإضافة بنجاح", notifyType: NotifyType.success);
+
+            Get.back();
+            getSubItem();
+          } else {
+            Get.back();
+
+            SmartDialog.showNotify(
+                msg: "حدث خطأ ما يرجى المحاولة لاحقا",
+                notifyType: NotifyType.error);
+          }
+        } else {
+          Get.back();
+
+          SmartDialog.showNotify(
+              msg: "حدث خطأ ما يرجى المحاولة لاحقا",
+              notifyType: NotifyType.error);
+        }
+      } catch (e) {
+        SmartDialog.showToast(e.toString());
+      }
+      SmartDialog.dismiss();
+      update();
+    }
+  }
+
+  editWeightSize(int id) async {
+    if (formKey.currentState!.validate()) {
+      try {
+        SmartDialog.showLoading(msg: 'loading'.tr);
+        var response = await itemsData.editItemWeight(
+            id, selectedWeightAndSize, itemModel!.itemsId!, price.text);
+
+        statusRequest = handlingData(response);
+        if (statusRequest == StatusRequest.success) {
+          if (response["status"] == "success") {
+            SmartDialog.dismiss();
+            SmartDialog.showNotify(
+                msg: "تم التعديل بنجاح", notifyType: NotifyType.success);
+
+            Get.back();
+            getSubItem();
+          } else {
+            Get.back();
+
+            SmartDialog.showNotify(
+                msg: "حدث خطأ ما يرجى المحاولة لاحقا",
+                notifyType: NotifyType.error);
+          }
+        } else {
+          Get.back();
+
+          SmartDialog.showNotify(
+              msg: "حدث خطأ ما يرجى المحاولة لاحقا",
+              notifyType: NotifyType.error);
+        }
+      } catch (e) {
+        SmartDialog.showToast(e.toString());
+      }
+      SmartDialog.dismiss();
+      update();
+    }
+  }
+
+  removeWeightSize(int id) async {
     try {
       SmartDialog.showLoading(msg: 'loading'.tr);
-      var response = val == true
-          ? await itemsData.addItemWeight(
-              weightId, itemModel!.itemsId!, price.text)
-          : await itemsData.removeItemWeight(weightId, itemModel!.itemsId!);
+      var response = await itemsData.removeItemWeight(id);
+
       statusRequest = handlingData(response);
       if (statusRequest == StatusRequest.success) {
         if (response["status"] == "success") {
           SmartDialog.dismiss();
           SmartDialog.showNotify(
-              msg: "تم التعديل بنجاح", notifyType: NotifyType.success);
-          var responseList = response["data"][0];
-          itemModel = ItemsModel.fromJson(responseList);
+              msg: "تم الحذف بنجاح", notifyType: NotifyType.success);
+
+          Get.back();
+          getSubItem();
+        } else {
+          Get.back();
+
+          SmartDialog.showNotify(
+              msg: "حدث خطأ ما يرجى المحاولة لاحقا",
+              notifyType: NotifyType.error);
         }
       } else {
-        statusRequest = StatusRequest.failed;
+        Get.back();
+
+        SmartDialog.showNotify(
+            msg: "حدث خطأ ما يرجى المحاولة لاحقا",
+            notifyType: NotifyType.error);
       }
     } catch (e) {
-      SmartDialog.dismiss();
       SmartDialog.showToast(e.toString());
     }
+    SmartDialog.dismiss();
     update();
   }
 
@@ -151,7 +238,7 @@ class ItemsDetailsController extends GetxController
 
   getFloatingAction() async {
     if (tabController.index == 0) {
-      print("0");
+      showWeightModalSheet(Get.context!);
     } else if (tabController.index == 1) {
       showCustomModalSheet(Get.context!, editAvailableInBranch);
     } else if (tabController.index == 2) {

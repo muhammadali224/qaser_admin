@@ -19,14 +19,14 @@ String subItemsModelToJson(SubItemsModel data) => json.encode(data.toJson());
 @freezed
 class SubItemsModel with _$SubItemsModel {
   const factory SubItemsModel({
-    @JsonKey(name: "sub_item_id") required int subItemId,
-    @JsonKey(name: "item_id") required int itemId,
-    @JsonKey(name: "sub_id") required int subId,
-    @JsonKey(name: "sub_items_price") required int subItemsPrice,
-    @JsonKey(name: "weight_size_id") required int weightSizeId,
-    @JsonKey(name: "sub_item_name") required String subItemName,
-    @JsonKey(name: "sub_item_name_ar") required String subItemNameAr,
-    @JsonKey(name: "sub_item_value") required int subItemValue,
+    @JsonKey(name: "sub_item_id") int? subItemId,
+    @JsonKey(name: "item_id") int? itemId,
+    @JsonKey(name: "sub_id") int? subId,
+    @JsonKey(name: "sub_items_price") num? subItemsPrice,
+    @JsonKey(name: "weight_size_id") int? weightSizeId,
+    @JsonKey(name: "sub_item_name") String? subItemName,
+    @JsonKey(name: "sub_item_name_ar") String? subItemNameAr,
+    @JsonKey(name: "sub_item_value") num? subItemValue,
   }) = _SubItemsModel;
 
   factory SubItemsModel.fromJson(Map<String, dynamic> json) =>

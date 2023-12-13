@@ -82,6 +82,7 @@ class AppLink {
   static String addItemToBranch = "$server/items/add_to_branch.php";
   static String removeItemFromBranch = "$server/items/remove_from_branch.php";
   static String addItemWeight = "$server/items/add_weight.php";
+  static String editItemWeight = "$server/items/edit_weight.php";
   static String removeItemWeight = "$server/items/remove_weight.php";
   static String addItemImage = "$server/items/add_image.php";
   static String deleteItemImage = "$server/items/delete_image.php";

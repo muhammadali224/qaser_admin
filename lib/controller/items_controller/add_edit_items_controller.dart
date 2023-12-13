@@ -55,6 +55,7 @@ class AddEditItemsController extends GetxController {
           itemsDiscount: num.parse(discount.text),
           itemsCat: catModel.categoriesId,
           itemsGroup: int.parse(itemGroup.text),
+          itemsAttrId: selectedWeightAndSize,
           itemsPointPerVal: num.parse(point.text),
         );
 

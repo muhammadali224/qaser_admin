@@ -8,14 +8,14 @@ part of 'sub_items_model.dart';
 
 _$SubItemsModelImpl _$$SubItemsModelImplFromJson(Map<String, dynamic> json) =>
     _$SubItemsModelImpl(
-      subItemId: json['sub_item_id'] as int,
-      itemId: json['item_id'] as int,
-      subId: json['sub_id'] as int,
-      subItemsPrice: json['sub_items_price'] as int,
-      weightSizeId: json['weight_size_id'] as int,
-      subItemName: json['sub_item_name'] as String,
-      subItemNameAr: json['sub_item_name_ar'] as String,
-      subItemValue: json['sub_item_value'] as int,
+      subItemId: json['sub_item_id'] as int?,
+      itemId: json['item_id'] as int?,
+      subId: json['sub_id'] as int?,
+      subItemsPrice: json['sub_items_price'] as num?,
+      weightSizeId: json['weight_size_id'] as int?,
+      subItemName: json['sub_item_name'] as String?,
+      subItemNameAr: json['sub_item_name_ar'] as String?,
+      subItemValue: json['sub_item_value'] as num?,
     );
 
 Map<String, dynamic> _$$SubItemsModelImplToJson(_$SubItemsModelImpl instance) =>
