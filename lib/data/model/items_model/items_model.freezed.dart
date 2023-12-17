@@ -48,10 +48,6 @@ mixin _$ItemsModel {
   DateTime? get itemsData => throw _privateConstructorUsedError;
   @JsonKey(name: "items_cat")
   int? get itemsCat => throw _privateConstructorUsedError;
-  @JsonKey(name: "item_attr_id")
-  int? get itemsAttrId => throw _privateConstructorUsedError;
-  @JsonKey(name: "weigh_ids")
-  List<String>? get weighIds => throw _privateConstructorUsedError;
   @JsonKey(name: "branch_ids")
   List<String>? get branchIds => throw _privateConstructorUsedError;
   @JsonKey(name: "images")
@@ -84,8 +80,6 @@ abstract class $ItemsModelCopyWith<$Res> {
       @JsonKey(name: "items_point_per_val") num? itemsPointPerVal,
       @JsonKey(name: "items_data") DateTime? itemsData,
       @JsonKey(name: "items_cat") int? itemsCat,
-      @JsonKey(name: "item_attr_id") int? itemsAttrId,
-      @JsonKey(name: "weigh_ids") List<String>? weighIds,
       @JsonKey(name: "branch_ids") List<String>? branchIds,
       @JsonKey(name: "images") List<String>? images});
 }
@@ -117,8 +111,6 @@ class _$ItemsModelCopyWithImpl<$Res, $Val extends ItemsModel>
     Object? itemsPointPerVal = freezed,
     Object? itemsData = freezed,
     Object? itemsCat = freezed,
-    Object? itemsAttrId = freezed,
-    Object? weighIds = freezed,
     Object? branchIds = freezed,
     Object? images = freezed,
   }) {
@@ -179,14 +171,6 @@ class _$ItemsModelCopyWithImpl<$Res, $Val extends ItemsModel>
           ? _value.itemsCat
           : itemsCat // ignore: cast_nullable_to_non_nullable
               as int?,
-      itemsAttrId: freezed == itemsAttrId
-          ? _value.itemsAttrId
-          : itemsAttrId // ignore: cast_nullable_to_non_nullable
-              as int?,
-      weighIds: freezed == weighIds
-          ? _value.weighIds
-          : weighIds // ignore: cast_nullable_to_non_nullable
-              as List<String>?,
       branchIds: freezed == branchIds
           ? _value.branchIds
           : branchIds // ignore: cast_nullable_to_non_nullable
@@ -222,8 +206,6 @@ abstract class _$$ItemsModelImplCopyWith<$Res>
       @JsonKey(name: "items_point_per_val") num? itemsPointPerVal,
       @JsonKey(name: "items_data") DateTime? itemsData,
       @JsonKey(name: "items_cat") int? itemsCat,
-      @JsonKey(name: "item_attr_id") int? itemsAttrId,
-      @JsonKey(name: "weigh_ids") List<String>? weighIds,
       @JsonKey(name: "branch_ids") List<String>? branchIds,
       @JsonKey(name: "images") List<String>? images});
 }
@@ -253,8 +235,6 @@ class __$$ItemsModelImplCopyWithImpl<$Res>
     Object? itemsPointPerVal = freezed,
     Object? itemsData = freezed,
     Object? itemsCat = freezed,
-    Object? itemsAttrId = freezed,
-    Object? weighIds = freezed,
     Object? branchIds = freezed,
     Object? images = freezed,
   }) {
@@ -315,14 +295,6 @@ class __$$ItemsModelImplCopyWithImpl<$Res>
           ? _value.itemsCat
           : itemsCat // ignore: cast_nullable_to_non_nullable
               as int?,
-      itemsAttrId: freezed == itemsAttrId
-          ? _value.itemsAttrId
-          : itemsAttrId // ignore: cast_nullable_to_non_nullable
-              as int?,
-      weighIds: freezed == weighIds
-          ? _value._weighIds
-          : weighIds // ignore: cast_nullable_to_non_nullable
-              as List<String>?,
       branchIds: freezed == branchIds
           ? _value._branchIds
           : branchIds // ignore: cast_nullable_to_non_nullable
@@ -353,12 +325,9 @@ class _$ItemsModelImpl implements _ItemsModel {
       @JsonKey(name: "items_point_per_val") this.itemsPointPerVal,
       @JsonKey(name: "items_data") this.itemsData,
       @JsonKey(name: "items_cat") this.itemsCat,
-      @JsonKey(name: "item_attr_id") this.itemsAttrId,
-      @JsonKey(name: "weigh_ids") final List<String>? weighIds,
       @JsonKey(name: "branch_ids") final List<String>? branchIds,
       @JsonKey(name: "images") final List<String>? images})
-      : _weighIds = weighIds,
-        _branchIds = branchIds,
+      : _branchIds = branchIds,
         _images = images;
 
   factory _$ItemsModelImpl.fromJson(Map<String, dynamic> json) =>
@@ -406,20 +375,6 @@ class _$ItemsModelImpl implements _ItemsModel {
   @override
   @JsonKey(name: "items_cat")
   final int? itemsCat;
-  @override
-  @JsonKey(name: "item_attr_id")
-  final int? itemsAttrId;
-  final List<String>? _weighIds;
-  @override
-  @JsonKey(name: "weigh_ids")
-  List<String>? get weighIds {
-    final value = _weighIds;
-    if (value == null) return null;
-    if (_weighIds is EqualUnmodifiableListView) return _weighIds;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
-  }
-
   final List<String>? _branchIds;
   @override
   @JsonKey(name: "branch_ids")
@@ -444,7 +399,7 @@ class _$ItemsModelImpl implements _ItemsModel {
 
   @override
   String toString() {
-    return 'ItemsModel(itemsId: $itemsId, itemsName: $itemsName, itemsNameAr: $itemsNameAr, itemsDesc: $itemsDesc, itemsDescAr: $itemsDescAr, itemsImage: $itemsImage, itemsGroup: $itemsGroup, itemsCount: $itemsCount, itemsActive: $itemsActive, itemsPrice: $itemsPrice, itemsDiscount: $itemsDiscount, itemsPointPerVal: $itemsPointPerVal, itemsData: $itemsData, itemsCat: $itemsCat, itemsAttrId: $itemsAttrId, weighIds: $weighIds, branchIds: $branchIds, images: $images)';
+    return 'ItemsModel(itemsId: $itemsId, itemsName: $itemsName, itemsNameAr: $itemsNameAr, itemsDesc: $itemsDesc, itemsDescAr: $itemsDescAr, itemsImage: $itemsImage, itemsGroup: $itemsGroup, itemsCount: $itemsCount, itemsActive: $itemsActive, itemsPrice: $itemsPrice, itemsDiscount: $itemsDiscount, itemsPointPerVal: $itemsPointPerVal, itemsData: $itemsData, itemsCat: $itemsCat, branchIds: $branchIds, images: $images)';
   }
 
   @override
@@ -479,9 +434,6 @@ class _$ItemsModelImpl implements _ItemsModel {
                 other.itemsData == itemsData) &&
             (identical(other.itemsCat, itemsCat) ||
                 other.itemsCat == itemsCat) &&
-            (identical(other.itemsAttrId, itemsAttrId) ||
-                other.itemsAttrId == itemsAttrId) &&
-            const DeepCollectionEquality().equals(other._weighIds, _weighIds) &&
             const DeepCollectionEquality()
                 .equals(other._branchIds, _branchIds) &&
             const DeepCollectionEquality().equals(other._images, _images));
@@ -505,8 +457,6 @@ class _$ItemsModelImpl implements _ItemsModel {
       itemsPointPerVal,
       itemsData,
       itemsCat,
-      itemsAttrId,
-      const DeepCollectionEquality().hash(_weighIds),
       const DeepCollectionEquality().hash(_branchIds),
       const DeepCollectionEquality().hash(_images));
 
@@ -540,8 +490,6 @@ abstract class _ItemsModel implements ItemsModel {
       @JsonKey(name: "items_point_per_val") final num? itemsPointPerVal,
       @JsonKey(name: "items_data") final DateTime? itemsData,
       @JsonKey(name: "items_cat") final int? itemsCat,
-      @JsonKey(name: "item_attr_id") final int? itemsAttrId,
-      @JsonKey(name: "weigh_ids") final List<String>? weighIds,
       @JsonKey(name: "branch_ids") final List<String>? branchIds,
       @JsonKey(name: "images") final List<String>? images}) = _$ItemsModelImpl;
 
@@ -590,12 +538,6 @@ abstract class _ItemsModel implements ItemsModel {
   @override
   @JsonKey(name: "items_cat")
   int? get itemsCat;
-  @override
-  @JsonKey(name: "item_attr_id")
-  int? get itemsAttrId;
-  @override
-  @JsonKey(name: "weigh_ids")
-  List<String>? get weighIds;
   @override
   @JsonKey(name: "branch_ids")
   List<String>? get branchIds;

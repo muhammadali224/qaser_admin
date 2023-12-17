@@ -31,7 +31,6 @@ class AddEditItemsController extends GetxController {
   late TextEditingController discount;
   late TextEditingController point;
   late TextEditingController itemGroup;
-  int selectedWeightAndSize = 1;
 
   File? file;
   String imageUrl = "";
@@ -55,7 +54,6 @@ class AddEditItemsController extends GetxController {
           itemsDiscount: num.parse(discount.text),
           itemsCat: catModel.categoriesId,
           itemsGroup: int.parse(itemGroup.text),
-          itemsAttrId: selectedWeightAndSize,
           itemsPointPerVal: num.parse(point.text),
         );
 
@@ -102,7 +100,6 @@ class AddEditItemsController extends GetxController {
         itemsActive: 1,
         itemsDiscount: num.parse(discount.text),
         itemsCat: catModel.categoriesId,
-        itemsAttrId: selectedWeightAndSize,
         itemsPointPerVal: num.parse(point.text),
         itemsGroup: int.parse(itemGroup.text),
       );
@@ -184,7 +181,6 @@ class AddEditItemsController extends GetxController {
     point = TextEditingController(text: itemsModel.itemsPointPerVal.toString());
     itemGroup = TextEditingController(text: itemsModel.itemsGroup.toString());
     imageUrl = "${AppLink.imagesItems}${itemsModel.itemsImage}";
-    selectedWeightAndSize = itemsModel.itemsAttrId!;
   }
 
   @override

@@ -5,7 +5,6 @@ import '../../../../controller/items_controller/item_details_controller.dart';
 import '../../../../core/extension/space_extension.dart';
 import '../../../../core/function/valid_input.dart';
 import '../../../../data/model/sub_items/sub_items_model.dart';
-import '../../../../data/source/shared/sub_item_weight_list.dart';
 import '../../shred_component/input_form_field.dart';
 import '../../shred_component/material_button.dart';
 
@@ -37,27 +36,7 @@ showWeightModalSheet(BuildContext context, [SubItemsModel? subItemsModel]) {
             margin: const EdgeInsets.symmetric(horizontal: 15.0),
             child: Column(
               children: [
-                Container(
-                  margin: const EdgeInsets.only(top: 20.0),
-                  child: DropdownMenu(
-                    menuStyle: MenuStyle(
-                        shape: MaterialStateProperty.all(
-                      RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(15)),
-                    )),
-                    expandedInsets: const EdgeInsets.symmetric(horizontal: 5),
-                    label: const Text("أختر الوزن او الحجم",
-                        style: TextStyle(color: Colors.red)),
-                    onSelected: (val) {
-                      controller.selectedWeightAndSize = val!;
-                    },
-                    initialSelection: subItemsModel?.weightSizeId,
-                    dropdownMenuEntries: subItemsList
-                        .map((e) => DropdownMenuEntry(
-                            value: e.weightSizeId, label: e.subItemNameAr!))
-                        .toList(),
-                  ),
-                ),
+
                 InputFormField(
                   hintTitle: 'السعر',
                   controller: controller.price,

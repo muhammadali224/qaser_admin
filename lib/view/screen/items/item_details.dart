@@ -17,10 +17,7 @@ class ItemDetails extends StatelessWidget {
     return PopScope(
       onPopInvoked: (onPOP) async {
         if (onPOP) {
-          await Future.wait([
-            Get.find<ViewItemController>().getItems(),
-            Get.find<ViewItemController>().getSubItems(),
-          ]);
+          Get.find<ViewItemController>().getItems();
         }
       },
       child: DefaultTabController(

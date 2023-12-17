@@ -6,10 +6,7 @@ import '../../core/enum/status_request.dart';
 import '../../core/function/handling_data_controller.dart';
 import '../../data/model/categories_model/categories_model.dart';
 import '../../data/model/items_model/items_model.dart';
-import '../../data/model/weight_size_model/weight_size_model.dart';
 import '../../data/source/remote/items_data/items_data.dart';
-import '../../data/source/remote/weight_size_data/weight_size_data.dart';
-import '../../data/source/shared/sub_item_weight_list.dart';
 
 class ViewItemController extends GetxController {
   StatusRequest statusRequest = StatusRequest.none;
@@ -17,7 +14,6 @@ class ViewItemController extends GetxController {
 
   late CategoriesModel categoriesModel;
   final ItemsData itemsData = ItemsData(Get.find());
-  final SubItemsData subItemsData = SubItemsData(Get.find());
 
   Future<void> getItems() async {
     itemsList.clear();
@@ -31,27 +27,6 @@ class ViewItemController extends GetxController {
         if (response["status"] == "success") {
           List responseList = response['data'];
           itemsList.addAll(responseList.map((e) => ItemsModel.fromJson(e)));
-        }
-      } else {
-        statusRequest = StatusRequest.failed;
-      }
-    } catch (e) {
-      SmartDialog.showToast(e.toString());
-    }
-
-    update();
-  }
-
-  Future<void> getSubItems() async {
-    subItemsList.clear();
-    try {
-      var response = await subItemsData.getSubItems();
-      statusRequest = handlingData(response);
-      if (statusRequest == StatusRequest.success) {
-        if (response["status"] == "success") {
-          List responseList = response['data'];
-          subItemsList
-              .addAll(responseList.map((e) => WeightSizeModel.fromJson(e)));
         }
       } else {
         statusRequest = StatusRequest.failed;
@@ -101,10 +76,8 @@ class ViewItemController extends GetxController {
   @override
   void onInit() async {
     categoriesModel = Get.arguments['model'];
-    await Future.wait([
-      getItems(),
-      getSubItems(),
-    ]);
+
+    await getItems();
 
     super.onInit();
   }

@@ -1,3 +1,4 @@
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
@@ -13,7 +14,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await dotenv.load(fileName: ".env");
   await initialServices();
-
+  FlutterError.onError = FirebaseCrashlytics.instance.recordFlutterFatalError;
   runApp(const MyApp());
 }
 

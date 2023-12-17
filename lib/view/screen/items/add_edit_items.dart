@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 
 import '../../../controller/items_controller/add_edit_items_controller.dart';
 import '../../../core/function/valid_input.dart';
-import '../../../data/source/shared/sub_item_weight_list.dart';
 import '../../widget/items/item_image_header.dart';
 import '../../widget/shred_component/input_form_field.dart';
 import '../../widget/shred_component/material_button.dart';
@@ -100,27 +99,7 @@ class AddEditItems extends StatelessWidget {
                     return validInput(val!, 1, 50, 'name');
                   },
                 ),
-                Container(
-                  margin: const EdgeInsets.only(top: 20.0),
-                  child: DropdownMenu(
-                    trailingIcon: const Icon(
-                        Icons.arrow_drop_down_circle_outlined,
-                        color: Colors.red),
-                    expandedInsets: const EdgeInsets.symmetric(horizontal: 5),
-                    label: const Text("أختر الوزن او الحجم الافتراضي",
-                        style: TextStyle(color: Colors.red)),
-                    onSelected: (val) {
-                      controller.selectedWeightAndSize = val!;
-                    },
-                    initialSelection: controller.isEdit
-                        ? controller.selectedWeightAndSize
-                        : null,
-                    dropdownMenuEntries: subItemsList
-                        .map((e) => DropdownMenuEntry(
-                            value: e.weightSizeId, label: e.subItemNameAr!))
-                        .toList(),
-                  ),
-                ),
+
                 MaterialCustomButton(
                   onPressed: () => controller.isEdit
                       ? controller.editItem()
