@@ -4,7 +4,6 @@ import 'package:get/get.dart';
 
 import '../constant/color.dart';
 import '../constant/theme.dart';
-import '../function/fcm.dart';
 import '../services/services.dart';
 
 class LocalController extends GetxController {
@@ -64,8 +63,6 @@ class LocalController extends GetxController {
 
   @override
   void onInit() {
-    requestNotificationPermissions();
-    fcmConfig();
     requestLocationPermissions();
     String? sharedPrefLanguages = myServices.sharedPref.getString("language");
     if (sharedPrefLanguages == 'ar') {

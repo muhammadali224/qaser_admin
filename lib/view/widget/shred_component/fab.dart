@@ -14,7 +14,7 @@ class FAB extends StatelessWidget {
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(100)),
       onPressed: onTap,
       child: Icon(
-        iconData ?? FontAwesome.plus,
+        iconData ?? FontAwesome.plus_solid,
         color: iconColor ?? Colors.white,
         size: 40,
       ),

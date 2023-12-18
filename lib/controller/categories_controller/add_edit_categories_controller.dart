@@ -63,35 +63,40 @@ class AddEditCategoryController extends GetxController {
         }
       } catch (e) {
         SmartDialog.showToast(e.toString());
+        throw Exception(e.toString());
       }
     }
     update();
   }
 
   uploadImage() async {
-    if (file != null && formKey.currentState!.validate()) {
-      SmartDialog.showLoading(msg: 'loading'.tr);
-      var catModel = CategoriesModel(
-          categoriesNameAr: nameAr.text, categoriesName: nameEn.text);
-      var response = await categoriesViewController.categoriesData.addImage(
-        catModel,
-        file!,
-      );
-      statusRequest = handlingData(response);
-      if (StatusRequest.success == statusRequest) {
-        if (response['status'] == 'success') {
-          SmartDialog.dismiss();
-          SmartDialog.showNotify(
-              msg: "تم الاضافة بنجاح", notifyType: NotifyType.success);
-          Get.offAndToNamed(AppRoutes.viewCategories);
-          categoriesViewController.getCategories();
-        } else {
-          statusRequest = StatusRequest.failed;
+    try {
+      if (file != null && formKey.currentState!.validate()) {
+        SmartDialog.showLoading(msg: 'loading'.tr);
+        var catModel = CategoriesModel(
+            categoriesNameAr: nameAr.text, categoriesName: nameEn.text);
+        var response = await categoriesViewController.categoriesData.addImage(
+          catModel,
+          file!,
+        );
+        statusRequest = handlingData(response);
+        if (StatusRequest.success == statusRequest) {
+          if (response['status'] == 'success') {
+            SmartDialog.dismiss();
+            SmartDialog.showNotify(
+                msg: "تم الاضافة بنجاح", notifyType: NotifyType.success);
+            Get.offAndToNamed(AppRoutes.viewCategories);
+            categoriesViewController.getCategories();
+          } else {
+            statusRequest = StatusRequest.failed;
+          }
         }
+      } else {
+        SmartDialog.showToast(
+            "الرجاء التأكد من اختيار الصورة وتعبئة كافة المعلومات");
       }
-    } else {
-      SmartDialog.showToast(
-          "الرجاء التأكد من اختيار الصورة وتعبئة كافة المعلومات");
+    } catch (e) {
+      throw Exception(e.toString());
     }
     update();
   }
@@ -119,6 +124,7 @@ class AddEditCategoryController extends GetxController {
     } catch (e) {
       SmartDialog.dismiss();
       SmartDialog.showToast(e.toString());
+      throw Exception(e.toString());
     }
     update();
   }
@@ -136,12 +142,16 @@ class AddEditCategoryController extends GetxController {
 
   @override
   void onInit() {
-    if (Get.currentRoute == "/editCategory") {
-      categoryModel = Get.arguments['model'];
-      setIsEdit(true);
-      initEditData(categoryModel!);
-    } else if (Get.currentRoute == "/addCategory") {
-      initData();
+    try {
+      if (Get.currentRoute == "/editCategory") {
+        categoryModel = Get.arguments['model'];
+        setIsEdit(true);
+        initEditData(categoryModel!);
+      } else if (Get.currentRoute == "/addCategory") {
+        initData();
+      }
+    } catch (e) {
+      throw Exception(e.toString());
     }
     super.onInit();
   }

@@ -72,19 +72,23 @@ class LoginControllerImp extends LoginController {
       } else {}
     } catch (e) {
       SmartDialog.showToast(e.toString());
-      print(e.toString());
+      throw Exception(e.toString());
     }
   }
 
   @override
   void onInit() {
-    FirebaseMessaging.instance.getToken().then((value) {
-      String? token = value;
-      // ignore: avoid_print
-      print(token);
-    });
-    email = TextEditingController();
-    password = TextEditingController();
+    try {
+      FirebaseMessaging.instance.getToken().then((value) {
+        String? token = value;
+        // ignore: avoid_print
+        print(token);
+      });
+      email = TextEditingController();
+      password = TextEditingController();
+    } catch (e) {
+      throw Exception(e.toString());
+    }
     super.onInit();
   }
 

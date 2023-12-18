@@ -65,11 +65,6 @@ class AppDrawer extends StatelessWidget {
             icon: IconBroken.Discount,
             onTap: controller.goToCoupons,
           ),
-          DrawerItem(
-            title: 'weightSize',
-            icon: FontAwesome.weight_scale,
-            onTap: controller.goToWeightSize,
-          ),
         ],
       ),
     );

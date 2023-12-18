@@ -29,23 +29,27 @@ class CouponViewController extends GetxController {
         statusRequest = StatusRequest.failed;
       }
     } catch (e) {
-      // SmartDialog.showToast(e.toString());
+      throw Exception(e.toString());
     }
     update();
   }
 
   deleteCoupon(int id) async {
-    statusRequest = StatusRequest.loading;
-    update();
-    var response = await couponData.deleteCoupon(id.toString());
-    statusRequest = handlingData(response);
-    if (statusRequest == StatusRequest.success) {
-      if (response['status'] == 'success') {
-        SmartDialog.showToast("تم الحذف بنجاح");
-        getCoupon();
+    try {
+      statusRequest = StatusRequest.loading;
+      update();
+      var response = await couponData.deleteCoupon(id.toString());
+      statusRequest = handlingData(response);
+      if (statusRequest == StatusRequest.success) {
+        if (response['status'] == 'success') {
+          SmartDialog.showToast("تم الحذف بنجاح");
+          getCoupon();
+        }
+      } else {
+        statusRequest = StatusRequest.failed;
       }
-    } else {
-      statusRequest = StatusRequest.failed;
+    } catch (e) {
+      throw Exception(e.toString());
     }
     update();
   }

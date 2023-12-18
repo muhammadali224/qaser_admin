@@ -32,89 +32,97 @@ class AddBranchesController extends GetxController {
   }
 
   addBranches() async {
-    if (longitude == null || latitude == null) {
-      SmartDialog.showNotify(
-          msg: "الرجاء اختيار موقع", notifyType: NotifyType.error);
-    }
-    if (formKey.currentState!.validate() &&
-        (longitude != null || latitude != null)) {
-      try {
-        statusRequest = StatusRequest.loading;
-        update();
-        var branchModel = BranchModel(
-            branchNameAr: nameAr.text,
-            branchNameEn: nameEn.text,
-            branchLang: longitude,
-            branchLat: latitude,
-            branchIsFixed: selectedOption,
-            branchIsOpen: 0,
-            branchMaxZone: num.parse(deleveryMaxZone.text),
-            branchDeliveryCharge: num.parse(deleveryCharge.text),
-            branchFacebookUrl: facebookUrl.text,
-            branchPhone1: phone1.text,
-            branchPhone2: phone2.text,
-            branchDeliveryFixCharge: num.parse(deliverFixCharge.text),
-            branchZone: num.parse(deliveryFixZone.text));
-        var response =
-            await homeController.branchesData.addBranches(branchModel);
-        statusRequest = handlingData(response);
-        if (statusRequest == StatusRequest.success) {
-          if (response["status"] == "success") {
-            SmartDialog.showNotify(
-                msg: "تم الاضافة بنجاح", notifyType: NotifyType.success);
-            Get.offAndToNamed(AppRoutes.branches);
-            homeController.getBranches();
-          }
-        } else {
-          statusRequest = StatusRequest.failed;
-        }
-      } catch (e) {
-        SmartDialog.showToast(e.toString());
+    try {
+      if (longitude == null || latitude == null) {
+        SmartDialog.showNotify(
+            msg: "الرجاء اختيار موقع", notifyType: NotifyType.error);
       }
+      if (formKey.currentState!.validate() &&
+          (longitude != null || latitude != null)) {
+        try {
+          statusRequest = StatusRequest.loading;
+          update();
+          var branchModel = BranchModel(
+              branchNameAr: nameAr.text,
+              branchNameEn: nameEn.text,
+              branchLang: longitude,
+              branchLat: latitude,
+              branchIsFixed: selectedOption,
+              branchIsOpen: 0,
+              branchMaxZone: num.parse(deleveryMaxZone.text),
+              branchDeliveryCharge: num.parse(deleveryCharge.text),
+              branchFacebookUrl: facebookUrl.text,
+              branchPhone1: phone1.text,
+              branchPhone2: phone2.text,
+              branchDeliveryFixCharge: num.parse(deliverFixCharge.text),
+              branchZone: num.parse(deliveryFixZone.text));
+          var response =
+              await homeController.branchesData.addBranches(branchModel);
+          statusRequest = handlingData(response);
+          if (statusRequest == StatusRequest.success) {
+            if (response["status"] == "success") {
+              SmartDialog.showNotify(
+                  msg: "تم الاضافة بنجاح", notifyType: NotifyType.success);
+              Get.offAndToNamed(AppRoutes.branches);
+              homeController.getBranches();
+            }
+          } else {
+            statusRequest = StatusRequest.failed;
+          }
+        } catch (e) {
+          SmartDialog.showToast(e.toString());
+        }
+      }
+    } catch (e) {
+      throw Exception(e.toString());
     }
     update();
   }
 
   editBranches() async {
-    if (longitude == null || latitude == null) {
-      SmartDialog.showNotify(
-          msg: "الرجاء اختيار موقع", notifyType: NotifyType.error);
-    }
-    if (formKey.currentState!.validate() &&
-        (longitude != null || latitude != null)) {
-      try {
-        statusRequest = StatusRequest.loading;
-        update();
-        var branchEditModel = BranchModel(
-            branchNameAr: nameAr.text,
-            branchNameEn: nameEn.text,
-            branchLang: longitude,
-            branchLat: latitude,
-            branchIsFixed: selectedOption,
-            branchIsOpen: 0,
-            branchMaxZone: num.parse(deleveryMaxZone.text),
-            branchDeliveryCharge: num.parse(deleveryCharge.text),
-            branchFacebookUrl: facebookUrl.text,
-            branchPhone1: phone1.text,
-            branchPhone2: phone2.text,
-            branchDeliveryFixCharge: num.parse(deliverFixCharge.text),
-            branchZone: num.parse(deliveryFixZone.text));
-        var response = await homeController.branchesData
-            .editBranches(branchEditModel, branchModel!.branchId.toString());
-        statusRequest = handlingData(response);
-        if (statusRequest == StatusRequest.success) {
-          if (response["status"] == "success") {
-            SmartDialog.showNotify(
-                msg: "تم التعديل بنجاح", notifyType: NotifyType.success);
-            Get.offAndToNamed(AppRoutes.branches);
-            homeController.getBranches();
-          }
-        } else {
-          statusRequest = StatusRequest.failed;
-        }
-      } catch (e) {
-        SmartDialog.showToast(e.toString());
+    try {
+      if (longitude == null || latitude == null) {
+        SmartDialog.showNotify(
+            msg: "الرجاء اختيار موقع", notifyType: NotifyType.error);
       }
+      if (formKey.currentState!.validate() &&
+          (longitude != null || latitude != null)) {
+        try {
+          statusRequest = StatusRequest.loading;
+          update();
+          var branchEditModel = BranchModel(
+              branchNameAr: nameAr.text,
+              branchNameEn: nameEn.text,
+              branchLang: longitude,
+              branchLat: latitude,
+              branchIsFixed: selectedOption,
+              branchIsOpen: 0,
+              branchMaxZone: num.parse(deleveryMaxZone.text),
+              branchDeliveryCharge: num.parse(deleveryCharge.text),
+              branchFacebookUrl: facebookUrl.text,
+              branchPhone1: phone1.text,
+              branchPhone2: phone2.text,
+              branchDeliveryFixCharge: num.parse(deliverFixCharge.text),
+              branchZone: num.parse(deliveryFixZone.text));
+          var response = await homeController.branchesData
+              .editBranches(branchEditModel, branchModel!.branchId.toString());
+          statusRequest = handlingData(response);
+          if (statusRequest == StatusRequest.success) {
+            if (response["status"] == "success") {
+              SmartDialog.showNotify(
+                  msg: "تم التعديل بنجاح", notifyType: NotifyType.success);
+              Get.offAndToNamed(AppRoutes.branches);
+              homeController.getBranches();
+            }
+          } else {
+            statusRequest = StatusRequest.failed;
+          }
+        } catch (e) {
+          SmartDialog.showToast(e.toString());
+        }
+      }
+    } catch (e) {
+      throw Exception(e.toString());
     }
     update();
   }
@@ -169,12 +177,16 @@ class AddBranchesController extends GetxController {
 
   @override
   void onInit() {
-    if (Get.currentRoute == "/editBranch") {
-      branchModel = Get.arguments['branchModel'];
-      setIsEdit(true);
-      initEditData(branchModel!);
-    } else if (Get.currentRoute == "/addBranch") {
-      initData();
+    try {
+      if (Get.currentRoute == "/editBranch") {
+        branchModel = Get.arguments['branchModel'];
+        setIsEdit(true);
+        initEditData(branchModel!);
+      } else if (Get.currentRoute == "/addBranch") {
+        initData();
+      }
+    } catch (e) {
+      throw Exception(e.toString());
     }
     super.onInit();
   }

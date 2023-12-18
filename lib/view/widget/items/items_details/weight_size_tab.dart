@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 
 import '../../../../controller/items_controller/item_details_controller.dart';
 import 'item_list_tile.dart';
-import 'show_modal_weight_size_list.dart';
 
 class WeightSizeTab extends GetView<ItemsDetailsController> {
   const WeightSizeTab({super.key});
@@ -23,13 +22,11 @@ class WeightSizeTab extends GetView<ItemsDetailsController> {
             itemBuilder: (_, index) => Container(
               margin: const EdgeInsets.symmetric(vertical: 5),
               child: ItemDetailsListTile(
-                onTap: () {
-                  showWeightModalSheet(context, controller.subItemsList[index]);
-                },
-                title: controller.subItemsList[index].subItemNameAr!,
+                onTap: () => controller.removeWeightSize(
+                    controller.subItemsList[index].subItemId!),
+                title: controller.subItemsList[index].subItemsNameAr!,
                 subtitle:
                     "${controller.subItemsList[index].subItemsPrice.toString()} د",
-                iconData: Icons.mode_edit_outline,
               ),
             ),
           ),

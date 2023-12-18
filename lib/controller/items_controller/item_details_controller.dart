@@ -23,6 +23,8 @@ class ItemsDetailsController extends GetxController
   List<SubItemsModel> subItemsList = [];
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
   TextEditingController price = TextEditingController();
+  TextEditingController nameEn = TextEditingController();
+  TextEditingController nameAr = TextEditingController();
   ViewItemController viewItemController = Get.find<ViewItemController>();
   int selectedWeightAndSize = 1;
   File? file;
@@ -50,16 +52,21 @@ class ItemsDetailsController extends GetxController
     } catch (e) {
       SmartDialog.dismiss();
       SmartDialog.showToast(e.toString());
+      throw Exception(e.toString());
     }
     update();
   }
 
-  addWeightSize() async {
+  addSubItem() async {
     if (formKey.currentState!.validate()) {
       try {
         SmartDialog.showLoading(msg: 'loading'.tr);
-        var response = await itemsData.addItemWeight(
-            selectedWeightAndSize, itemModel!.itemsId!, price.text);
+        var response = await itemsData.addSubItem(
+          nameEn.text,
+          nameAr.text,
+          itemModel!.itemsId!,
+          price.text,
+        );
 
         statusRequest = handlingData(response);
         if (statusRequest == StatusRequest.success) {
@@ -86,44 +93,7 @@ class ItemsDetailsController extends GetxController
         }
       } catch (e) {
         SmartDialog.showToast(e.toString());
-      }
-      SmartDialog.dismiss();
-      update();
-    }
-  }
-
-  editWeightSize(int id) async {
-    if (formKey.currentState!.validate()) {
-      try {
-        SmartDialog.showLoading(msg: 'loading'.tr);
-        var response = await itemsData.editItemWeight(
-            id, selectedWeightAndSize, itemModel!.itemsId!, price.text);
-
-        statusRequest = handlingData(response);
-        if (statusRequest == StatusRequest.success) {
-          if (response["status"] == "success") {
-            SmartDialog.dismiss();
-            SmartDialog.showNotify(
-                msg: "تم التعديل بنجاح", notifyType: NotifyType.success);
-
-            Get.back();
-            getSubItem();
-          } else {
-            Get.back();
-
-            SmartDialog.showNotify(
-                msg: "حدث خطأ ما يرجى المحاولة لاحقا",
-                notifyType: NotifyType.error);
-          }
-        } else {
-          Get.back();
-
-          SmartDialog.showNotify(
-              msg: "حدث خطأ ما يرجى المحاولة لاحقا",
-              notifyType: NotifyType.error);
-        }
-      } catch (e) {
-        SmartDialog.showToast(e.toString());
+        throw Exception(e.toString());
       }
       SmartDialog.dismiss();
       update();
@@ -160,6 +130,7 @@ class ItemsDetailsController extends GetxController
       }
     } catch (e) {
       SmartDialog.showToast(e.toString());
+      throw Exception(e.toString());
     }
     SmartDialog.dismiss();
     update();
@@ -183,7 +154,7 @@ class ItemsDetailsController extends GetxController
       }
     } catch (e) {
       SmartDialog.dismiss();
-      print(e.toString());
+      throw Exception(e.toString());
     }
     update();
   }
@@ -207,7 +178,7 @@ class ItemsDetailsController extends GetxController
       }
     } catch (e) {
       SmartDialog.dismiss();
-      print(e.toString());
+      throw Exception(e.toString());
     }
     update();
   }
@@ -230,7 +201,7 @@ class ItemsDetailsController extends GetxController
       }
     } catch (e) {
       SmartDialog.dismiss();
-      print(e.toString());
+      throw Exception(e.toString());
     }
     SmartDialog.dismiss();
     update();
@@ -251,9 +222,13 @@ class ItemsDetailsController extends GetxController
 
   @override
   void onInit() async {
-    itemModel = Get.arguments['model'];
-    tabController = TabController(length: 3, vsync: this);
-    await getSubItem();
+    try {
+      itemModel = Get.arguments['model'];
+      tabController = TabController(length: 3, vsync: this);
+      await getSubItem();
+    } catch (e) {
+      throw Exception(e.toString());
+    }
     super.onInit();
   }
 

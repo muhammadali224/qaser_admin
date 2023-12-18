@@ -30,22 +30,27 @@ class ViewCategoriesController extends GetxController {
       }
     } catch (e) {
       // SmartDialog.showToast(e.toString());
+      throw Exception(e.toString());
     }
     update();
   }
 
   deleteCategory(int id) async {
-    statusRequest = StatusRequest.loading;
-    update();
-    var response = await categoriesData.deleteCategory(id.toString());
-    statusRequest = handlingData(response);
-    if (statusRequest == StatusRequest.success) {
-      if (response['status'] == 'success') {
-        SmartDialog.showToast("تم الحذف بنجاح");
-        getCategories();
+    try {
+      statusRequest = StatusRequest.loading;
+      update();
+      var response = await categoriesData.deleteCategory(id.toString());
+      statusRequest = handlingData(response);
+      if (statusRequest == StatusRequest.success) {
+        if (response['status'] == 'success') {
+          SmartDialog.showToast("تم الحذف بنجاح");
+          getCategories();
+        }
+      } else {
+        statusRequest = StatusRequest.failed;
       }
-    } else {
-      statusRequest = StatusRequest.failed;
+    } catch (e) {
+      throw Exception(e.toString());
     }
     update();
   }

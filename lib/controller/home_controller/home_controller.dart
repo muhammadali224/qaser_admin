@@ -43,7 +43,7 @@ class HomeController extends GetxController {
         statusRequest = StatusRequest.failed;
       }
     } catch (e) {
-      // SmartDialog.showToast(e.toString());
+      throw Exception(e.toString());
     }
     update();
   }
@@ -64,19 +64,23 @@ class HomeController extends GetxController {
         statusRequest = StatusRequest.failed;
       }
     } catch (e) {
-      // SmartDialog.showToast(e.toString());
+      throw Exception(e.toString());
     }
     update();
   }
 
   @override
   void onInit() async {
-    initializeDateFormatting();
-    await userManagement.getUser();
-    adminData = userManagement.user;
+    try {
+      initializeDateFormatting();
+      await userManagement.getUser();
+      adminData = userManagement.user;
 
-    await getBranches();
-    await getSummery();
+      await getBranches();
+      await getSummery();
+    } catch (e) {
+      throw Exception(e.toString());
+    }
 
     super.onInit();
   }

@@ -65,6 +65,7 @@ class EditOffersImageController extends GetxController {
       }
     } catch (e) {
       SmartDialog.showToast(e.toString());
+      throw Exception(e.toString());
     }
 
     update();

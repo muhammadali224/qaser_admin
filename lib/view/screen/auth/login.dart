@@ -13,7 +13,7 @@ import '../../widget/auth/logo.dart';
 import '../../widget/shred_component/input_form_field.dart';
 
 class Login extends StatelessWidget {
-  const Login({Key? key}) : super(key: key);
+  const Login({super.key});
 
   @override
   Widget build(BuildContext context) {

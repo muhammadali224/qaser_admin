@@ -33,23 +33,28 @@ class ViewItemController extends GetxController {
       }
     } catch (e) {
       SmartDialog.showToast(e.toString());
+      throw Exception(e.toString());
     }
 
     update();
   }
 
   deleteItems(int id, String imageName) async {
-    statusRequest = StatusRequest.loading;
-    update();
-    var response = await itemsData.deleteItem(id.toString(), imageName);
-    statusRequest = handlingData(response);
-    if (statusRequest == StatusRequest.success) {
-      if (response['status'] == 'success') {
-        SmartDialog.showToast("تم الحذف بنجاح");
-        getItems();
+    try {
+      statusRequest = StatusRequest.loading;
+      update();
+      var response = await itemsData.deleteItem(id.toString(), imageName);
+      statusRequest = handlingData(response);
+      if (statusRequest == StatusRequest.success) {
+        if (response['status'] == 'success') {
+          SmartDialog.showToast("تم الحذف بنجاح");
+          getItems();
+        }
+      } else {
+        statusRequest = StatusRequest.failed;
       }
-    } else {
-      statusRequest = StatusRequest.failed;
+    } catch (e) {
+      throw Exception(e.toString());
     }
     update();
   }

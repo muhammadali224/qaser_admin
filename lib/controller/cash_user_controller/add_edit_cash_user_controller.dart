@@ -73,6 +73,7 @@ class AddEditCashUserController extends GetxController {
         }
       } catch (e) {
         SmartDialog.showToast(e.toString());
+        throw Exception(e.toString());
       }
     }
     update();
@@ -112,6 +113,7 @@ class AddEditCashUserController extends GetxController {
         }
       } catch (e) {
         SmartDialog.showToast(e.toString());
+        throw Exception(e.toString());
       }
     }
     update();
@@ -135,12 +137,16 @@ class AddEditCashUserController extends GetxController {
 
   @override
   void onInit() {
-    if (Get.currentRoute == "/editCashUser") {
-      cashModel = Get.arguments['cashModel'];
-      setIsEdit(true);
-      initEditData(cashModel!);
-    } else if (Get.currentRoute == "/addCashUser") {
-      initData();
+    try {
+      if (Get.currentRoute == "/editCashUser") {
+        cashModel = Get.arguments['cashModel'];
+        setIsEdit(true);
+        initEditData(cashModel!);
+      } else if (Get.currentRoute == "/addCashUser") {
+        initData();
+      }
+    } catch (e) {
+      throw Exception(e.toString());
     }
     super.onInit();
   }

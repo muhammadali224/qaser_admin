@@ -52,7 +52,7 @@ class AddEditCoupon extends StatelessWidget {
                   hintTitle: 'عدد الكوبونات',
                   controller: controller.count,
                   keyboardType: TextInputType.number,
-                  icon: FontAwesome.coins,
+                  icon: FontAwesome.coins_solid,
                   validate: (val) {
                     return validInput(val!, 1, 15, 'password');
                   },

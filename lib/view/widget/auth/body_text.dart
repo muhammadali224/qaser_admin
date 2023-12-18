@@ -6,7 +6,7 @@ import '../../../core/constant/color.dart';
 class CustomBody extends StatelessWidget {
   final String bodyText;
 
-  const CustomBody({Key? key, required this.bodyText}) : super(key: key);
+  const CustomBody({super.key, required this.bodyText});
 
   @override
   Widget build(BuildContext context) {

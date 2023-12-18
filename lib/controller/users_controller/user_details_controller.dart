@@ -92,6 +92,7 @@ class UserDetailsController extends GetxController {
     } catch (e) {
       SmartDialog.dismiss();
       SmartDialog.showToast(e.toString());
+      throw Exception(e.toString());
     }
     update();
   }
@@ -112,6 +113,7 @@ class UserDetailsController extends GetxController {
     } catch (e) {
       SmartDialog.dismiss();
       SmartDialog.showToast(e.toString());
+      throw Exception(e.toString());
     }
     update();
   }
@@ -138,6 +140,7 @@ class UserDetailsController extends GetxController {
     } catch (e) {
       SmartDialog.dismiss();
       SmartDialog.showToast(e.toString());
+      throw Exception(e.toString());
     }
     update();
   }
@@ -168,6 +171,7 @@ class UserDetailsController extends GetxController {
     } catch (e) {
       SmartDialog.dismiss();
       SmartDialog.showToast(e.toString());
+      throw Exception(e.toString());
     }
     update();
   }

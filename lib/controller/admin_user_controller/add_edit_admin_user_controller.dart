@@ -75,6 +75,7 @@ class AddEditAdminUserController extends GetxController {
         }
       } catch (e) {
         SmartDialog.showToast(e.toString());
+        throw Exception(e.toString());
       }
     }
     update();
@@ -115,6 +116,7 @@ class AddEditAdminUserController extends GetxController {
         }
       } catch (e) {
         SmartDialog.showToast(e.toString());
+        throw Exception(e.toString());
       }
     }
     update();
@@ -145,12 +147,16 @@ class AddEditAdminUserController extends GetxController {
 
   @override
   void onInit() {
-    if (Get.currentRoute == "/editAdminUser") {
-      adminModel = Get.arguments['adminModel'];
-      setIsEdit(true);
-      initEditData(adminModel!);
-    } else if (Get.currentRoute == "/addAdminUser") {
-      initData();
+    try {
+      if (Get.currentRoute == "/editAdminUser") {
+        adminModel = Get.arguments['adminModel'];
+        setIsEdit(true);
+        initEditData(adminModel!);
+      } else if (Get.currentRoute == "/addAdminUser") {
+        initData();
+      }
+    } catch (e) {
+      throw Exception(e.toString());
     }
     super.onInit();
   }

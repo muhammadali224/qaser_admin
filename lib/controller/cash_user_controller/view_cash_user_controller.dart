@@ -30,23 +30,27 @@ class CashUserViewController extends GetxController {
         statusRequest = StatusRequest.failed;
       }
     } catch (e) {
-      // SmartDialog.showToast(e.toString());
+      throw Exception(e.toString());
     }
     update();
   }
 
   deleteCashUser(int id) async {
-    statusRequest = StatusRequest.loading;
-    update();
-    var response = await cashUsersData.deleteCashUser(id.toString());
-    statusRequest = handlingData(response);
-    if (statusRequest == StatusRequest.success) {
-      if (response['status'] == 'success') {
-        SmartDialog.showToast("تم الحذف بنجاح");
-        getCashUsers();
+    try {
+      statusRequest = StatusRequest.loading;
+      update();
+      var response = await cashUsersData.deleteCashUser(id.toString());
+      statusRequest = handlingData(response);
+      if (statusRequest == StatusRequest.success) {
+        if (response['status'] == 'success') {
+          SmartDialog.showToast("تم الحذف بنجاح");
+          getCashUsers();
+        }
+      } else {
+        statusRequest = StatusRequest.failed;
       }
-    } else {
-      statusRequest = StatusRequest.failed;
+    } catch (e) {
+      throw Exception(e.toString());
     }
     update();
   }

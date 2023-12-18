@@ -36,23 +36,27 @@ class BranchViewController extends GetxController {
         statusRequest = StatusRequest.failed;
       }
     } catch (e) {
-      // SmartDialog.showToast(e.toString());
+      throw Exception(e.toString());
     }
     update();
   }
 
   deleteBranch(int id) async {
-    statusRequest = StatusRequest.loading;
-    update();
-    var response = await branchesData.deleteBranches(id.toString());
-    statusRequest = handlingData(response);
-    if (statusRequest == StatusRequest.success) {
-      if (response['status'] == 'success') {
-        SmartDialog.showToast("تم الحذف بنجاح");
-        getBranches();
+    try {
+      statusRequest = StatusRequest.loading;
+      update();
+      var response = await branchesData.deleteBranches(id.toString());
+      statusRequest = handlingData(response);
+      if (statusRequest == StatusRequest.success) {
+        if (response['status'] == 'success') {
+          SmartDialog.showToast("تم الحذف بنجاح");
+          getBranches();
+        }
+      } else {
+        statusRequest = StatusRequest.failed;
       }
-    } else {
-      statusRequest = StatusRequest.failed;
+    } catch (e) {
+      throw Exception(e.toString());
     }
     update();
   }
@@ -69,9 +73,13 @@ class BranchViewController extends GetxController {
 
   @override
   void onInit() async {
-    await userManagement.getUser();
-    adminData = userManagement.user;
-    await getBranches();
+    try {
+      await userManagement.getUser();
+      adminData = userManagement.user;
+      await getBranches();
+    } catch (e) {
+      throw Exception(e.toString());
+    }
 
     super.onInit();
   }

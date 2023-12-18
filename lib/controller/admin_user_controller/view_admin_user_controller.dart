@@ -29,22 +29,27 @@ class AdminUserViewController extends GetxController {
       }
     } catch (e) {
       // SmartDialog.showToast(e.toString());
+      throw Exception(e.toString());
     }
     update();
   }
 
   deleteAdminUser(int id) async {
-    statusRequest = StatusRequest.loading;
-    update();
-    var response = await adminUsersData.deleteAdmins(id.toString());
-    statusRequest = handlingData(response);
-    if (statusRequest == StatusRequest.success) {
-      if (response['status'] == 'success') {
-        SmartDialog.showToast("تم الحذف بنجاح");
-        getAdminUsers();
+    try {
+      statusRequest = StatusRequest.loading;
+      update();
+      var response = await adminUsersData.deleteAdmins(id.toString());
+      statusRequest = handlingData(response);
+      if (statusRequest == StatusRequest.success) {
+        if (response['status'] == 'success') {
+          SmartDialog.showToast("تم الحذف بنجاح");
+          getAdminUsers();
+        }
+      } else {
+        statusRequest = StatusRequest.failed;
       }
-    } else {
-      statusRequest = StatusRequest.failed;
+    } catch (e) {
+      throw Exception(e.toString());
     }
     update();
   }

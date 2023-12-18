@@ -48,23 +48,27 @@ class NotificationViewController extends GetxController {
         statusRequest = StatusRequest.failed;
       }
     } catch (e) {
-      // SmartDialog.showToast(e.toString());
+      throw Exception(e.toString());
     }
     update();
   }
 
   Future<void> deleteNotification(int id) async {
-    statusRequest = StatusRequest.loading;
-    update();
-    var response = await notificationData.deleteNotification(id.toString());
-    statusRequest = handlingData(response);
-    if (statusRequest == StatusRequest.success) {
-      if (response['status'] == 'success') {
-        SmartDialog.showToast("تم الحذف بنجاح");
-        getNotification();
+    try {
+      statusRequest = StatusRequest.loading;
+      update();
+      var response = await notificationData.deleteNotification(id.toString());
+      statusRequest = handlingData(response);
+      if (statusRequest == StatusRequest.success) {
+        if (response['status'] == 'success') {
+          SmartDialog.showToast("تم الحذف بنجاح");
+          getNotification();
+        }
+      } else {
+        statusRequest = StatusRequest.failed;
       }
-    } else {
-      statusRequest = StatusRequest.failed;
+    } catch (e) {
+      throw Exception(e.toString());
     }
     update();
   }
@@ -95,6 +99,7 @@ class NotificationViewController extends GetxController {
         }
       } catch (e) {
         SmartDialog.showToast(e.toString());
+        throw Exception(e.toString());
       }
     }
     update();

@@ -21,12 +21,9 @@ class SubItemsModel with _$SubItemsModel {
   const factory SubItemsModel({
     @JsonKey(name: "sub_item_id") int? subItemId,
     @JsonKey(name: "item_id") int? itemId,
-    @JsonKey(name: "sub_id") int? subId,
-    @JsonKey(name: "sub_items_price") num? subItemsPrice,
-    @JsonKey(name: "weight_size_id") int? weightSizeId,
-    @JsonKey(name: "sub_item_name") String? subItemName,
-    @JsonKey(name: "sub_item_name_ar") String? subItemNameAr,
-    @JsonKey(name: "sub_item_value") num? subItemValue,
+    @JsonKey(name: "sub_items_name") String? subItemsName,
+    @JsonKey(name: "sub_items_name_ar") String? subItemsNameAr,
+    @JsonKey(name: "sub_items_price") int? subItemsPrice,
   }) = _SubItemsModel;
 
   factory SubItemsModel.fromJson(Map<String, dynamic> json) =>

@@ -38,8 +38,4 @@ class AppDrawerController extends GetxController {
   goToUsers() {
     Get.toNamed(AppRoutes.usersView);
   }
-
-  goToWeightSize() {
-    Get.toNamed(AppRoutes.weightSize);
-  }
 }

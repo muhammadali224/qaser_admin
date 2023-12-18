@@ -63,14 +63,14 @@ class AddBranch extends StatelessWidget {
                   hintTitle: 'رقم الهاتف ١',
                   controller: controller.phone1,
                   keyboardType: TextInputType.phone,
-                  icon: FontAwesome.phone,
+                  icon: FontAwesome.phone_solid,
                   validate: (val) {
                     return validInput(val!, 10, 10, 'phone');
                   },
                 ),
                 InputFormField(
                   hintTitle: 'رقم الهاتف ٢',
-                  icon: FontAwesome.phone,
+                  icon: FontAwesome.phone_solid,
                   controller: controller.phone2,
                   keyboardType: TextInputType.phone,
                   iconColor: Colors.green,
@@ -80,7 +80,7 @@ class AddBranch extends StatelessWidget {
                 ),
                 InputFormField(
                   hintTitle: 'رابط الفيسبوك',
-                  icon: FontAwesome.facebook_f,
+                  icon: FontAwesome.facebook_f_brand,
                   iconColor: Colors.blue,
                   controller: controller.facebookUrl,
                   validate: (val) {
@@ -90,7 +90,7 @@ class AddBranch extends StatelessWidget {
                 InputFormField(
                   hintTitle: 'رسوم التوصيل لكل كيلومتر',
                   labelString: 'رسوم التوصيل لكل كيلومتر',
-                  icon: FontAwesome.money_bill_1_wave,
+                  icon: FontAwesome.money_bill_1_solid,
                   controller: controller.deleveryCharge,
                   keyboardType: const TextInputType.numberWithOptions(),
                   validate: (val) {
@@ -136,7 +136,7 @@ class AddBranch extends StatelessWidget {
                   InputFormField(
                     hintTitle: 'رسوم التوصيل الثابته',
                     labelString: 'رسوم التوصيل الثابته',
-                    icon: FontAwesome.money_check_dollar,
+                    icon: FontAwesome.money_check_dollar_solid,
                     keyboardType: const TextInputType.numberWithOptions(),
                     iconColor: Colors.teal,
                     controller: controller.deliverFixCharge,
@@ -151,7 +151,7 @@ class AddBranch extends StatelessWidget {
                   InputFormField(
                     hintTitle: 'مسافة التوصيل الثابته بالكيلومتر',
                     labelString: 'مسافة التوصيل الثابته بالكيلومتر',
-                    icon: FontAwesome.ruler,
+                    icon: FontAwesome.ruler_solid,
                     keyboardType: const TextInputType.numberWithOptions(),
                     iconColor: Colors.deepPurpleAccent,
                     controller: controller.deliveryFixZone,

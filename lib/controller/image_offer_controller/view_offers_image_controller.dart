@@ -33,51 +33,61 @@ class ViewOffersImageController extends GetxController {
       }
     } catch (e) {
       SmartDialog.showToast(e.toString());
+      throw Exception(e.toString());
     }
 
     update();
   }
 
   deleteItems(int id, String imageName) async {
-    statusRequest = StatusRequest.loading;
-    update();
-    var response = await offerData.deleteOffersImage(id.toString(), imageName);
-    statusRequest = handlingData(response);
-    if (statusRequest == StatusRequest.success) {
-      if (response['status'] == 'success') {
-        SmartDialog.showToast("تم الحذف بنجاح");
-        getImages();
+    try {
+      statusRequest = StatusRequest.loading;
+      update();
+      var response =
+          await offerData.deleteOffersImage(id.toString(), imageName);
+      statusRequest = handlingData(response);
+      if (statusRequest == StatusRequest.success) {
+        if (response['status'] == 'success') {
+          SmartDialog.showToast("تم الحذف بنجاح");
+          getImages();
+        }
+      } else {
+        statusRequest = StatusRequest.failed;
       }
-    } else {
-      statusRequest = StatusRequest.failed;
+    } catch (e) {
+      throw Exception(e.toString());
     }
     update();
   }
 
   addOfferWithImage() async {
-    if (file != null) {
-      SmartDialog.showLoading(msg: 'loading'.tr);
-      var offerModel = const ImageOfferModel(
-        isActive: 1,
-        viewLevel: 1,
-      );
-      var response = await offerData.addOffersImage(
-        offerModel,
-        file!,
-      );
-      statusRequest = handlingData(response);
-      if (StatusRequest.success == statusRequest) {
-        if (response['status'] == 'success') {
-          SmartDialog.dismiss();
-          SmartDialog.showNotify(
-              msg: "تم الاضافة بنجاح", notifyType: NotifyType.success);
-          getImages();
-        } else {
-          statusRequest = StatusRequest.failed;
+    try {
+      if (file != null) {
+        SmartDialog.showLoading(msg: 'loading'.tr);
+        var offerModel = const ImageOfferModel(
+          isActive: 1,
+          viewLevel: 1,
+        );
+        var response = await offerData.addOffersImage(
+          offerModel,
+          file!,
+        );
+        statusRequest = handlingData(response);
+        if (StatusRequest.success == statusRequest) {
+          if (response['status'] == 'success') {
+            SmartDialog.dismiss();
+            SmartDialog.showNotify(
+                msg: "تم الاضافة بنجاح", notifyType: NotifyType.success);
+            getImages();
+          } else {
+            statusRequest = StatusRequest.failed;
+          }
         }
+      } else {
+        SmartDialog.showToast("الرجاء التأكد من اختيار الصورة");
       }
-    } else {
-      SmartDialog.showToast("الرجاء التأكد من اختيار الصورة");
+    } catch (e) {
+      throw Exception(e.toString());
     }
     update();
   }

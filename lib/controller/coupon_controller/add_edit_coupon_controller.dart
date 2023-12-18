@@ -66,6 +66,7 @@ class AddEditCouponController extends GetxController {
         }
       } catch (e) {
         SmartDialog.showToast(e.toString());
+        throw Exception(e.toString());
       }
     }
     update();
@@ -99,6 +100,7 @@ class AddEditCouponController extends GetxController {
         }
       } catch (e) {
         SmartDialog.showToast(e.toString());
+        throw Exception(e.toString());
       }
     }
     update();
@@ -131,12 +133,16 @@ class AddEditCouponController extends GetxController {
 
   @override
   void onInit() {
-    if (Get.currentRoute == "/editCoupon") {
-      couponModel = Get.arguments['model'];
-      setIsEdit(true);
-      initEditData(couponModel!);
-    } else if (Get.currentRoute == "/addCoupon") {
-      initData();
+    try {
+      if (Get.currentRoute == "/editCoupon") {
+        couponModel = Get.arguments['model'];
+        setIsEdit(true);
+        initEditData(couponModel!);
+      } else if (Get.currentRoute == "/addCoupon") {
+        initData();
+      }
+    } catch (e) {
+      throw Exception(e.toString());
     }
     super.onInit();
   }

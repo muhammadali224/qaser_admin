@@ -109,9 +109,10 @@ class ItemsData {
     return response.fold((l) => l, (r) => r);
   }
 
-  addItemWeight(int weightId, int itemId, String price) async {
+  addSubItem(String name, String nameAr, int itemId, String price) async {
     var response = await crud.postData(AppLink.addItemWeight, {
-      'weightId': weightId.toString(),
+      'subName': name,
+      'subNameAr': nameAr,
       'itemId': itemId.toString(),
       'price': price,
     });

@@ -50,8 +50,8 @@ class AddEditCashUser extends StatelessWidget {
                   controller: controller.password,
                   onIconTap: controller.showPassword,
                   icon: controller.isVisiblePassword
-                      ? FontAwesome.lock
-                      : FontAwesome.lock_open,
+                      ? FontAwesome.lock_solid
+                      : FontAwesome.lock_open_solid,
                   validate: (val) {
                     return validInput(val!, 5, 15, 'password');
                   },

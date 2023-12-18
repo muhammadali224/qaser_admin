@@ -403,7 +403,7 @@ class _$ItemsModelImpl implements _ItemsModel {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ItemsModelImpl &&

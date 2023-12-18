@@ -82,47 +82,52 @@ class AddEditItemsController extends GetxController {
         }
       } catch (e) {
         SmartDialog.showToast(e.toString());
+        throw Exception(e.toString());
       }
     }
     update();
   }
 
   addItemWithImage() async {
-    if (file != null && formKey.currentState!.validate()) {
-      SmartDialog.showLoading(msg: 'loading'.tr);
-      var itemModel = ItemsModel(
-        itemsName: nameEn.text,
-        itemsNameAr: nameAr.text,
-        itemsDesc: descEn.text,
-        itemsDescAr: descAr.text,
-        itemsPrice: num.parse(price.text),
-        itemsCount: int.parse(count.text),
-        itemsActive: 1,
-        itemsDiscount: num.parse(discount.text),
-        itemsCat: catModel.categoriesId,
-        itemsPointPerVal: num.parse(point.text),
-        itemsGroup: int.parse(itemGroup.text),
-      );
-      var response = await itemsViewController.itemsData.addItemWithImage(
-        itemModel,
-        file!,
-      );
-      statusRequest = handlingData(response);
-      if (StatusRequest.success == statusRequest) {
-        if (response['status'] == 'success') {
-          SmartDialog.dismiss();
-          SmartDialog.showNotify(
-              msg: "تم الاضافة بنجاح", notifyType: NotifyType.success);
-          Get.offAndToNamed(AppRoutes.viewItems,
-              arguments: {'model': catModel});
-          itemsViewController.getItems();
-        } else {
-          statusRequest = StatusRequest.failed;
+    try {
+      if (file != null && formKey.currentState!.validate()) {
+        SmartDialog.showLoading(msg: 'loading'.tr);
+        var itemModel = ItemsModel(
+          itemsName: nameEn.text,
+          itemsNameAr: nameAr.text,
+          itemsDesc: descEn.text,
+          itemsDescAr: descAr.text,
+          itemsPrice: num.parse(price.text),
+          itemsCount: int.parse(count.text),
+          itemsActive: 1,
+          itemsDiscount: num.parse(discount.text),
+          itemsCat: catModel.categoriesId,
+          itemsPointPerVal: num.parse(point.text),
+          itemsGroup: int.parse(itemGroup.text),
+        );
+        var response = await itemsViewController.itemsData.addItemWithImage(
+          itemModel,
+          file!,
+        );
+        statusRequest = handlingData(response);
+        if (StatusRequest.success == statusRequest) {
+          if (response['status'] == 'success') {
+            SmartDialog.dismiss();
+            SmartDialog.showNotify(
+                msg: "تم الاضافة بنجاح", notifyType: NotifyType.success);
+            Get.offAndToNamed(AppRoutes.viewItems,
+                arguments: {'model': catModel});
+            itemsViewController.getItems();
+          } else {
+            statusRequest = StatusRequest.failed;
+          }
         }
+      } else {
+        SmartDialog.showToast(
+            "الرجاء التأكد من اختيار الصورة وتعبئة كافة المعلومات");
       }
-    } else {
-      SmartDialog.showToast(
-          "الرجاء التأكد من اختيار الصورة وتعبئة كافة المعلومات");
+    } catch (e) {
+      throw Exception(e.toString());
     }
     update();
   }
@@ -154,6 +159,7 @@ class AddEditItemsController extends GetxController {
     } catch (e) {
       SmartDialog.dismiss();
       SmartDialog.showToast(e.toString());
+      throw Exception(e.toString());
     }
     update();
   }
@@ -185,13 +191,17 @@ class AddEditItemsController extends GetxController {
 
   @override
   void onInit() {
-    catModel = Get.arguments['catModel'];
-    if (Get.currentRoute == "/editItems") {
-      itemsModel = Get.arguments['model'];
-      setIsEdit(true);
-      initEditData(itemsModel!);
-    } else if (Get.currentRoute == "/addItems") {
-      initData();
+    try {
+      catModel = Get.arguments['catModel'];
+      if (Get.currentRoute == "/editItems") {
+        itemsModel = Get.arguments['model'];
+        setIsEdit(true);
+        initEditData(itemsModel!);
+      } else if (Get.currentRoute == "/addItems") {
+        initData();
+      }
+    } catch (e) {
+      throw Exception(e.toString());
     }
 
     super.onInit();

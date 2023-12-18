@@ -19,18 +19,21 @@ class AddAddressController extends GetxController {
       Get.find<AddBranchesController>();
 
   getCurrentLocation() async {
-    position = await Geolocator.getCurrentPosition(
-        desiredAccuracy: LocationAccuracy.high);
+    try {
+      position = await Geolocator.getCurrentPosition(
+          desiredAccuracy: LocationAccuracy.high);
 
-    kGooglePlex = CameraPosition(
-      target: LatLng(position!.latitude, position!.longitude),
-      zoom: 17,
-    );
-    addMarkers(LatLng(position!.latitude, position!.longitude));
-    statusRequest = StatusRequest.none;
-    lat = position!.latitude;
-    long = position!.longitude;
-
+      kGooglePlex = CameraPosition(
+        target: LatLng(position!.latitude, position!.longitude),
+        zoom: 17,
+      );
+      addMarkers(LatLng(position!.latitude, position!.longitude));
+      statusRequest = StatusRequest.none;
+      lat = position!.latitude;
+      long = position!.longitude;
+    } catch (e) {
+      throw Exception(e.toString());
+    }
     update();
   }
 
@@ -50,8 +53,12 @@ class AddAddressController extends GetxController {
 
   @override
   void onInit() {
-    completerController = Completer<GoogleMapController>();
-    getCurrentLocation();
+    try {
+      completerController = Completer<GoogleMapController>();
+      getCurrentLocation();
+    } catch (e) {
+      throw Exception(e.toString());
+    }
     super.onInit();
   }
 }
