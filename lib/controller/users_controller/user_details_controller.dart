@@ -7,13 +7,16 @@ import '../../core/function/handling_data_controller.dart';
 import '../../core/function/show_modal_sheet.dart';
 import '../../data/model/pop_menu_model/pop_menu_model.dart';
 import '../../data/model/users_model/users_model.dart';
+import '../../data/source/remote/sms_data/sms_data.dart';
 import '../../data/source/remote/users_data/users_data.dart';
 import '../../view/widget/users/send_notification_container.dart';
+import '../../view/widget/users/send_sms.dart';
 
 class UserDetailsController extends GetxController {
   UsersModel? userModel;
   List<PopMenuModel> optionMenu = [];
   final UsersData usersData = UsersData(Get.find());
+  final SMSData smsData = SMSData(Get.find());
   num pointCount = 0.0;
   StatusRequest statusRequest = StatusRequest.none;
   Map<String, double> mapCount = {};
@@ -22,6 +25,7 @@ class UserDetailsController extends GetxController {
   TextEditingController titleText = TextEditingController();
   TextEditingController bodyText = TextEditingController();
   TextEditingController pointCountText = TextEditingController();
+  TextEditingController smsBody = TextEditingController();
 
   Future<void> selectOptionList(String val, BuildContext context) async {
     switch (val) {
@@ -41,6 +45,14 @@ class UserDetailsController extends GetxController {
                 Get.back();
               },
             ));
+        break;
+      case "5":
+        showModalSheet(context, SendSMSContainer(
+          onTap: () async {
+            await sendUserSMS();
+            Get.back();
+          },
+        ));
         break;
       case "4":
         showModalSheet(
@@ -145,6 +157,30 @@ class UserDetailsController extends GetxController {
     update();
   }
 
+  Future<void> sendUserSMS() async {
+    try {
+      SmartDialog.showLoading(msg: 'loading'.tr);
+      var response = await smsData.sendUserSMS(
+          title: smsBody.text, mobile: userModel!.usersPhone!.substring(1));
+      statusRequest = handlingData(response);
+      if (statusRequest == StatusRequest.success) {
+        if (response["status"] == 201) {
+          SmartDialog.dismiss();
+          SmartDialog.showNotify(
+              msg: "تم الإرسال بنجاح", notifyType: NotifyType.success);
+          smsBody.clear();
+        }
+      } else {
+        statusRequest = StatusRequest.failed;
+      }
+    } catch (e) {
+      SmartDialog.dismiss();
+      SmartDialog.showToast(e.toString());
+      throw Exception(e.toString());
+    }
+    update();
+  }
+
   Future<void> sendUserPoints() async {
     try {
       SmartDialog.showLoading(msg: 'loading'.tr);
@@ -201,6 +237,7 @@ class UserDetailsController extends GetxController {
           icon: Icons.notification_add_outlined),
       PopMenuModel(
           name: "إرسال نقاط كهدية", value: "4", icon: Icons.redeem_rounded),
+      PopMenuModel(name: "إرسال SMS", value: "5", icon: Icons.sms_rounded),
     ]);
     if (userModel!.usersApprove == 0) {
       optionMenu.add(PopMenuModel(

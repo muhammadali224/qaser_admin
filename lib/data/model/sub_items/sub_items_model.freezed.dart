@@ -29,7 +29,7 @@ mixin _$SubItemsModel {
   @JsonKey(name: "sub_items_name_ar")
   String? get subItemsNameAr => throw _privateConstructorUsedError;
   @JsonKey(name: "sub_items_price")
-  int? get subItemsPrice => throw _privateConstructorUsedError;
+  num? get subItemsPrice => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -48,7 +48,7 @@ abstract class $SubItemsModelCopyWith<$Res> {
       @JsonKey(name: "item_id") int? itemId,
       @JsonKey(name: "sub_items_name") String? subItemsName,
       @JsonKey(name: "sub_items_name_ar") String? subItemsNameAr,
-      @JsonKey(name: "sub_items_price") int? subItemsPrice});
+      @JsonKey(name: "sub_items_price") num? subItemsPrice});
 }
 
 /// @nodoc
@@ -90,7 +90,7 @@ class _$SubItemsModelCopyWithImpl<$Res, $Val extends SubItemsModel>
       subItemsPrice: freezed == subItemsPrice
           ? _value.subItemsPrice
           : subItemsPrice // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as num?,
     ) as $Val);
   }
 }
@@ -108,7 +108,7 @@ abstract class _$$SubItemsModelImplCopyWith<$Res>
       @JsonKey(name: "item_id") int? itemId,
       @JsonKey(name: "sub_items_name") String? subItemsName,
       @JsonKey(name: "sub_items_name_ar") String? subItemsNameAr,
-      @JsonKey(name: "sub_items_price") int? subItemsPrice});
+      @JsonKey(name: "sub_items_price") num? subItemsPrice});
 }
 
 /// @nodoc
@@ -148,7 +148,7 @@ class __$$SubItemsModelImplCopyWithImpl<$Res>
       subItemsPrice: freezed == subItemsPrice
           ? _value.subItemsPrice
           : subItemsPrice // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as num?,
     ));
   }
 }
@@ -180,7 +180,7 @@ class _$SubItemsModelImpl implements _SubItemsModel {
   final String? subItemsNameAr;
   @override
   @JsonKey(name: "sub_items_price")
-  final int? subItemsPrice;
+  final num? subItemsPrice;
 
   @override
   String toString() {
@@ -228,7 +228,7 @@ abstract class _SubItemsModel implements SubItemsModel {
           @JsonKey(name: "item_id") final int? itemId,
           @JsonKey(name: "sub_items_name") final String? subItemsName,
           @JsonKey(name: "sub_items_name_ar") final String? subItemsNameAr,
-          @JsonKey(name: "sub_items_price") final int? subItemsPrice}) =
+          @JsonKey(name: "sub_items_price") final num? subItemsPrice}) =
       _$SubItemsModelImpl;
 
   factory _SubItemsModel.fromJson(Map<String, dynamic> json) =
@@ -248,7 +248,7 @@ abstract class _SubItemsModel implements SubItemsModel {
   String? get subItemsNameAr;
   @override
   @JsonKey(name: "sub_items_price")
-  int? get subItemsPrice;
+  num? get subItemsPrice;
   @override
   @JsonKey(ignore: true)
   _$$SubItemsModelImplCopyWith<_$SubItemsModelImpl> get copyWith =>

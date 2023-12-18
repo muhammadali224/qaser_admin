@@ -65,6 +65,11 @@ class AppDrawer extends StatelessWidget {
             icon: IconBroken.Discount,
             onTap: controller.goToCoupons,
           ),
+          DrawerItem(
+            title: 'SMS',
+            icon: IconBroken.Message,
+            onTap: controller.goToSMS,
+          ),
         ],
       ),
     );

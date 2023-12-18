@@ -22,6 +22,7 @@ import 'view/screen/items/add_edit_items.dart';
 import 'view/screen/items/item_details.dart';
 import 'view/screen/items/view_items.dart';
 import 'view/screen/notification/view_notification.dart';
+import 'view/screen/sms/sms_view_balance.dart';
 import 'view/screen/users/user_details.dart';
 import 'view/screen/users/view_users.dart';
 
@@ -60,6 +61,7 @@ List<GetPage<dynamic>>? routes = [
   GetPage(name: AppRoutes.addOffersImage, page: () => const EditImagesOffer()),
   GetPage(name: AppRoutes.usersView, page: () => const ViewUsers()),
   GetPage(name: AppRoutes.userDetails, page: () => const UserDetails()),
+  GetPage(name: AppRoutes.sms, page: () => const SMSBalance()),
   GetPage(
       name: AppRoutes.viewNotification, page: () => const ViewNotification()),
 ];

@@ -17,7 +17,7 @@ Map<String, String> myHeader = {
 };
 
 class CRUD {
-  Future<Either<StatusRequest, Map>> postData(
+  Future<Either<StatusRequest, dynamic>> postData(
       String url, Map<String, dynamic> data) async {
     try {
       if (await checkInternet()) {

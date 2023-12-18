@@ -1,6 +1,7 @@
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 class AppLink {
+  AppLink._();
   static String server = dotenv.env['SERVER']!;
   static String images = dotenv.env['IMAGES']!;
 
@@ -18,7 +19,9 @@ class AppLink {
   static String deleteAdminUser = "$server/auth/delete.php";
 //============================== Home  ==============================//
   static String getSummery = "$server/home/home.php";
-
+//============================== SMS  ==============================//
+  static String getSMSBalance = "$server/sms/sms_balance.php";
+  static String getAllSMS = "$server/sms/retrive_sms.php";
 //============================== Branches  ==============================//
   static String getBranch = "$server/branches/view.php";
   static String editBranch = "$server/branches/edit.php";
@@ -58,6 +61,7 @@ class AppLink {
   static String getUserPoint = "$server/users/view_point.php";
   static String changeUserState = "$server/users/change_user_state.php";
   static String sendUserNotification = "$server/users/send_notification.php";
+  static String sendUserSMS = "$server/users/send_sms.php";
   static String viewUsers = "$server/users/view.php";
   static String deleteUsers = "$server/users/delete.php";
   static String addUserPoint = "$server/users/add_point.php";

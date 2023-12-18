@@ -1,4 +1,5 @@
 class AppRoutes {
+  AppRoutes._();
   static const String login = "/login";
   static const String home = "/home";
 
@@ -36,4 +37,6 @@ class AppRoutes {
   static const String usersView = "/usersView";
 
   static const String viewNotification = "/viewNotification";
+
+  static const String sms = "/sms";
 }
