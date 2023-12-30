@@ -3,14 +3,14 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:get/get.dart';
-import 'package:jiffy/jiffy.dart';
 
 import '../../core/enum/status_request.dart';
+import '../../core/extension/string_extension.dart';
 import '../../core/function/handling_data_controller.dart';
 import '../../data/model/items_point_model/items_point_model.dart';
 import '../../data/source/remote/items_point_data/items_point_data.dart';
 
-class AddEditItemsController extends GetxController {
+class AddItemsPointController extends GetxController {
   StatusRequest statusRequest = StatusRequest.none;
 
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
@@ -26,55 +26,6 @@ class AddEditItemsController extends GetxController {
   File? file;
   String imageUrl = "";
 
-  // editItem() async {
-  //   if (formKey.currentState!.validate()) {
-  //     try {
-  //       SmartDialog.showLoading(msg: 'loading'.tr);
-  //       var itemEditModel = ItemsModel(
-  //         itemsName: nameEn.text,
-  //         itemsNameAr: nameAr.text,
-  //         itemsDesc: descEn.text,
-  //         itemsDescAr: descAr.text,
-  //         itemsPrice: num.parse(price.text),
-  //         itemsCount: int.parse(count.text),
-  //         itemsActive: 1,
-  //         itemsDiscount: num.parse(discount.text),
-  //         itemsCat: catModel.categoriesId,
-  //         itemsGroup: int.parse(itemGroup.text),
-  //         itemsPointPerVal: num.parse(point.text),
-  //       );
-  //
-  //       var response = file == null
-  //           ? await itemsViewController.itemsData.editItem(
-  //               itemModel: itemEditModel,
-  //               id: itemsModel!.itemsId.toString(),
-  //             )
-  //           : await itemsViewController.itemsData.editItemWithImage(
-  //               itemModel: itemEditModel,
-  //               id: itemsModel!.itemsId.toString(),
-  //               file: file!,
-  //               oldFile: itemsModel!.itemsImage!);
-  //       statusRequest = handlingData(response);
-  //       if (statusRequest == StatusRequest.success) {
-  //         if (response["status"] == "success") {
-  //           SmartDialog.dismiss();
-  //           SmartDialog.showNotify(
-  //               msg: "تم التعديل بنجاح", notifyType: NotifyType.success);
-  //           Get.offAndToNamed(AppRoutes.viewItems,
-  //               arguments: {'model': catModel});
-  //           itemsViewController.getItems();
-  //         }
-  //       } else {
-  //         statusRequest = StatusRequest.failed;
-  //       }
-  //     } catch (e) {
-  //       SmartDialog.showToast(e.toString());
-  //       throw Exception(e.toString());
-  //     }
-  //   }
-  //   update();
-  // }
-
   addItemWithImage() async {
     try {
       if (file != null && formKey.currentState!.validate()) {
@@ -83,8 +34,8 @@ class AddEditItemsController extends GetxController {
           itemsPointCount: int.parse(count.text),
           itemsPointName: nameEn.text,
           itemsPointNameAr: nameAr.text,
-          itemsPointExpireDate: Jiffy.parse(endDate.text).dateTime,
-          itemsPointStartDate: Jiffy.parse(startDate.text).dateTime,
+          itemsPointExpireDate: endDate.text.parseStringToDateTime(),
+          itemsPointStartDate: startDate.text.parseStringToDateTime(),
           itemsPointPrice: num.parse(price.text),
         );
         var response = await itemsPointData.addItemsPointWithImage(
@@ -97,6 +48,7 @@ class AddEditItemsController extends GetxController {
             SmartDialog.dismiss();
             SmartDialog.showNotify(
                 msg: "تم الاضافة بنجاح", notifyType: NotifyType.success);
+            Get.back();
           } else {
             statusRequest = StatusRequest.failed;
           }

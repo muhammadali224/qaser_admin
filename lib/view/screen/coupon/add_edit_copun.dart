@@ -65,8 +65,8 @@ class AddEditCoupon extends StatelessWidget {
                         (await pickDate(context))!.parseDate();
                     controller.update();
                   },
-                  controller: controller.startDate,
                   readOnly: true,
+                  controller: controller.startDate,
                   icon: FontAwesome.calendar,
                   validate: (val) {
                     return validInput(val!, 1, 15, 'text');

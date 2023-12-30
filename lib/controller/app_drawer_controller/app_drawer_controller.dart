@@ -23,6 +23,10 @@ class AppDrawerController extends GetxController {
     Get.toNamed(AppRoutes.viewCategories);
   }
 
+  goToItemsPoint() {
+    Get.toNamed(AppRoutes.viewItemsPoint);
+  }
+
   goToCoupons() {
     Get.toNamed(AppRoutes.viewCoupon);
   }

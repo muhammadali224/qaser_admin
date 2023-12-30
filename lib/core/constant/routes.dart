@@ -39,4 +39,7 @@ class AppRoutes {
   static const String viewNotification = "/viewNotification";
 
   static const String sms = "/sms";
+
+  static const String viewItemsPoint = "/viewItemsPoint";
+  static const String addItemsPoint = "/addItemsPoint";
 }

@@ -53,7 +53,7 @@ class AppDrawer extends StatelessWidget {
           DrawerItem(
             title: 'awards',
             icon: FontAwesome.award_solid,
-            onTap: controller.goToCategories,
+            onTap: controller.goToItemsPoint,
           ),
           DrawerItem(
             title: 'notification',

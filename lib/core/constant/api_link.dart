@@ -10,6 +10,7 @@ class AppLink {
   static String imageUserProfile = "$images/user_profile/";
   static String imageOffer = "$images/offers/";
   static String imagesItems = "$images/items/";
+  static String imagesItemsPoint = "$images/items_point/";
 
 //=============================== Auth ===============================//
   static String login = "$server/auth/admin_login.php";

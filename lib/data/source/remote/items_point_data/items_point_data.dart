@@ -9,7 +9,7 @@ class ItemsPointData {
 
   ItemsPointData(this.crud);
 
-  getItemsPoint(String catId) async {
+  getItemsPoint() async {
     var response = await crud.postData(AppLink.viewItemsPoint, {});
     return response.fold((l) => l, (r) => r);
   }

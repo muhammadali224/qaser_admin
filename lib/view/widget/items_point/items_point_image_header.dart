@@ -3,24 +3,24 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 
-import '../../../controller/items_controller/add_edit_items_controller.dart';
+import '../../../controller/items_point_controller/items_point_controller.dart';
 import '../../../core/constant/color.dart';
 import '../../../core/function/pick_image.dart';
 import '../../../generated/assets.dart';
 
-class ItemImageHeader extends GetView<AddEditItemsController> {
-  const ItemImageHeader({super.key});
+class ItemsPointImageHeader extends GetView<AddItemsPointController> {
+  const ItemsPointImageHeader({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<AddEditItemsController>(builder: (controller) {
+    return GetBuilder<AddItemsPointController>(builder: (controller) {
       return SizedBox(
           height: Get.height / 3,
           width: double.infinity,
           child: Stack(
             children: [
               Center(
-                child: controller.file == null && controller.isEdit == false
+                child: controller.file == null
                     ? Image.asset(Assets.imagesQaser)
                     : controller.file != null
                         ? Image.file(controller.file!)
