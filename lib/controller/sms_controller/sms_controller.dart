@@ -32,7 +32,7 @@ class SMSController extends GetxController {
 
   getAllSMS() async {
     try {
-      SmartDialog.showLoading();
+      SmartDialog.showLoading(msg: "loading".tr);
       var response = await smsData.getAllSMS();
 
       List resp = response;

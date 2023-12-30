@@ -49,9 +49,7 @@ class HomePage extends StatelessWidget {
                       title: controller.totalSummary[index].branchNameAr!),
                   Text(
                       "${controller.totalSummary[index].orderMonth!}-${controller.totalSummary[index].orderYear!}"),
-                  HomePie(
-                    totalModel: controller.totalSummary[index],
-                  ),
+                  HomePie(totalModel: controller.totalSummary[index]),
                 ],
               ),
             ),

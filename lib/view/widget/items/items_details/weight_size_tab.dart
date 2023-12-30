@@ -26,7 +26,7 @@ class WeightSizeTab extends GetView<ItemsDetailsController> {
                     controller.subItemsList[index].subItemId!),
                 title: controller.subItemsList[index].subItemsNameAr!,
                 subtitle:
-                    "${controller.subItemsList[index].subItemsPrice.toString()} د",
+                    "${controller.subItemsList[index].subItemsPrice} د\nالخصم: ${controller.subItemsList[index].subItemsDiscount}",
               ),
             ),
           ),

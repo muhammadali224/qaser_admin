@@ -58,6 +58,15 @@ showWeightModalSheet(BuildContext context) {
                     return validInput(val!, 1, 50, 'name');
                   },
                 ),
+                InputFormField(
+                  hintTitle: 'الخصم',
+                  controller: controller.discount,
+                  keyboardType: const TextInputType.numberWithOptions(),
+                  icon: Icons.percent,
+                  validate: (val) {
+                    return validInput(val!, 1, 50, 'name');
+                  },
+                ),
               ],
             ),
           ),

@@ -254,6 +254,7 @@ class MyTranslation extends Translations {
           "addImage": "إضافة صورة",
           "activeUser": "تفعيل المستخدمين",
           "users": "المستخدمين",
+          "awards": "المكافئات",
         },
         'en': {
           'chooseLang': 'Choose Language',
@@ -507,6 +508,7 @@ class MyTranslation extends Translations {
           "addImage": "Add Images",
           "activeUser": "Active User",
           "users": "User",
+          "awards": "Awards",
         },
       };
 }

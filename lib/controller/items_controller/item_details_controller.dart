@@ -23,6 +23,7 @@ class ItemsDetailsController extends GetxController
   List<SubItemsModel> subItemsList = [];
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
   TextEditingController price = TextEditingController();
+  TextEditingController discount = TextEditingController(text: "0");
   TextEditingController nameEn = TextEditingController();
   TextEditingController nameAr = TextEditingController();
   ViewItemController viewItemController = Get.find<ViewItemController>();
@@ -66,6 +67,7 @@ class ItemsDetailsController extends GetxController
           nameAr.text,
           itemModel!.itemsId!,
           price.text,
+          discount.text,
         );
 
         statusRequest = handlingData(response);

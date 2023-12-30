@@ -30,7 +30,7 @@ class HomePie extends GetView<HomeController> {
             ],
           ),
           UserPieChart(
-            centerText: "السعر ${totalModel.totalsPrice}",
+            centerText: "السعر ${totalModel.totalsPrice!.toStringAsFixed(2)}",
             dataMap: {
               "التوصيل": totalModel.deliveryOrdersPrice!.toDouble(),
               "الاستلام": totalModel.pickupOrdersPrice!.toDouble(),

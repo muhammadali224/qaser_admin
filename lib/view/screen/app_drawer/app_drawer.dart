@@ -51,6 +51,11 @@ class AppDrawer extends StatelessWidget {
             onTap: controller.goToCategories,
           ),
           DrawerItem(
+            title: 'awards',
+            icon: FontAwesome.award_solid,
+            onTap: controller.goToCategories,
+          ),
+          DrawerItem(
             title: 'notification',
             icon: IconBroken.Notification,
             onTap: controller.goToNotification,

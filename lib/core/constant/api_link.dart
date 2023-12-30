@@ -91,4 +91,10 @@ class AppLink {
   static String addItemImage = "$server/items/add_image.php";
   static String deleteItemImage = "$server/items/delete_image.php";
   static String viewSubItems = "$server/items/view_sub_item.php";
+//============================== Items Point ==============================//
+  static String addItemsPoint = "$server/items_point/add.php";
+  static String deleteItemsPoint = "$server/items_point/delete.php";
+  static String updateActiveItemsPoint =
+      "$server/items_point/update_active.php";
+  static String viewItemsPoint = "$server/items_point/view.php";
 }
