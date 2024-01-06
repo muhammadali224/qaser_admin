@@ -137,6 +137,10 @@ class UserDetailsController extends GetxController {
           userId: userModel!.usersId!,
           body: bodyText.text,
           title: titleText.text);
+
+      print(userModel!.usersId!);
+      print(bodyText.text);
+      print(titleText.text);
       statusRequest = handlingData(response);
       if (statusRequest == StatusRequest.success) {
         if (response["status"] == "success") {
@@ -187,7 +191,6 @@ class UserDetailsController extends GetxController {
       var response = await usersData.sendUserPoint(
         userId: userModel!.usersId!,
         body: bodyText.text,
-        title: titleText.text,
         pointCount: pointCountText.text,
       );
       statusRequest = handlingData(response);

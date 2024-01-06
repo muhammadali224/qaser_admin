@@ -11,7 +11,7 @@ class ItemsData {
 
   getItems(String catId) async {
     var response = await crud.postData(AppLink.viewItem, {
-      'catId': catId,
+      'catId': catId.trim(),
     });
     return response.fold((l) => l, (r) => r);
   }
@@ -24,19 +24,19 @@ class ItemsData {
     var response = await crud.addRequestWithImage(
       AppLink.editWithImageItem,
       {
-        "itemId": id,
-        "itemNameEn": itemModel.itemsName,
-        "itemNameAr": itemModel.itemsNameAr,
-        "itemDescEn": itemModel.itemsDesc,
-        "itemDescAr": itemModel.itemsDescAr,
-        "itemCount": itemModel.itemsCount.toString(),
-        "itemActive": itemModel.itemsActive.toString(),
-        "itemPrice": itemModel.itemsPrice.toString(),
-        "itemDiscount": itemModel.itemsDiscount.toString(),
-        "itemPoint": itemModel.itemsPointPerVal.toString(),
-        "itemCat": itemModel.itemsCat.toString(),
-        "itemGroup": itemModel.itemsGroup.toString(),
-        "oldFile": oldFile,
+        "itemId": id.trim(),
+        "itemNameEn": itemModel.itemsName!.trim(),
+        "itemNameAr": itemModel.itemsNameAr!.trim(),
+        "itemDescEn": itemModel.itemsDesc!.trim(),
+        "itemDescAr": itemModel.itemsDescAr!.trim(),
+        "itemCount": itemModel.itemsCount.toString().trim(),
+        "itemActive": itemModel.itemsActive.toString().trim(),
+        "itemPrice": itemModel.itemsPrice.toString().trim(),
+        "itemDiscount": itemModel.itemsDiscount.toString().trim(),
+        "itemPoint": itemModel.itemsPointPerVal.toString().trim(),
+        "itemCat": itemModel.itemsCat.toString().trim(),
+        "itemGroup": itemModel.itemsGroup.toString().trim(),
+        "oldFile": oldFile.trim(),
       },
       file,
     );
@@ -47,18 +47,18 @@ class ItemsData {
     var response = await crud.postData(
       AppLink.editItem,
       {
-        "itemId": id,
-        "itemNameEn": itemModel.itemsName,
-        "itemNameAr": itemModel.itemsNameAr,
-        "itemDescEn": itemModel.itemsDesc,
-        "itemDescAr": itemModel.itemsDescAr,
-        "itemCount": itemModel.itemsCount.toString(),
-        "itemActive": itemModel.itemsActive.toString(),
-        "itemPrice": itemModel.itemsPrice.toString(),
-        "itemDiscount": itemModel.itemsDiscount.toString(),
-        "itemPoint": itemModel.itemsPointPerVal.toString(),
-        "itemCat": itemModel.itemsCat.toString(),
-        "itemGroup": itemModel.itemsGroup.toString(),
+        "itemId": id.trim(),
+        "itemNameEn": itemModel.itemsName!.trim(),
+        "itemNameAr": itemModel.itemsNameAr!.trim(),
+        "itemDescEn": itemModel.itemsDesc!.trim(),
+        "itemDescAr": itemModel.itemsDescAr!.trim(),
+        "itemCount": itemModel.itemsCount.toString().trim(),
+        "itemActive": itemModel.itemsActive.toString().trim(),
+        "itemPrice": itemModel.itemsPrice.toString().trim(),
+        "itemDiscount": itemModel.itemsDiscount.toString().trim(),
+        "itemPoint": itemModel.itemsPointPerVal.toString().trim(),
+        "itemCat": itemModel.itemsCat.toString().trim(),
+        "itemGroup": itemModel.itemsGroup.toString().trim(),
       },
     );
     return response.fold((l) => l, (r) => r);
@@ -66,8 +66,8 @@ class ItemsData {
 
   deleteItem(String itemId, String imageName) async {
     var response = await crud.postData(AppLink.deleteItem, {
-      "itemId": itemId,
-      "image": imageName,
+      "itemId": itemId.trim(),
+      "image": imageName.trim(),
     });
     return response.fold((l) => l, (r) => r);
   }
@@ -76,17 +76,17 @@ class ItemsData {
     var response = await crud.addRequestWithImage(
       AppLink.addItem,
       {
-        "itemNameEn": itemModel.itemsName,
-        "itemNameAr": itemModel.itemsNameAr,
-        "itemDescEn": itemModel.itemsDesc,
-        "itemDescAr": itemModel.itemsDescAr,
-        "itemCount": itemModel.itemsCount.toString(),
-        "itemActive": itemModel.itemsActive.toString(),
-        "itemPrice": itemModel.itemsPrice.toString(),
-        "itemDiscount": itemModel.itemsDiscount.toString(),
-        "itemPoint": itemModel.itemsPointPerVal.toString(),
-        "itemCat": itemModel.itemsCat.toString(),
-        "itemGroup": itemModel.itemsGroup.toString(),
+        "itemNameEn": itemModel.itemsName!.trim(),
+        "itemNameAr": itemModel.itemsNameAr!.trim(),
+        "itemDescEn": itemModel.itemsDesc!.trim(),
+        "itemDescAr": itemModel.itemsDescAr!.trim(),
+        "itemCount": itemModel.itemsCount.toString().trim(),
+        "itemActive": itemModel.itemsActive.toString().trim(),
+        "itemPrice": itemModel.itemsPrice.toString().trim(),
+        "itemDiscount": itemModel.itemsDiscount.toString().trim(),
+        "itemPoint": itemModel.itemsPointPerVal.toString().trim(),
+        "itemCat": itemModel.itemsCat.toString().trim(),
+        "itemGroup": itemModel.itemsGroup.toString().trim(),
       },
       file,
     );
@@ -95,16 +95,16 @@ class ItemsData {
 
   addToBranch(int branchId, int itemId) async {
     var response = await crud.postData(AppLink.addItemToBranch, {
-      'branchId': branchId.toString(),
-      'itemId': itemId.toString(),
+      'branchId': branchId.toString().trim(),
+      'itemId': itemId.toString().trim(),
     });
     return response.fold((l) => l, (r) => r);
   }
 
   removeFromBranch(int branchId, int itemId) async {
     var response = await crud.postData(AppLink.removeItemFromBranch, {
-      'branchId': branchId.toString(),
-      'itemId': itemId.toString(),
+      'branchId': branchId.toString().trim(),
+      'itemId': itemId.toString().trim(),
     });
     return response.fold((l) => l, (r) => r);
   }
@@ -112,30 +112,30 @@ class ItemsData {
   addSubItem(String name, String nameAr, int itemId, String price,
       String discount) async {
     var response = await crud.postData(AppLink.addItemWeight, {
-      'subName': name,
-      'subNameAr': nameAr,
-      'itemId': itemId.toString(),
-      'price': price,
-      'discount': discount,
+      'subName': name.trim(),
+      'subNameAr': nameAr.trim(),
+      'itemId': itemId.toString().trim(),
+      'price': price.trim(),
+      'discount': discount.trim(),
     });
     return response.fold((l) => l, (r) => r);
   }
 
   editItemWeight(int id, int weightId, int itemId, String price) async {
     var response = await crud.postData(AppLink.editItemWeight, {
-      'id': id.toString(),
-      'weightId': weightId.toString(),
-      'itemId': itemId.toString(),
-      'price': price,
+      'id': id.toString().trim(),
+      'weightId': weightId.toString().trim(),
+      'itemId': itemId.toString().trim(),
+      'price': price.trim(),
     });
     return response.fold((l) => l, (r) => r);
   }
 
   removeItemWeight(int id) async {
     var response = await crud.postData(AppLink.removeItemWeight, {
-      'id': id.toString(),
+      'id': id.toString().trim(),
     });
-    print(id);
+
     return response.fold((l) => l, (r) => r);
   }
 
@@ -143,7 +143,7 @@ class ItemsData {
     var response = await crud.addRequestWithImage(
       AppLink.addItemImage,
       {
-        "itemId": itemId.toString(),
+        "itemId": itemId.toString().trim(),
       },
       file,
     );
@@ -154,8 +154,8 @@ class ItemsData {
     var response = await crud.postData(
       AppLink.deleteItemImage,
       {
-        "itemId": itemId.toString(),
-        "imageName": imageName,
+        "itemId": itemId.toString().trim(),
+        "imageName": imageName.trim(),
       },
     );
     return response.fold((l) => l, (r) => r);
@@ -163,7 +163,7 @@ class ItemsData {
 
   getSubItems(int itemsId) async {
     var response = await crud.postData(AppLink.viewSubItems, {
-      "itemId": itemsId.toString(),
+      "itemId": itemsId.toString().trim(),
     });
     return response.fold((l) => l, (r) => r);
   }

@@ -13,23 +13,23 @@ class UsersData {
 
   deleteUser(String userId, String userImage) async {
     var response = await crud.postData(AppLink.deleteUsers, {
-      "userId": userId,
-      "userImage": userImage,
+      "userId": userId.trim(),
+      "userImage": userImage.trim(),
     });
     return response.fold((l) => l, (r) => r);
   }
 
   changeUserState(int userId, int userState) async {
     var response = await crud.postData(AppLink.changeUserState, {
-      "userId": userId.toString(),
-      "userState": userState.toString(),
+      "userId": userId.toString().trim(),
+      "userState": userState.toString().trim(),
     });
     return response.fold((l) => l, (r) => r);
   }
 
   getUserPoint(int userId) async {
     var response = await crud.postData(AppLink.getUserPoint, {
-      "userId": userId.toString(),
+      "userId": userId.toString().trim(),
     });
     return response.fold((l) => l, (r) => r);
   }
@@ -40,26 +40,22 @@ class UsersData {
     required String title,
   }) async {
     var response = await crud.postData(AppLink.sendUserNotification, {
-      "userId": userId.toString(),
-      "title": title,
-      "body": body,
+      "userId": userId.toString().trim(),
+      "title": title.trim(),
+      "body": body.trim(),
     });
     return response.fold((l) => l, (r) => r);
   }
 
   sendUserPoint({
     required int userId,
-    required String body,
-    required String title,
     required String pointCount,
+    required String body,
   }) async {
     var response = await crud.postData(AppLink.addUserPoint, {
-      "userId": userId.toString(),
-      "title": title,
-      "body": body,
-      "pointCount": pointCount,
-      "createDate": DateTime.now().toString(),
-      "expireDate": DateTime.now().add(const Duration(days: 100)).toString(),
+      "userId": userId.toString().trim(),
+      "body": body.trim(),
+      "pointCount": pointCount.trim(),
     });
     return response.fold((l) => l, (r) => r);
   }

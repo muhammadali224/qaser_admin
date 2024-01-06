@@ -18,8 +18,8 @@ class ItemsPointData {
     var response = await crud.postData(
       AppLink.updateActiveItemsPoint,
       {
-        "id": id,
-        "state": state,
+        "id": id.trim(),
+        "state": state.trim(),
       },
     );
     return response.fold((l) => l, (r) => r);
@@ -27,8 +27,8 @@ class ItemsPointData {
 
   deleteItemsPoint(String itemsPointId, String imageName) async {
     var response = await crud.postData(AppLink.deleteItemsPoint, {
-      "id": itemsPointId,
-      "image": imageName,
+      "id": itemsPointId.trim(),
+      "image": imageName.trim(),
     });
     return response.fold((l) => l, (r) => r);
   }
@@ -37,12 +37,12 @@ class ItemsPointData {
     var response = await crud.addRequestWithImage(
       AppLink.addItemsPoint,
       {
-        "name": itemsPointModel.itemsPointName,
-        "nameAr": itemsPointModel.itemsPointNameAr,
-        "startDate": itemsPointModel.itemsPointStartDate.toString(),
-        "expireDate": itemsPointModel.itemsPointExpireDate.toString(),
-        "count": itemsPointModel.itemsPointCount.toString(),
-        "price": itemsPointModel.itemsPointPrice.toString(),
+        "name": itemsPointModel.itemsPointName!.trim(),
+        "nameAr": itemsPointModel.itemsPointNameAr!.trim(),
+        "startDate": itemsPointModel.itemsPointStartDate.toString().trim(),
+        "expireDate": itemsPointModel.itemsPointExpireDate.toString().trim(),
+        "count": itemsPointModel.itemsPointCount.toString().trim(),
+        "price": itemsPointModel.itemsPointPrice.toString().trim(),
       },
       file,
     );
@@ -51,16 +51,16 @@ class ItemsPointData {
 
   addToBranch(int branchId, int itemId) async {
     var response = await crud.postData(AppLink.addItemToBranch, {
-      'branchId': branchId.toString(),
-      'itemId': itemId.toString(),
+      'branchId': branchId.toString().trim(),
+      'itemId': itemId.toString().trim(),
     });
     return response.fold((l) => l, (r) => r);
   }
 
   removeFromBranch(int branchId, int itemId) async {
     var response = await crud.postData(AppLink.removeItemFromBranch, {
-      'branchId': branchId.toString(),
-      'itemId': itemId.toString(),
+      'branchId': branchId.toString().trim(),
+      'itemId': itemId.toString().trim(),
     });
     return response.fold((l) => l, (r) => r);
   }

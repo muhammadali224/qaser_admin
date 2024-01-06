@@ -21,8 +21,8 @@ class SMSData {
     required String mobile,
   }) async {
     var response = await crud.postData(AppLink.sendUserSMS, {
-      "to": mobile,
-      "message": title,
+      "to": mobile.trim(),
+      "message": title.trim(),
     });
     return response.fold((l) => l, (r) => r);
   }

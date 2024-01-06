@@ -22,10 +22,10 @@ class CategoriesData {
     var response = await crud.addRequestWithImage(
       AppLink.editWithImageCategories,
       {
-        "catId": id,
-        "catNameEn": categoryModel.categoriesName,
-        "catNameAr": categoryModel.categoriesNameAr,
-        "oldFile": oldFile,
+        "catId": id.trim(),
+        "catNameEn": categoryModel.categoriesName!.trim(),
+        "catNameAr": categoryModel.categoriesNameAr!.trim(),
+        "oldFile": oldFile.trim(),
       },
       file,
     );
@@ -37,9 +37,9 @@ class CategoriesData {
     var response = await crud.postData(
       AppLink.editCategories,
       {
-        "catId": id,
-        "catNameEn": categoryModel.categoriesName,
-        "catNameAr": categoryModel.categoriesNameAr,
+        "catId": id.trim(),
+        "catNameEn": categoryModel.categoriesName!.trim(),
+        "catNameAr": categoryModel.categoriesNameAr!.trim(),
       },
     );
     return response.fold((l) => l, (r) => r);
@@ -47,7 +47,7 @@ class CategoriesData {
 
   deleteCategory(String categoryId) async {
     var response = await crud.postData(AppLink.deleteCategories, {
-      'categoryId': categoryId,
+      'categoryId': categoryId.trim(),
     });
     return response.fold((l) => l, (r) => r);
   }
@@ -56,8 +56,8 @@ class CategoriesData {
     var response = await crud.addRequestWithImage(
       AppLink.addCategories,
       {
-        "catNameEn": categoryModel.categoriesName,
-        "catNameAr": categoryModel.categoriesNameAr,
+        "catNameEn": categoryModel.categoriesName!.trim(),
+        "catNameAr": categoryModel.categoriesNameAr!.trim(),
       },
       file,
     );
@@ -66,16 +66,16 @@ class CategoriesData {
 
   addToBranch(int branchId, int categoryId) async {
     var response = await crud.postData(AppLink.addCategoriesToBranch, {
-      'branchId': branchId.toString(),
-      'categoryId': categoryId.toString(),
+      'branchId': branchId.toString().trim(),
+      'categoryId': categoryId.toString().trim(),
     });
     return response.fold((l) => l, (r) => r);
   }
 
   removeFromBranch(int branchId, int categoryId) async {
     var response = await crud.postData(AppLink.removeCategoriesFromBranch, {
-      'branchId': branchId.toString(),
-      'categoryId': categoryId.toString(),
+      'branchId': branchId.toString().trim(),
+      'categoryId': categoryId.toString().trim(),
     });
     return response.fold((l) => l, (r) => r);
   }

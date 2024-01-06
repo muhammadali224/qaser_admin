@@ -9,54 +9,58 @@ class BranchesData {
 
   getBranches(String userLevel, String branchId) async {
     var response = await crud.postData(AppLink.getBranch, {
-      'branchId': branchId,
-      'userLevel': userLevel,
+      'branchId': branchId.trim(),
+      'userLevel': userLevel.trim(),
     });
     return response.fold((l) => l, (r) => r);
   }
 
   addBranches(BranchModel branchModel) async {
     var response = await crud.postData(AppLink.addBranch, {
-      "branchNameAr": branchModel.branchNameAr,
-      "branchNameEn": branchModel.branchNameEn,
-      "branchIsOpen": branchModel.branchIsOpen.toString(),
-      "branchLang": branchModel.branchLang.toString(),
-      "branchLat": branchModel.branchLat.toString(),
-      "branchPhone1": branchModel.branchPhone1,
-      "branchPhone2": branchModel.branchPhone2,
-      "branchFacebookUrl": branchModel.branchFacebookUrl,
-      "branchDeliveryCharge": branchModel.branchDeliveryCharge.toString(),
-      "branchIsFixed": branchModel.branchIsFixed.toString(),
-      "branchZone": branchModel.branchZone.toString(),
-      "branchDeliveryFixCharge": branchModel.branchDeliveryFixCharge.toString(),
-      "branchMaxZone": branchModel.branchMaxZone.toString(),
+      "branchNameAr": branchModel.branchNameAr!.trim(),
+      "branchNameEn": branchModel.branchNameEn!.trim(),
+      "branchIsOpen": branchModel.branchIsOpen.toString().trim(),
+      "branchLang": branchModel.branchLang.toString().trim(),
+      "branchLat": branchModel.branchLat.toString().trim(),
+      "branchPhone1": branchModel.branchPhone1!.trim(),
+      "branchPhone2": branchModel.branchPhone2!.trim(),
+      "branchFacebookUrl": branchModel.branchFacebookUrl!.trim(),
+      "branchDeliveryCharge":
+          branchModel.branchDeliveryCharge.toString().trim(),
+      "branchIsFixed": branchModel.branchIsFixed.toString().trim(),
+      "branchZone": branchModel.branchZone.toString().trim(),
+      "branchDeliveryFixCharge":
+          branchModel.branchDeliveryFixCharge.toString().trim(),
+      "branchMaxZone": branchModel.branchMaxZone.toString().trim(),
     });
     return response.fold((l) => l, (r) => r);
   }
 
   editBranches(BranchModel branchModel, String id) async {
     var response = await crud.postData(AppLink.editBranch, {
-      "branchId": id,
-      "branchNameAr": branchModel.branchNameAr,
-      "branchNameEn": branchModel.branchNameEn,
-      "branchIsOpen": branchModel.branchIsOpen.toString(),
-      "branchLang": branchModel.branchLang.toString(),
-      "branchLat": branchModel.branchLat.toString(),
-      "branchPhone1": branchModel.branchPhone1,
-      "branchPhone2": branchModel.branchPhone2,
-      "branchFacebookUrl": branchModel.branchFacebookUrl,
-      "branchDeliveryCharge": branchModel.branchDeliveryCharge.toString(),
-      "branchIsFixed": branchModel.branchIsFixed.toString(),
-      "branchZone": branchModel.branchZone.toString(),
-      "branchDeliveryFixCharge": branchModel.branchDeliveryFixCharge.toString(),
-      "branchMaxZone": branchModel.branchMaxZone.toString(),
+      "branchId": id.trim(),
+      "branchNameAr": branchModel.branchNameAr!.trim(),
+      "branchNameEn": branchModel.branchNameEn!.trim(),
+      "branchIsOpen": branchModel.branchIsOpen.toString().trim(),
+      "branchLang": branchModel.branchLang.toString().trim(),
+      "branchLat": branchModel.branchLat.toString().trim(),
+      "branchPhone1": branchModel.branchPhone1!.trim(),
+      "branchPhone2": branchModel.branchPhone2!.trim(),
+      "branchFacebookUrl": branchModel.branchFacebookUrl!.trim(),
+      "branchDeliveryCharge":
+          branchModel.branchDeliveryCharge.toString().trim(),
+      "branchIsFixed": branchModel.branchIsFixed.toString().trim(),
+      "branchZone": branchModel.branchZone.toString().trim(),
+      "branchDeliveryFixCharge":
+          branchModel.branchDeliveryFixCharge.toString().trim(),
+      "branchMaxZone": branchModel.branchMaxZone.toString().trim(),
     });
     return response.fold((l) => l, (r) => r);
   }
 
   deleteBranches(String branchId) async {
     var response = await crud.postData(AppLink.deleteBranch, {
-      'branchId': branchId,
+      'branchId': branchId.trim(),
     });
     return response.fold((l) => l, (r) => r);
   }

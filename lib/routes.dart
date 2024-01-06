@@ -1,5 +1,4 @@
 import 'package:get/get.dart';
-import 'package:qaser_admin/view/screen/items_point/add_items_points.dart';
 
 import 'binding/initial_binding.dart';
 import 'core/constant/routes.dart';
@@ -22,6 +21,7 @@ import 'view/screen/image_offer/view_images.dart';
 import 'view/screen/items/add_edit_items.dart';
 import 'view/screen/items/item_details.dart';
 import 'view/screen/items/view_items.dart';
+import 'view/screen/items_point/add_items_points.dart';
 import 'view/screen/items_point/view_items_point.dart';
 import 'view/screen/notification/view_notification.dart';
 import 'view/screen/sms/sms_view_balance.dart';

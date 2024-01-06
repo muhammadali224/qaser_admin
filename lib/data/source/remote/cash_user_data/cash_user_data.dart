@@ -14,29 +14,29 @@ class CashUserData {
 
   addCashUser(CashUserModel cashModel) async {
     var response = await crud.postData(AppLink.addCashUser, {
-      "cashName": cashModel.cashUserName,
-      "cashEmail": cashModel.cashUserEmail,
-      "cashBranchId": cashModel.cashBranchId.toString(),
-      "cashCreatedDate": DateTime.now().toString(),
-      "password": cashModel.cashUserPassword.toString(),
+      "cashName": cashModel.cashUserName!.trim(),
+      "cashEmail": cashModel.cashUserEmail!.trim(),
+      "cashBranchId": cashModel.cashBranchId.toString().trim(),
+      "cashCreatedDate": DateTime.now().toString().trim(),
+      "password": cashModel.cashUserPassword.toString().trim(),
     });
     return response.fold((l) => l, (r) => r);
   }
 
   editCashUser(CashUserModel cashModel, String id) async {
     var response = await crud.postData(AppLink.editCashUser, {
-      "cashId": id,
-      "cashName": cashModel.cashUserName,
-      "cashEmail": cashModel.cashUserEmail,
-      "cashBranchId": cashModel.cashBranchId.toString(),
-      "password": cashModel.cashUserPassword.toString(),
+      "cashId": id.trim(),
+      "cashName": cashModel.cashUserName!.trim(),
+      "cashEmail": cashModel.cashUserEmail!.trim(),
+      "cashBranchId": cashModel.cashBranchId.toString().trim(),
+      "password": cashModel.cashUserPassword.toString().trim(),
     });
     return response.fold((l) => l, (r) => r);
   }
 
   deleteCashUser(String id) async {
     var response = await crud.postData(AppLink.deleteCashUser, {
-      'cashId': id,
+      'cashId': id.trim(),
     });
     return response.fold((l) => l, (r) => r);
   }

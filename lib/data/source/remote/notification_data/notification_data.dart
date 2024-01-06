@@ -14,16 +14,16 @@ class NotificationData {
 
   addNotification(NotificationModel notificationModel) async {
     var response = await crud.postData(AppLink.sendNotifications, {
-      "title": notificationModel.notificationsTitle,
-      "body": notificationModel.notificationsBody,
-      "topic": notificationModel.notificationLevel.toString(),
+      "title": notificationModel.notificationsTitle!.trim(),
+      "body": notificationModel.notificationsBody!.trim(),
+      "topic": notificationModel.notificationLevel.toString().trim(),
     });
     return response.fold((l) => l, (r) => r);
   }
 
   deleteNotification(String couponId) async {
-    var response = await crud
-        .postData(AppLink.deleteNotifications, {"notificationId": couponId});
+    var response = await crud.postData(
+        AppLink.deleteNotifications, {"notificationId": couponId.trim()});
     return response.fold((l) => l, (r) => r);
   }
 }

@@ -18,9 +18,9 @@ class OffersImageData {
     var response = await crud.postData(
       AppLink.editOffers,
       {
-        "id": imageOfferModel.id.toString(),
-        "isActive": imageOfferModel.isActive.toString(),
-        "viewLevel": imageOfferModel.viewLevel.toString(),
+        "id": imageOfferModel.id.toString().trim(),
+        "isActive": imageOfferModel.isActive.toString().trim(),
+        "viewLevel": imageOfferModel.viewLevel.toString().trim(),
       },
     );
     return response.fold((l) => l, (r) => r);
@@ -28,8 +28,8 @@ class OffersImageData {
 
   deleteOffersImage(String imageId, String imageName) async {
     var response = await crud.postData(AppLink.deleteOffersImage, {
-      'id': imageId,
-      "imageName": imageName,
+      'id': imageId.trim(),
+      "imageName": imageName.trim(),
     });
     return response.fold((l) => l, (r) => r);
   }
@@ -38,8 +38,8 @@ class OffersImageData {
     var response = await crud.addRequestWithImage(
       AppLink.addOffersImage,
       {
-        "isActive": imageOfferModel.isActive.toString(),
-        "viewLevel": imageOfferModel.viewLevel.toString(),
+        "isActive": imageOfferModel.isActive.toString().trim(),
+        "viewLevel": imageOfferModel.viewLevel.toString().trim(),
       },
       file,
     );
