@@ -138,6 +138,49 @@ class ItemsDetailsController extends GetxController
     update();
   }
 
+  editWeightSize(int id) async {
+    try {
+      SubItemsModel editSubItems = SubItemsModel(
+        subItemId: id,
+        subItemsName: nameEn.text,
+        subItemsNameAr: nameAr.text,
+        subItemsPrice: num.parse(price.text),
+        subItemsDiscount: num.parse(discount.text),
+      );
+      SmartDialog.showLoading(msg: 'loading'.tr);
+      var response = await itemsData.editSubItem(editSubItems);
+
+      statusRequest = handlingData(response);
+      if (statusRequest == StatusRequest.success) {
+        if (response["status"] == "success") {
+          SmartDialog.dismiss();
+          SmartDialog.showNotify(
+              msg: "تم التعديل بنجاح", notifyType: NotifyType.success);
+
+          Get.back();
+          getSubItem();
+        } else {
+          Get.back();
+
+          SmartDialog.showNotify(
+              msg: "حدث خطأ ما يرجى المحاولة لاحقا",
+              notifyType: NotifyType.error);
+        }
+      } else {
+        Get.back();
+
+        SmartDialog.showNotify(
+            msg: "حدث خطأ ما يرجى المحاولة لاحقا",
+            notifyType: NotifyType.error);
+      }
+    } catch (e) {
+      SmartDialog.showToast(e.toString());
+      throw Exception(e.toString());
+    }
+    SmartDialog.dismiss();
+    update();
+  }
+
   addItemImage() async {
     try {
       SmartDialog.showLoading(msg: 'loading'.tr);

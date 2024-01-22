@@ -20,6 +20,7 @@ class AddBranchesController extends GetxController {
   late TextEditingController phone2;
   late TextEditingController facebookUrl;
   late TextEditingController deleveryCharge;
+  late TextEditingController deleveryStart;
   late TextEditingController deleveryMaxZone;
   late TextEditingController deliverFixCharge;
   late TextEditingController deliveryFixZone;
@@ -55,6 +56,7 @@ class AddBranchesController extends GetxController {
               branchPhone1: phone1.text,
               branchPhone2: phone2.text,
               branchDeliveryFixCharge: num.parse(deliverFixCharge.text),
+              branchStartDelivery: num.parse(deleveryStart.text),
               branchZone: num.parse(deliveryFixZone.text));
           var response =
               await homeController.branchesData.addBranches(branchModel);
@@ -103,6 +105,7 @@ class AddBranchesController extends GetxController {
               branchPhone1: phone1.text,
               branchPhone2: phone2.text,
               branchDeliveryFixCharge: num.parse(deliverFixCharge.text),
+              branchStartDelivery: num.parse(deleveryStart.text),
               branchZone: num.parse(deliveryFixZone.text));
           var response = await homeController.branchesData
               .editBranches(branchEditModel, branchModel!.branchId.toString());
@@ -150,6 +153,7 @@ class AddBranchesController extends GetxController {
     deleveryMaxZone = TextEditingController();
     deliverFixCharge = TextEditingController();
     deliveryFixZone = TextEditingController();
+    deleveryStart = TextEditingController();
     if (selectedOption == 0) {
       deliverFixCharge.text = "0.0";
       deliveryFixZone.text = "0.0";
@@ -164,6 +168,8 @@ class AddBranchesController extends GetxController {
     facebookUrl = TextEditingController(text: branchModel.branchFacebookUrl);
     deleveryCharge = TextEditingController(
         text: branchModel.branchDeliveryCharge.toString());
+    deleveryStart =
+        TextEditingController(text: branchModel.branchStartDelivery.toString());
     deleveryMaxZone =
         TextEditingController(text: branchModel.branchMaxZone.toString());
     deliverFixCharge = TextEditingController(
@@ -202,6 +208,7 @@ class AddBranchesController extends GetxController {
     deleveryMaxZone.dispose();
     deliverFixCharge.dispose();
     deliveryFixZone.dispose();
+    deleveryStart.dispose();
     super.dispose();
   }
 }

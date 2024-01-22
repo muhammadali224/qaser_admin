@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:icons_plus/icons_plus.dart';
@@ -9,9 +10,7 @@ import '../../widget/shred_component/material_button.dart';
 import '../../widget/shred_component/padding_container.dart';
 
 class AddBranch extends StatelessWidget {
-  const AddBranch({
-    super.key,
-  });
+  const AddBranch({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -88,6 +87,16 @@ class AddBranch extends StatelessWidget {
                   },
                 ),
                 InputFormField(
+                  hintTitle: 'رسوم التوصيل تبدأ من ',
+                  labelString: 'رسوم التوصيل  تبدأ من',
+                  icon: FontAwesome.money_check_dollar_solid,
+                  controller: controller.deleveryStart,
+                  keyboardType: const TextInputType.numberWithOptions(),
+                  validate: (val) {
+                    return validInput(val!, 1, 50, 'name');
+                  },
+                ),
+                InputFormField(
                   hintTitle: 'رسوم التوصيل لكل كيلومتر',
                   labelString: 'رسوم التوصيل لكل كيلومتر',
                   icon: FontAwesome.money_bill_1_solid,
@@ -107,15 +116,17 @@ class AddBranch extends StatelessWidget {
                     return validInput(val!, 1, 50, 'name');
                   },
                 ),
+                const Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 15.0),
+                  child: Text("التوصيل ثابت :", style: TextStyle(fontSize: 18)),
+                ),
                 Container(
                   padding: const EdgeInsets.symmetric(horizontal: 15),
                   child: Row(
                     children: [
-                      const Text("التوصيل ثابت :",
-                          style: TextStyle(fontSize: 18)),
                       Expanded(
                         child: RadioListTile<int>(
-                          title: Text("yes".tr),
+                          title: AutoSizeText("yes".tr),
                           value: 1,
                           groupValue: controller.selectedOption,
                           onChanged: controller.onChanged,
@@ -123,7 +134,7 @@ class AddBranch extends StatelessWidget {
                       ),
                       Expanded(
                         child: RadioListTile<int>(
-                          title: Text("no".tr),
+                          title: AutoSizeText("no".tr),
                           value: 0,
                           groupValue: controller.selectedOption,
                           onChanged: controller.onChanged,

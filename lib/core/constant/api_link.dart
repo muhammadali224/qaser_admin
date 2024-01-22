@@ -47,10 +47,10 @@ class AppLink {
       "$server/categories/remove_from_branch.php";
 
 //============================ Weight And Size ==============================//
-  static String addWeightSize = "$server/weight_size/add.php";
-  static String editWeightSize = "$server/weight_size/edit.php";
-  static String viewWeightSize = "$server/weight_size/view.php";
-  static String deleteWeightSize = "$server/weight_size/delete.php";
+//   static String addWeightSize = "$server/weight_size/add.php";
+//   static String editWeightSize = "$server/weight_size/edit.php";
+//   static String viewWeightSize = "$server/weight_size/view.php";
+//   static String deleteWeightSize = "$server/weight_size/delete.php";
 
 //============================ Coupon ==============================//
   static String addCoupon = "$server/coupon/add.php";

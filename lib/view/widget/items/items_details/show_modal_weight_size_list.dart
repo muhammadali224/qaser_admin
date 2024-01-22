@@ -4,12 +4,18 @@ import 'package:get/get.dart';
 import '../../../../controller/items_controller/item_details_controller.dart';
 import '../../../../core/extension/space_extension.dart';
 import '../../../../core/function/valid_input.dart';
+import '../../../../data/model/sub_items/sub_items_model.dart';
 import '../../shred_component/input_form_field.dart';
 import '../../shred_component/material_button.dart';
 
-showWeightModalSheet(BuildContext context) {
+showWeightModalSheet(BuildContext context, {SubItemsModel? subModel}) {
   ItemsDetailsController controller = Get.find<ItemsDetailsController>();
-
+  if (subModel != null) {
+    controller.nameAr.text = subModel.subItemsNameAr!;
+    controller.nameEn.text = subModel.subItemsName!;
+    controller.price.text = subModel.subItemsPrice.toString();
+    controller.discount.text = subModel.subItemsDiscount.toString();
+  }
   showModalBottomSheet(
     context: context,
     showDragHandle: true,
@@ -71,16 +77,30 @@ showWeightModalSheet(BuildContext context) {
             ),
           ),
         ),
-        MaterialCustomButton(
-          onPressed: controller.addSubItem,
-          title: 'add',
-          color: Colors.green,
-        ),
+        if (subModel == null)
+          MaterialCustomButton(
+            onPressed: controller.addSubItem,
+            title: 'add',
+            color: Colors.green,
+          ),
+        if (subModel != null) ...[
+          MaterialCustomButton(
+            onPressed: () => controller.editWeightSize(subModel.subItemId!),
+            title: 'edit',
+            color: Colors.green,
+          ),
+          MaterialCustomButton(
+            onPressed: () => controller.removeWeightSize(subModel.subItemId!),
+            title: 'delete',
+            color: Colors.red,
+          ),
+        ]
       ],
     ),
   ).whenComplete(() {
     controller.price.clear();
     controller.nameAr.clear();
     controller.nameEn.clear();
+    controller.discount.clear();
   });
 }

@@ -3,6 +3,7 @@ import 'dart:io';
 import '../../../../core/class/crud.dart';
 import '../../../../core/constant/api_link.dart';
 import '../../../model/items_model/items_model.dart';
+import '../../../model/sub_items/sub_items_model.dart';
 
 class ItemsData {
   CRUD crud;
@@ -121,12 +122,14 @@ class ItemsData {
     return response.fold((l) => l, (r) => r);
   }
 
-  editItemWeight(int id, int weightId, int itemId, String price) async {
+  editSubItem(SubItemsModel subItemsModel) async {
+    print(subItemsModel.toString());
     var response = await crud.postData(AppLink.editItemWeight, {
-      'id': id.toString().trim(),
-      'weightId': weightId.toString().trim(),
-      'itemId': itemId.toString().trim(),
-      'price': price.trim(),
+      'id': subItemsModel.subItemId.toString(),
+      'subName': subItemsModel.subItemsName!.trim(),
+      'subNameAr': subItemsModel.subItemsNameAr!.trim(),
+      'price': subItemsModel.subItemsPrice.toString().trim(),
+      'discount': subItemsModel.subItemsDiscount.toString().trim(),
     });
     return response.fold((l) => l, (r) => r);
   }
