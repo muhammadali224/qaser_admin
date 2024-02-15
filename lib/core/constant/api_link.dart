@@ -2,6 +2,7 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 class AppLink {
   AppLink._();
+
   static String server = dotenv.env['SERVER']!;
   static String images = dotenv.env['IMAGES']!;
 
@@ -18,11 +19,14 @@ class AppLink {
   static String editAdminUser = "$server/auth/edit.php";
   static String viewAdminUser = "$server/auth/view.php";
   static String deleteAdminUser = "$server/auth/delete.php";
+
 //============================== Home  ==============================//
   static String getSummery = "$server/home/home.php";
+
 //============================== SMS  ==============================//
   static String getSMSBalance = "$server/sms/sms_balance.php";
   static String getAllSMS = "$server/sms/retrive_sms.php";
+
 //============================== Branches  ==============================//
   static String getBranch = "$server/branches/view.php";
   static String editBranch = "$server/branches/edit.php";
@@ -64,6 +68,7 @@ class AppLink {
   static String sendUserNotification = "$server/users/send_notification.php";
   static String sendUserSMS = "$server/users/send_sms.php";
   static String viewUsers = "$server/users/view.php";
+  static String usersInfo = "$server/users/users_info.php";
   static String deleteUsers = "$server/users/delete.php";
   static String addUserPoint = "$server/users/add_point.php";
 
@@ -74,10 +79,12 @@ class AppLink {
       "$server/image_offers/edit_with_image.php";
   static String viewOffersImage = "$server/image_offers/view.php";
   static String deleteOffersImage = "$server/image_offers/delete.php";
+
 //============================== Notifications ==============================//
   static String sendNotifications = "$server/notifications/send.php";
   static String viewNotifications = "$server/notifications/view.php";
   static String deleteNotifications = "$server/notifications/delete.php";
+
 //============================== Items ==============================//
   static String addItem = "$server/items/add.php";
   static String editItem = "$server/items/edit.php";
@@ -92,6 +99,7 @@ class AppLink {
   static String addItemImage = "$server/items/add_image.php";
   static String deleteItemImage = "$server/items/delete_image.php";
   static String viewSubItems = "$server/items/view_sub_item.php";
+
 //============================== Items Point ==============================//
   static String addItemsPoint = "$server/items_point/add.php";
   static String deleteItemsPoint = "$server/items_point/delete.php";

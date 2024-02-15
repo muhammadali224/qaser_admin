@@ -32,6 +32,7 @@ class UsersViewController extends GetxController {
     PopMenuModel(
         name: "الاقل سعر طلبات", value: "8", icon: Icons.money_off_rounded),
     PopMenuModel(name: "المستخدمين المحظورين", value: "9", icon: Icons.block),
+    PopMenuModel(name: "معلومات المستخدمين", value: "10", icon: Icons.info),
   ];
 
   selectOptionList(String val) {
@@ -64,6 +65,9 @@ class UsersViewController extends GetxController {
       case "9":
         outputUserList =
             usersList.where((element) => element.usersApprove == 2).toList();
+        break;
+      case "10":
+        Get.toNamed(AppRoutes.usersInfo);
         break;
     }
 

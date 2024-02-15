@@ -28,6 +28,7 @@ class BranchesData {
       "branchDeliveryCharge":
           branchModel.branchDeliveryCharge.toString().trim(),
       "branchIsFixed": branchModel.branchIsFixed.toString().trim(),
+      "branchStart": branchModel.branchStartDelivery.toString().trim(),
       "branchZone": branchModel.branchZone.toString().trim(),
       "branchDeliveryFixCharge":
           branchModel.branchDeliveryFixCharge.toString().trim(),
@@ -50,6 +51,7 @@ class BranchesData {
       "branchDeliveryCharge":
           branchModel.branchDeliveryCharge.toString().trim(),
       "branchIsFixed": branchModel.branchIsFixed.toString().trim(),
+      "branchStart": branchModel.branchStartDelivery.toString().trim(),
       "branchZone": branchModel.branchZone.toString().trim(),
       "branchDeliveryFixCharge":
           branchModel.branchDeliveryFixCharge.toString().trim(),

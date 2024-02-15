@@ -11,6 +11,11 @@ class UsersData {
     return response.fold((l) => l, (r) => r);
   }
 
+  getUsersInfo() async {
+    var response = await crud.postData(AppLink.usersInfo, {});
+    return response.fold((l) => l, (r) => r);
+  }
+
   deleteUser(String userId, String userImage) async {
     var response = await crud.postData(AppLink.deleteUsers, {
       "userId": userId.trim(),
