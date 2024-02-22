@@ -31,7 +31,7 @@ class NotificationModalSheet extends GetView<NotificationViewController> {
               controller: controller.title,
               icon: Icons.title,
               validate: (val) {
-                return validInput(val!, 2, 50, 'name');
+                return validInput(val!, 2, 500000, 'name');
               },
             ),
             InputFormField(
