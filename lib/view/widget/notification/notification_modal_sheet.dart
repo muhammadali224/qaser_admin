@@ -41,7 +41,7 @@ class NotificationModalSheet extends GetView<NotificationViewController> {
               icon: Icons.text_fields,
               isExpanded: true,
               validate: (val) {
-                return validInput(val!, 3, 50, 'name');
+                return validInput(val!, 3, 500000, 'name');
               },
             ),
             const Padding(
